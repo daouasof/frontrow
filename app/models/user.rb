@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :attendances
+  has_many :reviews, through: :attendances
+  has_many :concerts, through: :attendances
 end
