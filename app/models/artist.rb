@@ -1,3 +1,3 @@
 class Artist < ApplicationRecord
-  belongs_to :concert
+  has_many :concerts
 end
