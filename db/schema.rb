@@ -20,13 +20,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_153923) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "attendaces", force: :cascade do |t|
+  create_table "attendances", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "concert_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["concert_id"], name: "index_attendaces_on_concert_id"
-    t.index ["user_id"], name: "index_attendaces_on_user_id"
+    t.index ["concert_id"], name: "index_attendances_on_concert_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
   create_table "concerts", force: :cascade do |t|
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_153923) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "attendaces", "concerts"
-  add_foreign_key "attendaces", "users"
+  add_foreign_key "attendances", "concerts"
+  add_foreign_key "attendances", "users"
   add_foreign_key "concerts", "artists"
 end
