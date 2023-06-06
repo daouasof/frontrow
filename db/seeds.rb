@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }]
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "Cleaning the users table"
+User.destroy_all
+puts "Cleaning the concerts table"
+Concert.destroy_all
+puts "Cleaning the attendances table"
+Attendance.destroy_all
+
+
 puts "creating user seed Bowie"
 User.create!(username: "Bowie", age: 23, city: "Montreal", bio: "Hello there! I am Bowie, a super cool dude from Montreal",
              email: "bowie@bowie.com", password: "123456")
