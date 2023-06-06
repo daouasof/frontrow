@@ -17,5 +17,5 @@ Artist.create!(name: "Led Zeppelin")
 puts "done!"
 
 puts "creating a concert seed Olympic Stadium - Led Zeppelin"
-Concert.create!(city: "Montreal", venue: "Olympic Stadium", date: "October 1st, 2022", average_rating: "4.5", artist: Artist.first)
+Concert.create!(city: "Montreal", venue: "Olympic Stadium", date: DateTime.new(2001, 2, 3, 4, 5, 6), average_rating: "4.5", artist: Artist.first)
 puts "done!"

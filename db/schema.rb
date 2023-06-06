@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_153923) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_183911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_153923) do
   create_table "concerts", force: :cascade do |t|
     t.string "city"
     t.string "venue"
-    t.date "date"
+    t.datetime "date"
     t.float "average_rating"
     t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
