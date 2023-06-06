@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }]
 #   Character.create(name: "Luke", movie: movies.first)
+require "json"
+require "rest-client"
+
+url =
+response = RestClient.get(url, { 'Accept': 'application/json', 'x-api-key': SETLIST_API_KEY })
 
 puts "creating user seed Bowie"
 
