@@ -6,12 +6,11 @@ class AttendancesController < ApplicationController
   # end
 
   def create
-    @attendance = Attendance.new(attendance_params)
-    if @attendance.save
-      redirect_to concert_path(@concert)
-    else
-      render :concerts/show, status: 422
-    end
+    @attendance = Attendance.new
+    @attendance.user = @user
+    @attendance.concert = @concert
+    @attendance.save
+    redirect_to concert_path(@concert)
   end
 
   def destroy
@@ -30,7 +29,5 @@ class AttendancesController < ApplicationController
     @concert = Concert.find(params[:concert_id])
   end
 
-  def attendance_params
-    params.require(:attendance).permit(:user_id, :concert_id)
-  end
+
 end
