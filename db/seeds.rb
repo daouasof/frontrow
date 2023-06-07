@@ -29,11 +29,11 @@ shows = JSON.parse(response)
 # pp shows.keys
 shows["setlist"].each do |show|
   concert = Concert.new
-  concert.city = show["venue"]["city"]
+  concert.city = show["venue"]["city"]["name"]
   concert.venue = show["venue"]["name"]
   concert.date = show["eventDate"]
-  # concert.artist_id = Artist.first
-  concert.save!
+  concert.artist_id = artist.id
+  concert.save! #not working
   puts "Created new concert with id #{concert.id}"
 end
 
