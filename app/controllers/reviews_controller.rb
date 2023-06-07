@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   # before_action :set_concert, only: %i[new create]
 
   def create
+    raise
     @review = Review.new(review_params)
     # @review.concert = @concert
     @review.user = current_user
@@ -19,6 +20,6 @@ class ReviewsController < ApplicationController
   # end
 
   def review_params
-    params.require(:concert).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content)
   end
 end

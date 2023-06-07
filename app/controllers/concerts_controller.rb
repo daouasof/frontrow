@@ -1,8 +1,10 @@
 class ConcertsController < ApplicationController
   def index
+    @concerts = Concert.all
   end
-end
 
-def show
-  @concert = Concert.find(params[:id])
+  def show
+    @concert = Concert.find(params[:id])
+    @review = Review.new
+  end
 end

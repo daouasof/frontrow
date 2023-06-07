@@ -1,2 +1,11 @@
 <h1>Concert</h1>
-<p> <%= @concert %> </p>
+<p> <%= @concert.venue %> </p>
+
+
+<%#= render "form", review: @review %>
+
+<%# form html file to be created ^ %>
+
+<div class= btn-back-concerts>
+  <%= link_to "Back to all Concerts", concerts_path %>
+</div>
