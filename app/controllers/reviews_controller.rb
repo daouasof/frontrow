@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  # before_action :set_concert, only: %i[new create]
 
   def create
     @review = Review.new(review_params)
@@ -13,10 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   private
-
-  # def set_concert
-  #   @concert = Concert.find(params[:concert_id])
-  # end
 
   def review_params
     params.require(:review).permit(:rating, :content)
