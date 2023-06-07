@@ -1,23 +1,24 @@
 <h1>Concert</h1>
 
 <p><%= @concert.artist.name %></p>
+<p> <%= @concert.venue %> </p>
 <% if current_user.attended?(@concert) %>
-  <p>attended</p>
-  <%= link_to attendance_path(@attendance), data: { turbo_method: :delete } do %>
-    <h3>I didn't go</h3>
+  <%= link_to attendance_path(@attendance),
+  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
+    <p>I Attended icon</p>
   <% end %>
 <% else %>
-  <p>not attended</p>
-  <%= link_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
-    <h3>I went</h3>
+  <%= button_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
+    <h3>I attended</h3>
   <% end %>
 <% end %>
 
-<p> <%= @concert.venue %> </p>
 
 <br>
 
-<%= render "reviews/review_form", concert: @concert, review: @review %>
+<%= link_to new_concert_review_path(@concert, @review) do %>
+  <h3>Post a review</h3>
+<% end %>
 
 <br>
 

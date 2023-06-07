@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :concerts, only: [:index, :show] do
     resources :attendances, only: [:create]
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
 
   resources :attendances, only: :destroy
