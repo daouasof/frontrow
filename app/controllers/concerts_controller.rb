@@ -1,8 +1,11 @@
 class ConcertsController < ApplicationController
-  def index
-  end
-end
 
-def show
-  @concert = Concert.find(params[:id])
+  def index
+
+  end
+
+  def show
+    @concert = Concert.find(params[:id])
+    @attendance = current_user.attendances
+  end
 end
