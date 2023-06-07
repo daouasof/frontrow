@@ -1,11 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $navy;
-  align-content: center;
+  // align-items: center;
 
-  h1 {
+  p {
     font-family: $logo-font;
-    color: $white
+    color: $white;
+    margin: 0;
   }
 
 }
