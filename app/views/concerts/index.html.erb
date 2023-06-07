@@ -13,7 +13,11 @@
     <% end %>
 
 <% @concerts.each do |concert| %>
-  <h2><%= "#{concert.artist.name}" %></h2>
-  <p><%= "#{concert.city} - #{concert.venue}" %></p>
-  <p><%= "#{concert.date} "%></p>
+  <%= link_to concert_path(concert) do %>
+    <div>
+      <h2><%= "#{concert.artist.name}" %></h2>
+      <p><%= "#{concert.city} - #{concert.venue}" %></p>
+      <p><%= "#{concert.date} "%></p>
+    </div>
+  <% end %>
 <% end %>
