@@ -1,14 +1,13 @@
 <h1>Concert</h1>
 <p><%= @concert.artist.name %></p>
-<p><%= @attendance %></p>
-<%# <p><% if @attendance.concert.present? %>
-      attended
-  <%# <% else %> %>
-      not attended
-  <%# <% end %> %> %>
-<%= link_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
-<h3>I went</h3>
-<% end %>
-<%= link_to concert_attendance_path(@concert), data: { turbo_method: :delete } do %>
-<h3>I didn't go</h3>
+<% if current_user.attended?(@concert) %>
+  <p>attended</p>
+  <%= link_to attendance_path(@attendance), data: { turbo_method: :delete } do %>
+    <h3>I didn't go</h3>
+  <% end %>
+<% else %>
+  <p>not attended</p>
+  <%= link_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
+    <h3>I went</h3>
+  <% end %>
 <% end %>

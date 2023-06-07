@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :concerts, only: [:index, :show] do
-    resources :attendances, only: [:create, :destroy]
+    resources :attendances, only: [:create]
   end
+
+  resources :attendances, only: :destroy
 end
