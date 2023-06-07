@@ -2,7 +2,6 @@ require 'open-uri'
 require 'nokogiri'
 
 class ConcertsController < ApplicationController
-
   def index
     @concerts = Concert.all
   end
