@@ -1,9 +1,17 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Ysabeau", "sans-serif";
+$body-font-weight: 800;
+$main-title-font: "Ysabeau", "sans-serif";
+$main-title-weight: 300;
+$secondary-title-font: "Ysabeau", "sans-serif";
+$logo-font: "Rammetto One", "cursive";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
