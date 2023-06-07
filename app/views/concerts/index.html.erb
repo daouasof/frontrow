@@ -1,8 +1,13 @@
 <h1>Find you concert</h1>
 
 <%= form_with url: concerts_path, method: :get do %>
-      <%= text_field_tag :query,
-            params[:query]
+      <%= text_field_tag :query_artist,
+            @artist,
+            placeholder: "Type an artist"
+        %>
+      <%= text_field_tag :query_city,
+            @city,
+            placeholder: "Type a city"
         %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
