@@ -11,7 +11,7 @@ puts "Cleaning the concerts table"
 Concert.destroy_all
 puts "Cleaning the artist table"
 Artist.destroy_all
-puts "Cleaning the users table"
+puts "Cleaning the users table."
 User.destroy_all
 
 # Creating artist Menzingers & concert instances for Menzingers
