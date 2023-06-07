@@ -2,12 +2,11 @@ class ReviewsController < ApplicationController
   # before_action :set_concert, only: %i[new create]
 
   def create
-    raise
     @review = Review.new(review_params)
-    # @review.concert = @concert
-    @review.user = current_user
+    @concert = Concert.find(params[:concert_id])
+    @review.attendance = current_user.attendance_info(@concert)
     if @review.save
-      redirect_to concert_path(@review)
+      redirect_to concert_path(@concert)
     else
       render :new, status: :unprocessable_entity
     end
