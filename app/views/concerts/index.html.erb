@@ -14,10 +14,6 @@
 
 <% @concerts.each do |concert| %>
   <%= link_to concert_path(concert) do %>
-    <div>
-      <h2><%= "#{concert.artist.name}" %></h2>
-      <p><%= "#{concert.city} - #{concert.venue}" %></p>
-      <p><%= "#{concert.date} "%></p>
-    </div>
+    <%= render "concert_card", concert: concert %>
   <% end %>
 <% end %>
