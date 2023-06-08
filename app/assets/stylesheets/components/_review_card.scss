@@ -1,0 +1,26 @@
+.review-card {
+  padding: 20px;
+}
+
+.review-card p {
+  margin: 0;
+}
+
+.review-card-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-card-user p {
+  margin-left: 8px;
+  margin-bottom: 20px;
+}
+
+.review-card-media {
+  text-align: center;
+}
+
+.review-card-content p {
+  margin-top: 10px;
+}
