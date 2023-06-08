@@ -1,0 +1,20 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);">
+    <p>The concert starts here</p>
+  <div class="container-form">
+    <%= form_with url: concerts_path, method: :get do %>
+      <div>
+        <%= text_field_tag :query_artist,
+              @artist,
+              placeholder: "Band", class: "input-style" %>
+      </div>
+      <div>
+        <%= text_field_tag :query_city,
+              @city,
+              placeholder: "City", class: "input-style"%>
+      </div>
+    <div>
+      <%= submit_tag "Find my show", name: "", class: "btn mt-3" %>
+    </div>
+  </div>
+    <% end %>
+</div>

@@ -1,0 +1,20 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 73px 0;
+  text-align: center;
+}
+
+.banner p {
+  margin-bottom: 10px;
+  color: $white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 20px;
+  font-family: $logo-font
+}
+
+.container-form {
+  width: 60%;
+  margin: auto;
+  text-align: end;
+}
