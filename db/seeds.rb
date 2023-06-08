@@ -87,7 +87,7 @@ bowies_review = Review.new(
   rating: 5,
   content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
   attendance: Attendance.first,
-  user: User.last
+
 )
 bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
                             filename: "conert_photo_1", content_type: "image/png")
