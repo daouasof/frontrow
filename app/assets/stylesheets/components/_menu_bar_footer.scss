@@ -1,0 +1,13 @@
+.menu-bar {
+  background: $navy;
+  color: $white;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-icon {
+  width: 18px;
+  margin: 8px;
+}
