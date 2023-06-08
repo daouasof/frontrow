@@ -1,0 +1,23 @@
+.user-review-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 8px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.user-review-card .user-review-card-content {
+  flex-grow: 1;
+  padding: 0 14px;
+}
+
+.user-review-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.user-review-card small {
+  color: $green;
+  // font-weight: bold;
+  font-style: italic;
+}

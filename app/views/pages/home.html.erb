@@ -6,3 +6,12 @@
 <p>reviews feed from following</p>
 
 <%= link_to 'A button', concerts_path, class:"btn" %>
+
+<div class="user-review-card shadowed-box">
+  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <div class="user-review-card-content">
+    <p><small><%= "#{@review.user.username} was there !" %></small></p>
+    <p><strong>Bruce Springsteen</strong></p>
+    <p>Montréal - 2023/06/06</p>
+  </div>
+</div>
