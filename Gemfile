@@ -50,6 +50,9 @@ gem "sassc-rails"
 
 gem "cloudinary"
 
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem "rest-client"
