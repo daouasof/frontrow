@@ -1,12 +1,16 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_one_attached :avatar
+  has_one_attached :banner
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :attendances
   has_many :reviews, through: :attendances
   has_many :concerts, through: :attendances
+
+  acts_as_followable
+  acts_as_follower
 
   def attended?(concert)
     !find_attendance(concert).nil?

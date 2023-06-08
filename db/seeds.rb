@@ -1,5 +1,7 @@
+require "open-uri"
 require "json"
 require "rest-client"
+require_relative "users"
 
 puts "Cleaning the comments table"
 Comment.destroy_all
@@ -45,29 +47,35 @@ bands.each do |band|
     end
 end
 
+
 puts "creating users seeds Bowie, Paloma and us!"
-User.create!(username: "Bowie", age: 23, city: "Montreal", bio: "Hello there! I am Bowie, a super cool dude from Montreal.",
-             email: "bowie@bowie.com", password: "123456")
 
-User.create!(username: "Paloma", age: 24, city: "Montreal", bio: "Hi everyone! Paloma here, happy to go to shows anytime
-             I can.", email: "paloma@paloma.com", password: "123456")
-puts "done!"
+default_avatar_url = "https://hips.hearstapps.com/hmg-prod/images/sigourney-weaver-avatar-ii-the-way-of-water-1670323174.jpg?crop=0.500xw:0.949xh;0.299xw,0.0514xh&resize=1200:*"
+default_banner_url = "https://townsquare.media/site/62/files/2021/11/attachment-brian-ruiz.jpg?w=980&q=75"
+default_password = "123456"
+default_city = "Montreal"
 
-User.create!(username: "Cat", age: 42, city: "Montreal", bio: "Hey guys! Cat here, avid rock/metal concert goer ;)",
-             email: "cat@frontrow.com", password: "123456")
-puts "done!"\
 
-User.create!(username: "Antoine", age: 30, city: "Montreal", bio: " ... bio ...",
-             email: "antoine@frontrow.com", password: "123456")
-puts "done!"
+USERS.each do |user_hash|
+  p user_hash
+  new_user = User.new(
+    username: user_hash[:username],
+    age: user_hash[:age],
+    bio: user_hash[:bio],
+    email: user_hash[:email]
+  )
 
-User.create!(username: "Kirstin", age: 29, city: "Montreal", bio: " ... bio ...",
-             email: "kirstin@frontrow.com", password: "123456")
-puts "done!"
+  avatar = URI.open(user_hash[:avatar_url] || default_avatar_url)
+  new_user.avatar.attach(io: avatar, filename: "avatar.png", content_type: "image/png")
+  banner = URI.open(user_hash[:banner_url] || default_banner_url)
+  new_user.banner.attach(io: banner, filename: "banner.png", content_type: "image/png")
 
-User.create!(username: "Sofia", age: 32, city: "Montreal", bio: " ... bio ...",
-             email: "sofia@frontrow.com", password: "123456")
-puts "done!"
+  new_user.city = default_city unless user_hash[:city]
+  new_user.password = default_password unless user_hash[:password]
+  new_user.save!
+end
+
+puts "Done!!!"
 
 
 puts "creating seed attendace"
@@ -75,10 +83,21 @@ Attendance.create!(user: User.first, concert: Concert.first)
 puts "done!"
 
 puts "seed writing a review"
-Review.create!(rating: 5, content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE.",
-               attendance: Attendance.first)
+bowies_review = Review.new(
+  rating: 5,
+  content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
+  attendance: Attendance.first
+)
+bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                            filename: "conert_photo_1", content_type: "image/png")
+bowies_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                            filename: "conert_photo_2", content_type: "image/png")
+bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                            filename: "conert_photo_3", content_type: "image/png")
+
+bowies_review.save!
 puts "done!"
 
 puts "seed commenting on review"
-Comment.create!(content: "I agree!!!! We are lucky we got to see that!", user: User.last, review: Review.first )
+Comment.create!(content: "I agree!!!! We are lucky we got to see that!", user: User.last, review: Review.first)
 puts "all done!"
