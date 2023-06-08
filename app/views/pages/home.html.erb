@@ -1,2 +1,8 @@
 <%= render "homepage_banner" %>
-<%= render "user_review_card", review: @review %>
+<div>
+  <p>See your friends' latest updates...</p>
+</div>
+<div class="grid-container">
+  <%= render "user_review_card", review: @review %>
+  <%= render "user_review_card", review: @review %>
+</div>
