@@ -25,10 +25,13 @@
 
 <br>
 
-<p><strong>Reviews</strong></p>
+<h2><strong>Reviews</strong></h2>
 
 <ul class="list-group">
   <% @concert.reviews.each do |review| %>
+    <% review.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <li class="list-group-item"><%= review.content %> <%= review.rating %></li>
   <% end %>
 </ul>
