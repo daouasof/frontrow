@@ -20,7 +20,8 @@ bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed' }
            { name: 'Burna Boy', url: '78a19169-ac75-4868-b504-7e2e073118e0' },
            { name: 'Polo & Pan', url: '1d9ec7ea-0fa4-41d9-917b-723c735ebbfe' },
            { name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd' },
-           { name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07' }]
+           { name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07' },
+           { name: 'Tool', url: '66fc5bf8-daa4-4241-b378-9bc9077939d2' }]
 
 bands.each do |band|
   sleep(3)
