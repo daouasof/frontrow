@@ -44,13 +44,30 @@ bands.each do |band|
     end
 end
 
-puts "creating user seeds Bowie and Paloma"
+puts "creating users seeds Bowie, Paloma and us!"
 User.create!(username: "Bowie", age: 23, city: "Montreal", bio: "Hello there! I am Bowie, a super cool dude from Montreal.",
              email: "bowie@bowie.com", password: "123456")
 
 User.create!(username: "Paloma", age: 24, city: "Montreal", bio: "Hi everyone! Paloma here, happy to go to shows anytime
              I can.", email: "paloma@paloma.com", password: "123456")
 puts "done!"
+
+User.create!(username: "Cat", age: 42, city: "Montreal", bio: "Hey guys! Cat here, avid rock/metal concert goer ;)",
+             email: "cat@frontrow.com", password: "123456")
+puts "done!"\
+
+User.create!(username: "Antoine", age: 30, city: "Montreal", bio: " ... bio ...",
+             email: "antoine@frontrow.com", password: "123456")
+puts "done!"
+
+User.create!(username: "Kirstin", age: 29, city: "Montreal", bio: " ... bio ...",
+             email: "kirstin@frontrow.com", password: "123456")
+puts "done!"
+
+User.create!(username: "Sofia", age: 32, city: "Montreal", bio: " ... bio ...",
+             email: "sofia@frontrow.com", password: "123456")
+puts "done!"
+
 
 puts "creating seed attendace"
 Attendance.create!(user: User.first, concert: Concert.first)
