@@ -54,7 +54,7 @@ puts "done!"
 
 User.create!(username: "Cat", age: 42, city: "Montreal", bio: "Hey guys! Cat here, avid rock/metal concert goer ;)",
              email: "cat@frontrow.com", password: "123456")
-puts "done!"\
+puts "done!"
 
 User.create!(username: "Antoine", age: 30, city: "Montreal", bio: " ... bio ...",
              email: "antoine@frontrow.com", password: "123456")
@@ -74,10 +74,10 @@ Attendance.create!(user: User.first, concert: Concert.first)
 puts "done!"
 
 puts "seed writing a review"
-Review.create!(rating: 5, content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE.",
+Review.create!(rating: 5, content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
                attendance: Attendance.first)
 puts "done!"
 
 puts "seed commenting on review"
-Comment.create!(content: "I agree!!!! We are lucky we got to see that!", user: User.last, review: Review.first )
+Comment.create!(content: "I agree!!!! We are lucky we got to see that!", user: User.last, review: Review.first)
 puts "all done!"

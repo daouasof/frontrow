@@ -1,5 +1,6 @@
 <%= simple_form_for([concert, review]) do |f| %>
   <%= f.input :rating %>
   <%= f.input :content %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
 <% end %>
