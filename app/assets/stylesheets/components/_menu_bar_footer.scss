@@ -1,11 +1,13 @@
 .menu-bar {
   background: $navy;
   color: $white;
-  justify-content: space-evenly;
   position: fixed;
   bottom: 0;
-}
 
-.icons {
-  width: 18px;
+  .icons {
+    width: 18px;
+    // display: flex;
+    // justify-content: space-evenly;
+    // align-items: center;
+  }
 }
