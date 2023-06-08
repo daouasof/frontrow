@@ -16,8 +16,11 @@
 
 <br>
 
+
 <%= link_to new_concert_review_path(@concert, @review) do %>
-  <h3>Post a review</h3>
+  <% if current_user.attended?(@concert) %>
+    <h3>Post a review</h3>
+  <% end %>
 <% end %>
 
 <br>
