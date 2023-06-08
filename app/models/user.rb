@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :reviews, through: :attendances
   has_many :concerts, through: :attendances
 
+  acts_as_followable
+  acts_as_follower
+
   def attended?(concert)
     !find_attendance(concert).nil?
   end
