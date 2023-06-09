@@ -1,25 +1,22 @@
-<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url:<%= cl_image_tag(@concert.artist.photo.key)%>">
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @concert.artist.photo.key %>')">
   <h2><%= @concert.artist.name %></h2>
     <div class="container-banner">
-      <p> <%= @concert.venue %> -  <%= @concert.city %> - <%= @concert.date %> </p>
+      <p> <%= @concert.venue %> -  <%= @concert.city %> - <%= @concert.date.strftime('%d/%m/%Y') %> </p>
       <% if current_user.attended?(@concert) %>
-        <%= link_to new_concert_review_path(@concert, @review), class:"btn" do %>
-          <h3>Post a review</h3>
-        <% end %>
-        <%= link_to attendance_path(@attendance),
-        data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
-          <div class="attended-icon">
-            <p>I Attended <%= image_tag "i attended.svg", alt: "profile" %></p>
-          </div>
-        <% end %>
+        <%= link_to "Post a review", new_concert_review_path(@concert, @review), class:"btn"%>
       <% else %>
-        <%= link_to concert_attendances_path(@concert), data: { turbo_method: :post }, class:"btn" do %>
-          <div class="attended-icon">
-          <p>I attended <%= image_tag "i attended.svg", alt: "profile" %></p>
-          </div>
-        <% end %>
+        <%= link_to "I attended", concert_attendances_path(@concert), data: { turbo_method: :post }, class:"btn" %>
       <% end %>
-
+  </div>
+  <div class="attended">
+    <% if current_user.attended?(@concert) %>
+        <%= link_to attendance_path(@attendance),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
+            <div class="attended-icon">
+              <p>I attended <%= image_tag "i attended.svg", alt: "profile" %></p>
+            </div>
+          <% end %>
+    <% end %>
   </div>
 </div>
 
