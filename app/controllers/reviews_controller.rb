@@ -4,6 +4,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    # @concert = Concert.find(params[:id])
+    @attendance = current_user.attendance_info(@concert)
   end
 
   def create
