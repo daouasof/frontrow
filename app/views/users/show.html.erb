@@ -1,5 +1,24 @@
-<h1>FrontRow user details:</h1>
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);">
+    <h2> <%= cl_image_tag @user.avatar.key, class:"avatar-large"  %> </h2>
+    <h2><%= @user.username %></h2>
+    <div class="container-banner">
+      <p> <%= @user.city %> </p>
+      <p> <%= render "users/user_follow_button", user: @user %> </p>
+    </div>
+</div>
 
-<%= render "users/user_details", user: @user %>
+<br>
 
-<%= render "users/user_followers", user: @user %>
+<div class="grid-container user-review-card shadowed-box">
+  <%= cl_image_tag @user.avatar.key, class:"avatar"  %>
+   <% @user.reviews.each do |review| %>
+   <div class="list-group user-review-card-content">
+    <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
+    <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
+   </div>
+   <div class="list-group user-review-card-content text-center">
+   <p><strong><%= review.rating %></strong></p>
+   <p><strong>Read Review</strong></p>
+   </div>
+   <% end %>
+</div>
