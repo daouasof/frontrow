@@ -1,9 +1,14 @@
 .show-banner {
   background-size: cover;
   background-position: center;
-  padding: 45px 0;
+  padding: 25px 0;
   text-align: center;
-  background-color: navy;
+  background-color: $orange;
+
+  .btn {
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
 
 .show-banner h2 {
@@ -21,5 +26,9 @@
 .container-banner {
   width: 80%;
   margin: auto;
-  text-align: end;
+  text-align: center;
+
+  .attended-icon {
+    text-align: end;
+  }
 }

@@ -8,11 +8,15 @@
         <% end %>
         <%= link_to attendance_path(@attendance),
         data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
-          <p>I Attended icon</p>
+          <div class="attended-icon">
+            <p>I Attended <%= image_tag "i attended.svg", alt: "profile" %></p>
+          </div>
         <% end %>
       <% else %>
-        <%= button_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
-          <h3>I attended</h3>
+        <%= link_to concert_attendances_path(@concert), data: { turbo_method: :post }, class:"btn" do %>
+          <div class="attended-icon">
+          <p>I attended <%= image_tag "i attended.svg", alt: "profile" %></p>
+          </div>
         <% end %>
       <% end %>
 
