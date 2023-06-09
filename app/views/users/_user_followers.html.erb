@@ -1,0 +1,5 @@
+<div class="btn" id="user-<%=user.id%>" style="float: right">
+<%= if @current_user.following?(@user) %>
+<%= button_to "Following", {action: 'unfollow', id: @user_id} method: 'post', class="btn", remote: true %>
+
+</div>

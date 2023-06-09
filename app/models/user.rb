@@ -12,6 +12,15 @@ class User < ApplicationRecord
   acts_as_followable
   acts_as_follower
 
+  def follow
+    @current_user.follow(@user)
+    @follow = Follow.find_by(follower: @current_user, followable: @user)
+  end
+
+  def unfollow
+    @current_user.stop_following(@user)
+  end
+
   def attended?(concert)
     !find_attendance(concert).nil?
   end
