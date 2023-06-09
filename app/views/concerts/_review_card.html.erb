@@ -1,10 +1,10 @@
 <div class="shadowed-box review-card">
   <div class="review-card-user">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar" />
+    <%= cl_image_tag review.user.avatar.key, class:"avatar"  %>
     <p><strong><%= review.user.username %></strong></p>
   </div>
   <div class="review-card-media">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="square-image" />
+    <%= cl_image_tag review.photos.first.key, class:"square-image"  %>
   </div>
   <div class="review-card-content">
     <p><%= review.content %></p>

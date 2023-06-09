@@ -28,7 +28,7 @@ USERS = [
   {
     username: "Kirstin",
     age: 29,
-    bio: "",
+    bio: "Hey, I'm Kirstin! I love going to shows, but I love talking about them even more.",
     email: "kirstin@frontrow.com",
     avatar_url: "https://cdn.dribbble.com/users/473764/screenshots/16521351/media/546fd6236584ca8fb2600cf40ea77518.png?compress=1&resize=400x300&vertical=center"
   },

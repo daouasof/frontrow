@@ -16,19 +16,31 @@ Artist.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
-bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed', photo: URI.open("https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg") },
-           { name: 'The Gaslight Anthem', url: 'f208f09e-b5b3-4b06-87cd-f7230fae17e3', photo: URI.open("https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y") },
-           { name: 'Muse', url: '9c9f1380-2516-4fc9-a3e6-f9f61941d090', photo: URI.open("https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg") },
-           { name: 'Burna Boy', url: '78a19169-ac75-4868-b504-7e2e073118e0', photo: URI.open("https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png") },
-           { name: 'Polo & Pan', url: '1d9ec7ea-0fa4-41d9-917b-723c735ebbfe', photo: URI.open("https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg") },
-           { name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd', photo: URI.open("https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg") },
-           { name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07', photo: URI.open("https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg") },
-           { name: 'Tool', url: '66fc5bf8-daa4-4241-b378-9bc9077939d2', photo: URI.open("https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg") }]
+bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
+           photo_url: "https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+         { name: 'The Gaslight Anthem', url: 'f208f09e-b5b3-4b06-87cd-f7230fae17e3',
+           photo_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y" },
+         { name: 'Muse', url: '9c9f1380-2516-4fc9-a3e6-f9f61941d090',
+           photo_url: "https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
+         { name: 'Burna Boy', url: '78a19169-ac75-4868-b504-7e2e073118e0',
+           photo_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png" },
+         { name: 'Polo & Pan', url: '1d9ec7ea-0fa4-41d9-917b-723c735ebbfe',
+           photo_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg" },
+         { name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd',
+           photo_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg" },
+         { name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07',
+           photo_url: "https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
+         { name: 'Tool', url: '66fc5bf8-daa4-4241-b378-9bc9077939d2',
+           photo_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg" }]
+
+
 
 bands.each do |band|
   sleep(3)
   puts "Creating the artist #{band[:name]}"
   artist = Artist.create(name: "#{band[:name]}")
+  photo = URI.open(band[:photo_url])
+  artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
   puts "Creating concerts for #{band[:name]}"
 
   url = "https://api.setlist.fm/rest/1.0/artist/#{band[:url]}/setlists"
@@ -57,7 +69,6 @@ default_city = "Montreal"
 
 
 USERS.each do |user_hash|
-  p user_hash
   new_user = User.new(
     username: user_hash[:username],
     age: user_hash[:age],
@@ -77,17 +88,35 @@ end
 
 puts "Done!!!"
 
-
-puts "creating seed attendace"
-Attendance.create!(user: User.first, concert: Concert.first)
+puts "creating seed bowie attendace"
+bowies_concert = Concert.find_by(venue: "Le Studio TD")
+bowie = User.find_by(username: "Bowie")
+Attendance.create!(user: bowie, concert: bowies_concert)
 puts "done!"
 
-puts "seed writing a review"
+puts "creating seed cat attendace"
+cats_concert = Concert.find_by(venue: "Le Studio TD")
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: cats_concert)
+puts "done!"
+
+puts "creating seed antoine attendace"
+antoines_concert = Concert.find_by(venue: "Le Studio TD")
+antoine = User.find_by(username: "Antoine")
+Attendance.create!(user: antoine, concert: antoines_concert)
+puts "done!"
+
+puts "creating seed antoine attendace"
+sofias_concert = Concert.find_by(venue: "Le Studio TD")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: sofias_concert)
+puts "done!"
+
+puts "seed writing bowies review"
 bowies_review = Review.new(
   rating: 5,
   content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
-  attendance: Attendance.first,
-
+  attendance: Attendance.find_by(user: bowie)
 )
 bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
                             filename: "conert_photo_1", content_type: "image/png")
@@ -97,6 +126,55 @@ bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iSt
                             filename: "conert_photo_3", content_type: "image/png")
 
 bowies_review.save!
+puts "done!"
+
+puts "seed writing cats review"
+cats_review = Review.new(
+  rating: 4,
+  content: "Honestly, I had an awesome time but I feel like the sound was lacking just a little bit of vocals. Otherwise
+            , incredible performance and experience!",
+  attendance: Attendance.find_by(user: cat)
+)
+cats_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                          filename: "conert_photo_1", content_type: "image/png")
+cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+cats_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+cats_review.save!
+puts "done!"
+
+puts "seed writing antoines review"
+antoines_review = Review.new(
+  rating: 5,
+  content: "Amazeballs!!!!!!",
+  attendance: Attendance.find_by(user: antoine)
+)
+antoines_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                          filename: "conert_photo_1", content_type: "image/png")
+antoines_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+antoines_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+antoines_review.save!
+puts "done!"
+
+puts "seed writing sofias review"
+sofias_review = Review.new(
+  rating: 3,
+  content: "I think I like Nickelback better",
+  attendance: Attendance.find_by(user: sofia)
+)
+sofias_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                          filename: "conert_photo_1", content_type: "image/png")
+sofias_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+sofias_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+sofias_review.save!
 puts "done!"
 
 puts "seed commenting on review"
