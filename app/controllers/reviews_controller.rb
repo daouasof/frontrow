@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.attendance = current_user.attendance_info(@concert)
     if @review.save
+      Review.all.order(created_by: :desc)
       redirect_to concert_path(@concert)
     else
       render :new, status: :unprocessable_entity
