@@ -12,8 +12,10 @@
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
 
-<% @concerts.each do |concert| %>
-  <%= link_to concert_path(concert) do %>
-    <%= render "concert_card", concert: concert %>
+<div class="grid-container">
+  <% @concerts.each do |concert| %>
+    <%= link_to concert_path(concert) do %>
+      <%= render "concert_card", concert: concert %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
