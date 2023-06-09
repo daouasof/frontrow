@@ -22,7 +22,6 @@
 </div>
 
 <div class="grid-container">
-<h2><strong>Reviews</strong></h2>
   <ul class="list-group">
     <% @concert.reviews.each do |review| %>
       <%= render "review_card", review: review %>
