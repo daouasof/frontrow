@@ -12,5 +12,12 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  resources :reviews, only: [] do
+    member do
+      post :like
+      delete :unlike
+    end
+  end
+
   resources :attendances, only: :destroy
 end

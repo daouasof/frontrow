@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_favoritor
+
   has_one_attached :avatar
   has_one_attached :banner
 

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_concert, only: [:new, :create]
+  before_action :set_review, only: [:like, :unlike]
 
   def new
     @review = Review.new
@@ -15,6 +16,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def like
+    current_user.favorite(@review)
+    redirect_to concert_path(@review.concert)
+  end
+
+  def unlike
+    current_user.unfavorite(@review)
+    redirect_to concert_path(@review.concert)
+  end
+
   private
 
   def set_concert
@@ -23,6 +34,10 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :content, photos: [])
+  end
+
+  def set_review
+    @review = Review.find(params[:id])
   end
 
 end

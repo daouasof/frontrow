@@ -1,7 +1,11 @@
 class Review < ApplicationRecord
+  acts_as_favoritable
+
   has_many_attached :photos
 
   belongs_to :attendance
+  delegate :concert, to: :attendance
+
   has_one :user, through: :attendance
   has_one :concert, through: :attendance
   has_one :artist, through: :concert
