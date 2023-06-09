@@ -14,9 +14,11 @@
       <%= image_tag "chatbubbles.svg", alt: "chat" %>
     <% end %>
   </div>
-  <%# <div class="flex-icon">
-    <%= link_to user_path(current_user) do %>
-      <%# <%= image_tag "Profile.svg", alt: "profile" %>
-    <%# <% end %>
-  <%# </div> %> %> %> %>
+  <div class="flex-icon">
+  <% if user_signed_in? %>
+    <%= link_to user_path(current_user.id) do %>
+      <%= image_tag "Profile.svg", alt: "profile" %>
+    <% end %>
+  <<% end %>>
+  </div>
 </div>
