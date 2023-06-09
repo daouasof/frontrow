@@ -15,8 +15,12 @@ class AttendancesController < ApplicationController
 
   def destroy
     @attendance = Attendance.find(params[:id])
-    @attendance.destroy
-    redirect_to concert_path(@attendance.concert)
+    if @attendance.review.present?
+      redirect_to concert_path(@attendance.concert), notice: "You can't remove your attendance to this concert because you have an existing review"
+    else
+      @attendance.destroy
+      redirect_to concert_path(@attendance.concert)
+    end
   end
 
   private
