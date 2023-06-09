@@ -9,16 +9,18 @@
 
 <br>
 
-<div class="grid-container user-review-card shadowed-box">
-  <%= cl_image_tag @user.avatar.key, class:"avatar"  %>
-   <% @user.reviews.each do |review| %>
-   <div class="list-group user-review-card-content">
-    <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
-    <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
-   </div>
-   <div class="list-group user-review-card-content text-center">
-   <p><strong><%= review.rating %></strong></p>
-   <p><strong>Read Review</strong></p>
-   </div>
+<div class="grid-container">
+  <% @user.reviews.each do |review| %>
+    <div class="user-review-card shadowed-box">
+      <%= cl_image_tag review.concert.artist.photo.key, class:"avatar"  %>
+      <div class="list-group user-review-card-content">
+        <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
+        <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
+      </div>
+      <div class="list-group user-review-card-content text-center">
+        <p><strong><%= review.rating %></strong></p>
+        <p><strong>Read Review</strong></p>
+      </div>
+    </div>
    <% end %>
 </div>
