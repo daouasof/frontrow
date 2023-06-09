@@ -1,0 +1,31 @@
+.show-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.show-banner h2 {
+  font-family: $logo-font;
+  color: $white
+}
+.show-banner p {
+  margin-bottom: 10px;
+  color: $white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 16px;
+  font-family: $main-title-font;
+  font-weight: bold;
+}
+
+.container-banner {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+
+}
+
+.attended {
+  text-align: end;
+  margin-right: 10px;
+}
