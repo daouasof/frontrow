@@ -88,28 +88,34 @@ end
 
 puts "Done!!!"
 
-puts "creating seed bowie attendace"
+puts "creating seed bowie attendance"
 bowies_concert = Concert.find_by(venue: "Le Studio TD")
 bowie = User.find_by(username: "Bowie")
 Attendance.create!(user: bowie, concert: bowies_concert)
 puts "done!"
 
-puts "creating seed cat attendace"
+puts "creating seed cat attendance"
 cats_concert = Concert.find_by(venue: "Le Studio TD")
 cat = User.find_by(username: "Cat")
 Attendance.create!(user: cat, concert: cats_concert)
 puts "done!"
 
-puts "creating seed antoine attendace"
+puts "creating seed antoine attendance"
 antoines_concert = Concert.find_by(venue: "Le Studio TD")
 antoine = User.find_by(username: "Antoine")
 Attendance.create!(user: antoine, concert: antoines_concert)
 puts "done!"
 
-puts "creating seed antoine attendace"
+puts "creating seed sofia attendance"
 sofias_concert = Concert.find_by(venue: "Le Studio TD")
 sofia = User.find_by(username: "Sofia")
 Attendance.create!(user: sofia, concert: sofias_concert)
+puts "done!"
+
+puts "creating seed doga attendance"
+dogas_concert = Concert.find_by(venue: "Le Studio TD")
+doga = User.find_by(username: "Doga")
+Attendance.create!(user: doga, concert: dogas_concert)
 puts "done!"
 
 puts "seed writing bowies review"
@@ -135,7 +141,7 @@ cats_review = Review.new(
             , incredible performance and experience!",
   attendance: Attendance.find_by(user: cat)
 )
-cats_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+cats_review.photos.attach(io: URI.open("https://destination-ontario-prod.s3.ca-central-1.amazonaws.com/files/s3fs-public/styles/article_masthead/public/2021-10/great-outdoo-venues-live-music-lovers.jpg?VersionId=Zr8J.0RRlDKcNYF6Vz1hOVy.YsH7J1aT&h=7da987e6&itok=2bB9Km5t"),
                           filename: "conert_photo_1", content_type: "image/png")
 cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
                           filename: "conert_photo_2", content_type: "image/png")
@@ -151,7 +157,7 @@ antoines_review = Review.new(
   content: "Amazeballs!!!!!!",
   attendance: Attendance.find_by(user: antoine)
 )
-antoines_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+antoines_review.photos.attach(io: URI.open("https://the-peak.ca/wp-content/uploads/2018/05/Cell-phones-at-concerts.jpg"),
                           filename: "conert_photo_1", content_type: "image/png")
 antoines_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
                           filename: "conert_photo_2", content_type: "image/png")
@@ -167,7 +173,7 @@ sofias_review = Review.new(
   content: "I think I like Nickelback better",
   attendance: Attendance.find_by(user: sofia)
 )
-sofias_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
                           filename: "conert_photo_1", content_type: "image/png")
 sofias_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
                           filename: "conert_photo_2", content_type: "image/png")
@@ -175,6 +181,22 @@ sofias_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iSt
                           filename: "conert_photo_3", content_type: "image/png")
 
 sofias_review.save!
+puts "done!"
+
+puts "seed writing doga review"
+doga_review = Review.new(
+  rating: 5,
+  content: "You just had to be there",
+  attendance: Attendance.find_by(user: doga)
+)
+doga_review.photos.attach(io: URI.open("https://pbs.twimg.com/media/CZb6EDiWkAAW-w2?format=jpg&name=large"),
+                          filename: "conert_photo_1", content_type: "image/png")
+doga_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+doga_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+doga_review.save!
 puts "done!"
 
 puts "seed commenting on review"
