@@ -1,5 +1,6 @@
 .review-card {
   padding: 20px;
+  object-fit: contain;
 }
 
 .review-card p {
@@ -19,6 +20,10 @@
 
 .review-card-media {
   text-align: center;
+}
+
+.review-card-media img {
+  width: 80%;
 }
 
 .review-card-content p {
