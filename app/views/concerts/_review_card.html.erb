@@ -9,5 +9,12 @@
   <div class="review-card-content">
     <p><%= review.content %></p>
   </div>
+  <div>
+    <% if current_user.favorited?(review) %>
+      <h3><%= link_to "LIKE", unlike_review_path(review), data: { turbo_method: :delete } %></h3>
+    <% else %>
+      <h3><%= link_to "liked", like_review_path(review), data: { turbo_method: :post } %></h3>
+    <% end %>
+  </div>
 
 </div>
