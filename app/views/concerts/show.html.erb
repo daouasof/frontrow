@@ -1,7 +1,8 @@
-<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @concert.artist.photo.key %>')">
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @concert.artist.photo.key %>')">
   <h2><%= @concert.artist.name %></h2>
     <div class="container-banner">
       <p> <%= @concert.venue %> -  <%= @concert.city %> - <%= @concert.date.strftime('%d/%m/%Y') %> </p>
+      <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= @concert.attendances.count %> users attended</p>
       <% if current_user.attended?(@concert) %>
         <%= link_to "Post a review", new_concert_review_path(@concert, @review), class:"btn"%>
       <% else %>
@@ -13,23 +14,21 @@
         <%= link_to attendance_path(@attendance),
           data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
             <div class="attended-icon">
-              <p>I attended <%= image_tag "i attended.svg", alt: "profile" %></p>
+              <p>I attended <%= image_tag "i attended.svg", alt: "person check" %></p>
             </div>
           <% end %>
     <% end %>
   </div>
 </div>
 
-<br>
-
+<div class="grid-container">
 <h2><strong>Reviews</strong></h2>
-
-<ul class="list-group">
-  <% @concert.reviews.each do |review| %>
-    <%= render "review_card", review: review %>
-  <% end %>
-</ul>
-
+  <ul class="list-group">
+    <% @concert.reviews.each do |review| %>
+      <%= render "review_card", review: review %>
+    <% end %>
+  </ul>
+</div>
 <br>
 
 <div class= btn-back-concerts>
