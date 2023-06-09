@@ -1,5 +1,5 @@
 <div class="user-review-card shadowed-box">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <%= cl_image_tag review.user.avatar.key, class:"avatar-large"  %>
   <div class="user-review-card-content">
     <p><small><%= "#{review.user.username} was there !" %></small></p>
     <p><strong><%= review.artist.name %></strong></p>

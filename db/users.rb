@@ -38,5 +38,12 @@ USERS = [
     bio: "Tyranny!",
     email: "sofia@frontrow.com",
     avatar_url: "https://icons.iconarchive.com/icons/iconarchive/incognito-animals/256/Dog-Avatar-icon.png"
+  },
+  {
+    username: "Doga",
+    age: 23,
+    bio: "",
+    email: "doga@frontrow.com",
+    avatar_url: "https://icons.iconarchive.com/icons/iconarchive/incognito-animals/256/Dog-Avatar-icon.png"
   }
 ]
