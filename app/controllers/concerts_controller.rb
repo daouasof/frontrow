@@ -14,6 +14,7 @@ class ConcertsController < ApplicationController
 
   def show
     @concert = Concert.find(params[:id])
+    @reviews = @concert.reviews.order(created_at: :desc)
     @attendance = current_user.attendance_info(@concert)
     @review = Review.new
   end

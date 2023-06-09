@@ -2,7 +2,7 @@
 
 <div class="grid-container">
   <ul class="list-group">
-    <% @concert.reviews.each do |review| %>
+    <% @reviews.each do |review| %>
       <%= render "review_card", review: review %>
     <% end %>
   </ul>
