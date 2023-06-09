@@ -1,27 +1,23 @@
-<h1>Concert</h1>
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url:<%= cl_image_tag(@concert.artist.photo.key)%>">
+  <h2><%= @concert.artist.name %></h2>
+    <div class="container-banner">
+      <p> <%= @concert.venue %> -  <%= @concert.city %> - <%= @concert.date %> </p>
+      <% if current_user.attended?(@concert) %>
+        <%= link_to new_concert_review_path(@concert, @review), class:"btn" do %>
+          <h3>Post a review</h3>
+        <% end %>
+        <%= link_to attendance_path(@attendance),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
+          <p>I Attended icon</p>
+        <% end %>
+      <% else %>
+        <%= button_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
+          <h3>I attended</h3>
+        <% end %>
+      <% end %>
 
-<p><%= @concert.artist.name %></p>
-<p> <%= @concert.venue %> </p>
-<% if current_user.attended?(@concert) %>
-  <%= link_to attendance_path(@attendance),
-  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
-    <p>I Attended icon</p>
-  <% end %>
-<% else %>
-  <%= button_to concert_attendances_path(@concert), data: { turbo_method: :post } do %>
-    <h3>I attended</h3>
-  <% end %>
-<% end %>
-
-
-<br>
-
-
-<%= link_to new_concert_review_path(@concert, @review) do %>
-  <% if current_user.attended?(@concert) %>
-    <h3>Post a review</h3>
-  <% end %>
-<% end %>
+  </div>
+</div>
 
 <br>
 
