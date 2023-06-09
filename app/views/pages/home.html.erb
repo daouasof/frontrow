@@ -2,7 +2,11 @@
 <div>
   <p>See your friends' latest updates...</p>
 </div>
+
 <div class="grid-container">
-  <%= render "user_review_card", review: @review %>
-  <%= render "user_review_card", review: @review %>
+  <% @reviews.each do |review| %>
+  <%= link_to concert_path(review.concert) do %>
+    <%= render "user_review_card", review: review %>
+  <% end %>
+<% end %>
 </div>
