@@ -27,11 +27,11 @@
 
 <h2><strong>Reviews</strong></h2>
 
-<ul class="list-group">
+<div class="grid-container">
   <% @concert.reviews.each do |review| %>
     <%= render "review_card", review: review %>
   <% end %>
-</ul>
+</div>
 
 <br>
 
