@@ -10,14 +10,15 @@
 <br>
 
 <div class="grid-container user-review-card shadowed-box">
-  <%= cl_image_tag @user.avatar.key, class:"avatar-large"  %>
-  <div class="list-group user-review-card-content">
-    <%# <p><strong> <%= @user.review.concert %> </strong></p> %>
-    <%# <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')} " %> </p> %>
-   </ul>
-  </div>
+  <%= cl_image_tag @user.avatar.key, class:"avatar"  %>
+   <% @user.reviews.each do |review| %>
+   <div class="list-group user-review-card-content">
+    <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
+    <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
+   </div>
+   <div class="list-group user-review-card-content text-center">
+   <p><strong><%= review.rating %></strong></p>
+   <p><strong>Read Review</strong></p>
+   </div>
+   <% end %>
 </div>
-
-    <%# <% @concert.reviews.each do |review| %>
-      <%# <%= render "concerts/review_card", concert: @concert, user: user, reviews: reviews %>
-    <%# <% end %>
