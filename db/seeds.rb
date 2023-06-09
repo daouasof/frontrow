@@ -77,17 +77,35 @@ end
 
 puts "Done!!!"
 
-
-puts "creating seed attendace"
-Attendance.create!(user: User.first, concert: Concert.first)
+puts "creating seed bowie attendace"
+bowies_concert = Concert.find_by(venue: "Le Studio TD")
+bowie = User.find_by(username: "Bowie")
+Attendance.create!(user: bowie, concert: bowies_concert)
 puts "done!"
 
-puts "seed writing a review"
+puts "creating seed cat attendace"
+cats_concert = Concert.find_by(venue: "Le Studio TD")
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: cats_concert)
+puts "done!"
+
+puts "creating seed antoine attendace"
+antoines_concert = Concert.find_by(venue: "Le Studio TD")
+antoine = User.find_by(username: "Antoine")
+Attendance.create!(user: antoine, concert: antoines_concert)
+puts "done!"
+
+puts "creating seed antoine attendace"
+sofias_concert = Concert.find_by(venue: "Le Studio TD")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: sofias_concert)
+puts "done!"
+
+puts "seed writing bowies review"
 bowies_review = Review.new(
   rating: 5,
   content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
-  attendance: Attendance.first,
-
+  attendance: Attendance.find_by(user: bowie)
 )
 bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
                             filename: "conert_photo_1", content_type: "image/png")
@@ -97,6 +115,55 @@ bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iSt
                             filename: "conert_photo_3", content_type: "image/png")
 
 bowies_review.save!
+puts "done!"
+
+puts "seed writing cats review"
+cats_review = Review.new(
+  rating: 4,
+  content: "Honestly, I had an awesome time but I feel like the sound was lacking just a little bit of vocals. Otherwise
+            , incredible performance and experience!",
+  attendance: Attendance.find_by(user: cat)
+)
+cats_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                          filename: "conert_photo_1", content_type: "image/png")
+cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+cats_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+cats_review.save!
+puts "done!"
+
+puts "seed writing antoines review"
+antoines_review = Review.new(
+  rating: 5,
+  content: "Amazeballs!!!!!!",
+  attendance: Attendance.find_by(user: antoine)
+)
+antoines_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                          filename: "conert_photo_1", content_type: "image/png")
+antoines_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+antoines_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+antoines_review.save!
+puts "done!"
+
+puts "seed writing sofias review"
+sofias_review = Review.new(
+  rating: 3,
+  content: "I think I like Nickelback better",
+  attendance: Attendance.find_by(user: sofia)
+)
+sofias_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+                          filename: "conert_photo_1", content_type: "image/png")
+sofias_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+                          filename: "conert_photo_2", content_type: "image/png")
+sofias_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+                          filename: "conert_photo_3", content_type: "image/png")
+
+sofias_review.save!
 puts "done!"
 
 puts "seed commenting on review"
