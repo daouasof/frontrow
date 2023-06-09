@@ -16,7 +16,8 @@ USERS = [
     age: 42,
     bio: "Hey guys! Cat here, avid rock/metal concert goer ;)",
     email: "cat@frontrow.com",
-    avatar_url: "https://media.istockphoto.com/id/1361956153/photo/black-cat-sticking-out-tongue-funny-portrait.jpg?s=612x612&w=0&k=20&c=JtXn7BNTWl573nyjOJFsI99fXEjctnXsMz5zronzs5A="
+    avatar_url: "https://media.istockphoto.com/id/1361956153/photo/black-cat-sticking-out-tongue-funny-portrait.jpg?s=612x612&w=0&k=20&c=JtXn7BNTWl573nyjOJFsI99fXEjctnXsMz5zronzs5A=",
+    banner_url: "https://metaladdicts.com/wp-content/uploads/2019/12/heavy-metal-concert-1024x731.jpg"
   },
   {
     username: "Antoine",
@@ -42,8 +43,9 @@ USERS = [
   {
     username: "Doga",
     age: 23,
-    bio: "",
+    bio: "Rock on!",
     email: "doga@frontrow.com",
-    avatar_url: "https://icons.iconarchive.com/icons/iconarchive/incognito-animals/256/Dog-Avatar-icon.png"
+    avatar_url: "https://avatarfiles.alphacoders.com/332/332631.jpg",
+    banner_url: "https://cdn.pixabay.com/index/2023/04/18/04-44-42-402_1440x550.jpg"
   }
 ]
