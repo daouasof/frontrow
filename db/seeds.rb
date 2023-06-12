@@ -16,6 +16,33 @@ Artist.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
+future_bands = [{ name: "Bruce Springsteen", id: "26654", photo_url: "https://cdn-p.smehost.net/sites/e8622626f9584d40b1a8fce8dfa6f567/wp-content/uploads/2023/01/ESTREET_2023_bw-scaled.jpg" },
+  { name: 'Tool', id: "26633", photo_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg" }]
+
+future_bands.each do |band|
+  sleep(3)
+  puts "Creating the artist #{band[:name]}"
+  artist = Artist.create(name: "#{band[:name]}")
+  photo = URI.open(band[:photo_url])
+  artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+  puts "Creating upcoming concerts for #{band[:name]}"
+
+  url = "https://rest.bandsintown.com/artists/id_#{band[:id]}/events?app_id=#{ENV['BANDS_IN_TOWN_API_KEY']}"
+
+  response = RestClient.get(url)
+  shows = JSON.parse(response)
+
+  shows.each do |show|
+    concert = Concert.new
+    concert.city = show["venue"]["location"]
+    concert.venue = show["venue"]["name"]
+    concert.date = show["starts_at"]
+    concert.artist_id = artist.id
+    concert.save!
+    puts "Created new concert with id #{concert.id} for #{band[:name]}"
+  end
+end
+
 bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
            photo_url: "https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
          { name: 'The Gaslight Anthem', url: 'f208f09e-b5b3-4b06-87cd-f7230fae17e3',
@@ -25,8 +52,8 @@ bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
          { name: 'Burna Boy', url: '78a19169-ac75-4868-b504-7e2e073118e0',
            photo_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png" },
          { name: 'Polo & Pan', url: '1d9ec7ea-0fa4-41d9-917b-723c735ebbfe',
-           photo_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg" },
-         { name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd',
+          photo_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg" },
+          { name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd',
            photo_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg" },
          { name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07',
            photo_url: "https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
@@ -41,7 +68,7 @@ bands.each do |band|
   artist = Artist.create(name: "#{band[:name]}")
   photo = URI.open(band[:photo_url])
   artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-  puts "Creating concerts for #{band[:name]}"
+  puts "Creating past concerts for #{band[:name]}"
 
   url = "https://api.setlist.fm/rest/1.0/artist/#{band[:url]}/setlists"
 
