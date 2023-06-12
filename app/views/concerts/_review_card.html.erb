@@ -1,4 +1,4 @@
-<div class="shadowed-box review-card" >
+<div class="shadowed-box review-card" data-controller="review-comment">
   <%= link_to user_path(review.user) do %>
    <div class="review-card-user">
       <%= cl_image_tag review.user.avatar.key, class:"avatar"  %>
@@ -20,7 +20,7 @@
 
   <div class="review-card-interactions">
     <div>
-      <%= image_tag "comment.svg", alt: "comment"%>
+      <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
     </div>
     <%# <div>
       <%# <p><%= review.comments.count %>
@@ -42,4 +42,13 @@
       <% end %>
     </div>
   </div>
+
+  <%= simple_form_for ( [review, @comment] ) do |f| %>
+    <%= f.input :content, as: :text, label: false, placeholder:"Type your comment" %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <% review.comments.order(created_at: :desc).first(3).each do |comment| %>
+    <%= render "comment", comment: comment %>
+  <% end %>
 </div>

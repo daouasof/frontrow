@@ -1,0 +1,11 @@
+<div class="d-flex mt-3">
+  <%= link_to user_path(comment.user) do %>
+    <div>
+        <%= cl_image_tag comment.user.avatar.key, class:"avatar"  %>
+    </div>
+  <% end %>
+  <div>
+    <p><strong><%= comment.user.username %></strong></p>
+    <p><%= comment.content %></p>
+  </div>
+</div>
