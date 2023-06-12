@@ -34,8 +34,13 @@
     <% end %>
     </div>
   </div>
+
   <%= simple_form_for ( [review, @comment] ) do |f| %>
-    <%= f.input :content, as: :text %>
+    <%= f.input :content, as: :text, label: false, placeholder:"Type your comment" %>
     <%= f.button :submit %>
+  <% end %>
+
+  <% review.comments.each do |comment| %>
+    <%= render "comment", comment: comment %>
   <% end %>
 </div>
