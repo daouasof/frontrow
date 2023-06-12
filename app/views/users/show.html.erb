@@ -3,9 +3,6 @@
     <h2><%= @user.username %></h2>
     <div class="container-banner">
       <p> <%= @user.city %> </p>
-  <%  if @user == current_user %>
-      <p> <%= render "users/user_edit_profile_button", user: @user %> </p>
-  <% else %>
       <div class="d-flex justify-content-around">
         <div>
           <p> <%= render "users/user_follow_button", user: @user %> </p>
@@ -13,7 +10,6 @@
         <div>
           <p> <%= render "users/user_message_button", user: @user %> </p>
         </div>
-  <% end %>
       </div>
     </div>
 </div>
@@ -50,3 +46,7 @@
     </div>
    <% end %>
 </div>
+
+
+
+          <p> <%= render "users/user_details_form", user: @user %> </p>
