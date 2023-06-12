@@ -118,37 +118,38 @@ doga = User.find_by(username: "Doga")
 Attendance.create!(user: doga, concert: dogas_concert)
 puts "done!"
 
+
+puts "seed writing cats review"
+cats_review = Review.new(
+  rating: 4,
+  content: "Honestly, I had an awesome time but I feel like the sound was lacking just a little bit of vocals. Otherwise
+  , incredible performance and experience!",
+  attendance: Attendance.find_by(user: cat)
+)
+cats_review.photos.attach(io: URI.open("https://destination-ontario-prod.s3.ca-central-1.amazonaws.com/files/s3fs-public/styles/article_masthead/public/2021-10/great-outdoo-venues-live-music-lovers.jpg?VersionId=Zr8J.0RRlDKcNYF6Vz1hOVy.YsH7J1aT&h=7da987e6&itok=2bB9Km5t"),
+filename: "conert_photo_1", content_type: "image/png")
+cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+filename: "conert_photo_2", content_type: "image/png")
+cats_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+filename: "conert_photo_3", content_type: "image/png")
+
+cats_review.save!
+puts "done!"
+
 puts "seed writing bowies review"
 bowies_review = Review.new(
   rating: 5,
   content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
   attendance: Attendance.find_by(user: bowie)
 )
-bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
-                            filename: "conert_photo_1", content_type: "image/png")
-bowies_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
-                            filename: "conert_photo_2", content_type: "image/png")
-bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
-                            filename: "conert_photo_3", content_type: "image/png")
+# bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
+#                             filename: "conert_photo_1", content_type: "image/png")
+# bowies_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+#                             filename: "conert_photo_2", content_type: "image/png")
+# bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+#                             filename: "conert_photo_3", content_type: "image/png")
 
 bowies_review.save!
-puts "done!"
-
-puts "seed writing cats review"
-cats_review = Review.new(
-  rating: 4,
-  content: "Honestly, I had an awesome time but I feel like the sound was lacking just a little bit of vocals. Otherwise
-            , incredible performance and experience!",
-  attendance: Attendance.find_by(user: cat)
-)
-cats_review.photos.attach(io: URI.open("https://destination-ontario-prod.s3.ca-central-1.amazonaws.com/files/s3fs-public/styles/article_masthead/public/2021-10/great-outdoo-venues-live-music-lovers.jpg?VersionId=Zr8J.0RRlDKcNYF6Vz1hOVy.YsH7J1aT&h=7da987e6&itok=2bB9Km5t"),
-                          filename: "conert_photo_1", content_type: "image/png")
-cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
-                          filename: "conert_photo_2", content_type: "image/png")
-cats_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
-                          filename: "conert_photo_3", content_type: "image/png")
-
-cats_review.save!
 puts "done!"
 
 puts "seed writing antoines review"
