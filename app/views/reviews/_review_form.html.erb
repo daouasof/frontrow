@@ -1,6 +1,6 @@
 <%= simple_form_for([concert, review]) do |f| %>
+  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}}  %>
   <%= f.input :content, input_html: { class: 'review-input-style' }  %>
-  <%= f.input :rating, input_html: { class: 'review-input-style' }  %>
   <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'review-input-style' } %>
   <%= f.button :submit %>
 <% end %>

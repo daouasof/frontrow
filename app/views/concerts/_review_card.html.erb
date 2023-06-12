@@ -5,11 +5,17 @@
       <p><strong><%= review.user.username %></strong></p>
    </div>
   <% end %>
+  
+  <div class="review-card-media">
+    <%= cl_image_tag review.photos.first.key, class:"square-image"  %>
+
+  </div>
   <% unless review.photos.count == 0 %>
     <div class="review-card-media">
       <%= cl_image_tag review.photos.first.key, class:"square-image"  %>
     </div>
   <% end %>
+  <p><%= "⭐" * review.rating %></p>
   <div class="review-card-content">
     <p><%= review.content %></p>
   </div>
