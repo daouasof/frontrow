@@ -33,7 +33,7 @@
         <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
       </div>
       <div class="list-group user-review-card-content text-center">
-        <p><strong><%= review.rating %></strong></p>
+        <p><strong><%= "⭐" * review.rating %></strong></p>
         <p><strong>Read Review</strong></p>
       </div>
     </div>
