@@ -1,4 +1,4 @@
-<div class="btn" id="user-<%=user.id%>" style="">
+<div id="user-<%=user.id%>" style="">
   <% if current_user.following?(user) %>
     <%= button_to "Unfollow", {action: 'unfollow', id: user.id}, method: 'post',
       class: 'btn' %>
