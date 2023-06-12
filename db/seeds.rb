@@ -17,21 +17,29 @@ puts "Cleaning the users table."
 User.destroy_all
 
 bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
-           photo_url: "https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+           banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
+           photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
          { name: 'The Gaslight Anthem', url: 'f208f09e-b5b3-4b06-87cd-f7230fae17e3',
-           photo_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y" },
+           banner_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y",
+           photo_url:"https://townsquare.media/site/838/files/2015/12/gaslightanthem1.jpg" },
          { name: 'Muse', url: '9c9f1380-2516-4fc9-a3e6-f9f61941d090',
-           photo_url: "https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
+           banner_url: "https://variety.com/wp-content/uploads/2022/08/Muse_2022_01_1636-F-1-e1661547894920.jpeg",
+           photo_url:"https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
          { name: 'Burna Boy', url: '78a19169-ac75-4868-b504-7e2e073118e0',
-           photo_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png" },
+           banner_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png",
+           photo_url:"https://cdn.vanguardngr.com/wp-content/uploads/2023/06/burna-boy-1024x683.jpeg" },
          { name: 'Polo & Pan', url: '1d9ec7ea-0fa4-41d9-917b-723c735ebbfe',
-           photo_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg" },
+           banner_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg",
+           photo_url:"https://i.ytimg.com/vi/ootQs7sVulY/maxresdefault.jpg" },
          { name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd',
-           photo_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg" },
+           banner_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg",
+           photo_url:"https://cdn-s-www.lalsace.fr/images/7B5FD0F7-B22B-4A64-9896-9B8771A6D540/NW_raw/le-groupe-louise-attaque-lors-d-une-emission-televisee-photo-sipa-1673352621.jpg" },
          { name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07',
-           photo_url: "https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
+           banner_url: "https://imageio.forbes.com/specials-images/imageserve/605d3e80fe13e1da9e35fb08/Gojira-band-members-left-to-right--Christian-Andreu--Joe-Duplantier--Mario/0x0.jpg?format=jpg&crop=4717,3146,x0,y920,safe&width=960",
+           photo_url:"https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
          { name: 'Tool', url: '66fc5bf8-daa4-4241-b378-9bc9077939d2',
-           photo_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg" }]
+           banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
+           photo_url:"https://www.xcelenergycenter.com/assets/img/Tool_WEB_588x370-260f0f9f52.jpg" }]
 
 
 
@@ -39,8 +47,10 @@ bands.each do |band|
   sleep(3)
   puts "Creating the artist #{band[:name]}"
   artist = Artist.create(name: "#{band[:name]}")
+  banner = URI.open(band[:banner_url])
   photo = URI.open(band[:photo_url])
-  artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+  artist.banner.attach(io: banner, filename: "banner.png", content_type: "image/png")
+  artist.photo.attach(io: photo, filename: "photo.png", content_type: "image/png")
   puts "Creating concerts for #{band[:name]}"
 
   url = "https://api.setlist.fm/rest/1.0/artist/#{band[:url]}/setlists"
@@ -158,11 +168,11 @@ antoines_review = Review.new(
   content: "Amazeballs!!!!!!",
   attendance: Attendance.find_by(user: antoine)
 )
-antoines_review.photos.attach(io: URI.open("https://the-peak.ca/wp-content/uploads/2018/05/Cell-phones-at-concerts.jpg"),
+antoines_review.photos.attach(io: URI.open("https://images.dailyhive.com/20161006093650/Tegan-Sara-Brandon-Artis-Photography-12.jpg"),
                           filename: "conert_photo_1", content_type: "image/png")
-antoines_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+antoines_review.photos.attach(io: URI.open("https://www.livingstonmusic.co.uk/wp-content/uploads/2020/11/wp2097452.jpg"),
                           filename: "conert_photo_2", content_type: "image/png")
-antoines_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+antoines_review.photos.attach(io: URI.open("https://the-peak.ca/wp-content/uploads/2018/05/Cell-phones-at-concerts.jpg"),
                           filename: "conert_photo_3", content_type: "image/png")
 
 antoines_review.save!
@@ -174,13 +184,12 @@ sofias_review = Review.new(
   content: "I think I like Nickelback better",
   attendance: Attendance.find_by(user: sofia)
 )
-sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
+sofias_review.photos.attach(io: URI.open("https://i0.wp.com/www.photoshelter.com/img-get/I0000niEPHJNXXGY/s/1000/tegan-and-sara-7549.jpg?w=1170"),
                           filename: "conert_photo_1", content_type: "image/png")
-sofias_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+sofias_review.photos.attach(io: URI.open("https://media.istockphoto.com/id/1247853982/photo/cheering-crowd-with-hands-in-air-at-music-festival.jpg?s=170667a&w=0&k=20&c=3jiqrNPSnaHiVGevyMIK0m_3V3VnZXYefKbjxyl1anM="),
                           filename: "conert_photo_2", content_type: "image/png")
-sofias_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
                           filename: "conert_photo_3", content_type: "image/png")
-
 sofias_review.save!
 puts "done!"
 
