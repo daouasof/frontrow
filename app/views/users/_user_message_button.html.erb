@@ -1,3 +1,5 @@
 <div id="user-<%=user.id%>" style="">
-<%= submit_tag "Message", name: "", class: "btn" %>
+  <%= link_to chatroom_path(chatroom) do %>
+    <%= "Message", class: "btn" %>
+  <% end %>
 </div>
