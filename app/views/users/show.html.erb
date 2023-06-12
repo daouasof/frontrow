@@ -3,7 +3,14 @@
     <h2><%= @user.username %></h2>
     <div class="container-banner">
       <p> <%= @user.city %> </p>
-      <p> <%= render "users/user_follow_button", user: @user %> </p>
+      <div class="d-flex justify-content-around">
+        <div>
+          <p> <%= render "users/user_follow_button", user: @user %> </p>
+        </div>
+        <div>
+          <p> <%= render "users/user_message_button", user: @user %> </p>
+        </div>
+      </div>
     </div>
 </div>
 
