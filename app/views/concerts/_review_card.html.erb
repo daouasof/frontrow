@@ -17,16 +17,21 @@
   <div class="review-card-content">
     <p><%= review.content %></p>
   </div>
-  <div>
-    <% if current_user.favorited?(review) %>
-      <h3><%= link_to "liked", unlike_review_path(review), data: { turbo_method: :delete } %></h3>
-    <% else %>
-      <h3><%= link_to "LIKE", like_review_path(review), data: { turbo_method: :post } %></h3>
-    <% end %>
-  </div>
 
   <div class="review-card-interactions">
-    <%= image_tag "comment.svg", alt: "comment"%>
+    <div>
+      <%= image_tag "comment.svg", alt: "comment"%>
+    </div>
+    <div>
+    <% if current_user.favorited?(review) %>
+      <%= link_to unlike_review_path(review), data: { turbo_method: :delete }  do %>
+        <%= render "shared/likes", class_icon: "heart-fill" %>
+      <% end %>
+    <% else %>
+      <%= link_to like_review_path(review), data: { turbo_method: :post }  do %>
+        <%= image_tag "heart-light"%>
+      <% end %>
+    <% end %>
+    </div>
   </div>
-
 </div>
