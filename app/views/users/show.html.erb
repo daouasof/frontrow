@@ -1,4 +1,4 @@
-<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);">
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @user.banner.key %>')">
     <h2> <%= cl_image_tag @user.avatar.key, class:"avatar-large"  %> </h2>
     <h2><%= @user.username %></h2>
     <div class="container-banner">
@@ -8,6 +8,21 @@
 </div>
 
 <br>
+
+<div class="d-inline-flex justify-content-center">
+  <div>
+   <p><strong>Shows Attended</strong></p>
+   <p>Shows Attended</p>
+  </div>
+  <div>
+    <p><strong>Followers</strong></p>
+    <p>Followers</p>
+  </div>
+  <div>
+    <p><strong>Followers</strong></p>
+    <p>Following</p>
+  </div>
+</div>
 
 <div class="grid-container">
   <% @user.reviews.each do |review| %>
