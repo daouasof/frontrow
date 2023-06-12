@@ -40,7 +40,7 @@
     <%= f.button :submit %>
   <% end %>
 
-  <% review.comments.each do |comment| %>
+  <% review.comments.order(created_at: :desc).first(3).each do |comment| %>
     <%= render "comment", comment: comment %>
   <% end %>
 </div>
