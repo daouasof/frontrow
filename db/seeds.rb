@@ -16,8 +16,9 @@ Artist.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
-future_bands = [{ name: "Bruce Springsteen", id: "26654", photo_url: "https://cdn-p.smehost.net/sites/e8622626f9584d40b1a8fce8dfa6f567/wp-content/uploads/2023/01/ESTREET_2023_bw-scaled.jpg" },
-  { name: 'Tool', id: "26633", photo_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg" }]
+future_bands = [{ name: "Bruce Springsteen", id: "26654", banner_url: "https://cdn-p.smehost.net/sites/e8622626f9584d40b1a8fce8dfa6f567/wp-content/uploads/2023/01/ESTREET_2023_bw-scaled.jpg", photo_url:"https://s.abcnews.com/images/GMA/bruce-springsteen-e-street-band-gty-jt-220713_1657727233643_hpMain_1x1_992.jpg" },
+  { name: 'Tool', id: "26633", banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
+    photo_url:"https://www.xcelenergycenter.com/assets/img/Tool_WEB_588x370-260f0f9f52.jpg" }]
 
 future_bands.each do |band|
   sleep(3)
