@@ -2,7 +2,10 @@
   <%= cl_image_tag review.user.avatar.key, class:"avatar-large"  %>
   <div class="user-review-card-content">
     <p><small><%= "#{review.user.username} was there !" %></small></p>
-    <p><strong><%= review.artist.name %></strong></p>
+    <div class="d-flex justify-content-between">
+      <p><strong><%= review.artist.name %></strong></p>
+      <p><%= "⭐" * review.rating %></p>
+    </div>
     <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')} " %></p>
   </div>
 </div>
