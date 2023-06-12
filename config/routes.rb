@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       post :like
       delete :unlike
     end
+    resources :comments, only: [:create]
+
   end
 
   resources :attendances, only: :destroy
