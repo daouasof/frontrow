@@ -1,6 +1,6 @@
 <%= render "concert_banner", concert: @concert %>
 
-<div class="grid-container">
+<div class="grid-container" data-controller="review-comment">
   <ul class="list-group">
     <% @reviews.each do |review| %>
       <%= render "review_card", review: review %>
