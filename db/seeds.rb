@@ -16,6 +16,34 @@ Artist.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
+future_bands = [{ name: "Bruce Springsteen", id: "26654", banner_url: "https://cdn-p.smehost.net/sites/e8622626f9584d40b1a8fce8dfa6f567/wp-content/uploads/2023/01/ESTREET_2023_bw-scaled.jpg", photo_url:"https://s.abcnews.com/images/GMA/bruce-springsteen-e-street-band-gty-jt-220713_1657727233643_hpMain_1x1_992.jpg" },
+  { name: 'Tool', id: "26633", banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
+    photo_url:"https://www.xcelenergycenter.com/assets/img/Tool_WEB_588x370-260f0f9f52.jpg" }]
+
+future_bands.each do |band|
+  sleep(3)
+  puts "Creating the artist #{band[:name]}"
+  artist = Artist.create(name: "#{band[:name]}")
+  photo = URI.open(band[:photo_url])
+  artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+  puts "Creating upcoming concerts for #{band[:name]}"
+
+  url = "https://rest.bandsintown.com/artists/id_#{band[:id]}/events?app_id=#{ENV['BANDS_IN_TOWN_API_KEY']}"
+
+  response = RestClient.get(url)
+  shows = JSON.parse(response)
+
+  shows.each do |show|
+    concert = Concert.new
+    concert.city = show["venue"]["location"]
+    concert.venue = show["venue"]["name"]
+    concert.date = show["starts_at"]
+    concert.artist_id = artist.id
+    concert.save!
+    puts "Created new concert with id #{concert.id} for #{band[:name]}"
+  end
+end
+
 bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
            banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
            photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
