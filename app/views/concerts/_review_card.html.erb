@@ -1,4 +1,4 @@
-<div class="shadowed-box review-card" data-controller="review-comment" data-review-comment-review-id-value="<%= review.id %>" >
+<div class="shadowed-box review-card" data-controller="review-comment">
   <%= link_to user_path(review.user) do %>
    <div class="review-card-user">
       <%= cl_image_tag review.user.avatar.key, class:"avatar"  %>
@@ -34,4 +34,8 @@
     <% end %>
     </div>
   </div>
+  <%= simple_form_for ( [review, @comment] ) do |f| %>
+    <%= f.input :content, as: :text %>
+    <%= f.button :submit %>
+  <% end %>
 </div>

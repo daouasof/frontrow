@@ -17,5 +17,6 @@ class ConcertsController < ApplicationController
     @reviews = @concert.reviews.order(created_at: :desc)
     @attendance = current_user.attendance_info(@concert)
     @review = Review.new
+    @comment = Comment.new
   end
 end
