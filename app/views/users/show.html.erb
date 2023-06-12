@@ -41,7 +41,7 @@
       </div>
       <div class="list-group user-review-card-content text-center">
         <p><strong><%= "⭐" * review.rating %></strong></p>
-        <p><strong>Read Review</strong></p>
+        <p><strong><%= link_to "Read Review", concerts_path %></strong></p>
       </div>
     </div>
    <% end %>
