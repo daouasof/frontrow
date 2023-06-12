@@ -9,17 +9,17 @@
 
 <br>
 
-<div class="d-inline-flex justify-content-center">
+<div class="d-flex justify-content-around text-center">
   <div>
-   <p><strong>Shows Attended</strong></p>
+   <p class="mb-0"><strong><%= @user.attendances.count %></strong></p>
    <p>Shows Attended</p>
   </div>
   <div>
-    <p><strong><% @user.all_follows %></strong></p>
+    <p class="mb-0"><strong> <%= @user.followers.count %> </strong></p>
     <p>Followers</p>
   </div>
   <div>
-    <p><strong><% @user.follow_count %></strong></p>
+    <p class="mb-0"><strong> <%= @user.all_following.count %> </strong></p>
     <p>Following</p>
   </div>
 </div>
