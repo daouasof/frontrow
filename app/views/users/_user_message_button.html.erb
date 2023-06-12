@@ -1,5 +1,3 @@
 <div id="user-<%=user.id%>" style="">
-  <%= link_to chatroom_path(chatroom) do %>
-    <%= "Message", class: "btn" %>
-  <% end %>
+  <%= link_to "Message", chatroom_path(chatroom) %>
 </div>
