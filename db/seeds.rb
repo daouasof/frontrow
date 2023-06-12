@@ -126,7 +126,7 @@ bowies_review = Review.new(
 )
 bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
                             filename: "conert_photo_1", content_type: "image/png")
-bowies_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+bowies_review.photos.attach(io: URI.open("https://media.istockphoto.com/id/1212165912/photo/happy-friends-taking-a-selfie-on-music-festival-by-night.jpg?s=612x612&w=0&k=20&c=6YidlHbenh_qDRYx9vsv31p4xH_XlOG0_2fZ--MfmX8="),
                             filename: "conert_photo_2", content_type: "image/png")
 bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
                             filename: "conert_photo_3", content_type: "image/png")
@@ -143,9 +143,9 @@ cats_review = Review.new(
 )
 cats_review.photos.attach(io: URI.open("https://destination-ontario-prod.s3.ca-central-1.amazonaws.com/files/s3fs-public/styles/article_masthead/public/2021-10/great-outdoo-venues-live-music-lovers.jpg?VersionId=Zr8J.0RRlDKcNYF6Vz1hOVy.YsH7J1aT&h=7da987e6&itok=2bB9Km5t"),
                           filename: "conert_photo_1", content_type: "image/png")
-cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+cats_review.photos.attach(io: URI.open("https://www.concertarchives.org/image_uploads/photo/image/516398/large_image.jpg"),
                           filename: "conert_photo_2", content_type: "image/png")
-cats_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+cats_review.photos.attach(io: URI.open("https://www.longwood.edu/media/top-tier/news/2014/buzz/concert1.jpg"),
                           filename: "conert_photo_3", content_type: "image/png")
 
 cats_review.save!
@@ -157,11 +157,11 @@ antoines_review = Review.new(
   content: "Amazeballs!!!!!!",
   attendance: Attendance.find_by(user: antoine)
 )
-antoines_review.photos.attach(io: URI.open("https://the-peak.ca/wp-content/uploads/2018/05/Cell-phones-at-concerts.jpg"),
+antoines_review.photos.attach(io: URI.open("https://images.dailyhive.com/20161006093650/Tegan-Sara-Brandon-Artis-Photography-12.jpg"),
                           filename: "conert_photo_1", content_type: "image/png")
-antoines_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+antoines_review.photos.attach(io: URI.open("https://www.livingstonmusic.co.uk/wp-content/uploads/2020/11/wp2097452.jpg"),
                           filename: "conert_photo_2", content_type: "image/png")
-antoines_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+antoines_review.photos.attach(io: URI.open("https://the-peak.ca/wp-content/uploads/2018/05/Cell-phones-at-concerts.jpg"),
                           filename: "conert_photo_3", content_type: "image/png")
 
 antoines_review.save!
@@ -173,13 +173,12 @@ sofias_review = Review.new(
   content: "I think I like Nickelback better",
   attendance: Attendance.find_by(user: sofia)
 )
-sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
+sofias_review.photos.attach(io: URI.open("https://i0.wp.com/www.photoshelter.com/img-get/I0000niEPHJNXXGY/s/1000/tegan-and-sara-7549.jpg?w=1170"),
                           filename: "conert_photo_1", content_type: "image/png")
-sofias_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+sofias_review.photos.attach(io: URI.open("https://media.istockphoto.com/id/1247853982/photo/cheering-crowd-with-hands-in-air-at-music-festival.jpg?s=170667a&w=0&k=20&c=3jiqrNPSnaHiVGevyMIK0m_3V3VnZXYefKbjxyl1anM="),
                           filename: "conert_photo_2", content_type: "image/png")
-sofias_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
                           filename: "conert_photo_3", content_type: "image/png")
-
 sofias_review.save!
 puts "done!"
 
