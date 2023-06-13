@@ -13,6 +13,8 @@ puts "Cleaning the concerts table"
 Concert.destroy_all
 puts "Cleaning the artist table"
 Artist.destroy_all
+puts "Cleaning the messages table"
+Message.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
