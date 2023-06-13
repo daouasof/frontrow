@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    raise
+  end
+
+
   def follow
     @user = User.find(params[:id])
     current_user.follow(@user)
