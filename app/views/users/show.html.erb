@@ -11,7 +11,7 @@
           <p> <%= render "users/user_follow_button", user: @user %> </p>
         </div>
         <div>
-          <p> <%= render "users/user_message_button", user: @user %> </p>
+          <p> <%= render "users/user_message_button", user: @user, chatroom: @chatroom %> </p>
         </div>
   <% end %>
       </div>
@@ -37,15 +37,17 @@
 
 <div class="grid-container">
   <% @user.reviews.each do |review| %>
+    <%= link_to "#{concert_path(review.concert)}" do %>
     <div class="user-review-card shadowed-box" style="height: 100px">
       <%= cl_image_tag review.concert.artist.photo.key, class:"square-image h-100", style: "width: 125px; object-fit: cover" %>
       <div class="list-group user-review-card-content">
         <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
         <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
+    <% end %>
       </div>
       <div class="list-group user-review-card-content text-center">
         <p><strong><%= "⭐" * review.rating %></strong></p>
-        <p><strong><%= link_to "Read Review", concerts_path %></strong></p>
+        <p><strong><%= link_to "Read Review", "#{concert_path(review.concert)}##{review.id}" %></strong></p>
       </div>
     </div>
    <% end %>

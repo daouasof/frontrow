@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @search = Chatroom.get_chatroom(current_user, @user)
+    if @search.empty?
+      @chatroom = Chatroom.create(participant1_id: current_user.id, participant2_id: @user.id)
+    else
+      @chatroom = @search.first
+    end
   end
 
   def update
@@ -24,6 +30,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :age, :city, :bio)
+    params.require(:user).permit(:username, :email, :age, :city, :bio, :avatar, :banner)
   end
 end
