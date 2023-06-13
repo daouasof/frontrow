@@ -11,6 +11,7 @@ export default class extends Controller {
       { received: message => this.#insertMessageAndScroll(message) }
     )
     console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   #insertMessageAndScroll(message) {
@@ -24,6 +25,6 @@ export default class extends Controller {
 
   disconnect() {
     console.log("Unsuscribed from channel")
-    this.channel.unsuscribe()
+    this.channel.unsubscribe()
   }
 }
