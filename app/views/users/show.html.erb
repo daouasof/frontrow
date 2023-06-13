@@ -33,8 +33,8 @@
 
 <div class="grid-container">
   <% @user.reviews.each do |review| %>
-    <div class="user-review-card shadowed-box">
-      <%= cl_image_tag review.concert.artist.photo.key, class:"avatar"  %>
+    <div class="user-review-card shadowed-box" style="height: 100px">
+      <%= cl_image_tag review.concert.artist.photo.key, class:"square-image h-100", style: "width: 125px; object-fit: cover" %>
       <div class="list-group user-review-card-content">
         <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
         <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
