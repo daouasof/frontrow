@@ -1,4 +1,4 @@
-  <%= simple_form_for [review, comment], html: {class:"d-none", data: {review_comment_target:"form", action:"submit->review-comment#create"}} do |f| %>
+  <%= simple_form_for [review, comment], html: {class: "d-none", data: {review_comment_target:"form", action:"submit->review-comment#create"}} do |f| %>
     <div class="new_review_form">
       <div class="field">
         <%= f.input :content, as: :text, label: false, placeholder:"Type your comment", input_html: {id:"content_field"} %>

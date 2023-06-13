@@ -25,7 +25,8 @@ export default class extends Controller {
         if (data.comment) {
           this.commentsTarget.insertAdjacentHTML("afterbegin", data.comment);
         }
-        this.formTarget.outerHTML = data.form
+        this.formTarget.outerHTML = data.form;
+        this.formTarget.classList.remove("d-none");
       })
   }
 }
