@@ -5,6 +5,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.review = Review.find(params[:review_id])
     @comment.save
+
+
+
   end
 
   private

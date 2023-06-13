@@ -43,16 +43,7 @@
     </div>
   </div>
 
-  <%= simple_form_for ( [review, @comment] ), html: {class:"d-none", data: {review_comment_target:"form"}} do |f| %>
-    <div class="new_review_form">
-      <div class="field">
-        <%= f.input :content, as: :text, label: false, placeholder:"Type your comment", input_html: {id:"content_field"} %>
-      </div>
-      <div>
-        <%= f.button :submit, ">" %>
-      </div>
-    <% end %>
-  </div>
+  <%= render "comment_form", {comment: @comment, review:review} %>
 
   <div data-review-comment-target="comments" class="d-none" >
     <% review.comments.order(created_at: :desc).first(3).each do |comment| %>
