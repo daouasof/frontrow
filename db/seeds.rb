@@ -70,7 +70,7 @@ end
 end
 
 
-puts "creating users seeds Bowie, Paloma and
+puts "creating users seeds Bowie, Paloma and us"
 
 default_avatar_url = "https://hips.hearstapps.com/hmg-prod/images/sigourney-weaver-avatar-ii-the-way-of-water-1670323174.jpg?crop=0.500xw:0.949xh;0.299xw,0.0514xh&resize=1200:*"
 default_banner_url = "https://townsquare.media/site/62/files/2021/11/attachment-brian-ruiz.jpg?w=980&q=75"
