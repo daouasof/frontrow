@@ -21,10 +21,10 @@ export default class extends Controller {
       headers: {"Accept": "text/plain"},
       body: new FormData(this.formTarget)
     })
-    .then(response => {response.text(); console.log(response);})
+    .then(response => response.text())
 
     .then((data) => {
-      console.log(data);
+      this.commentsTarget.insertAdjacentHTML("afterbegin", data);
     })
   }
 }
