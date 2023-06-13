@@ -54,7 +54,7 @@
     <% end %>
   </div>
 
-  <div data-review-comment-target="comments" >
+  <div data-review-comment-target="comments" class="d-none" >
     <% review.comments.order(created_at: :desc).first(3).each do |comment| %>
       <%= render "comment", comment: comment %>
     <% end %>

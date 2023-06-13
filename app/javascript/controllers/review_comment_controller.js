@@ -9,7 +9,7 @@ export default class extends Controller {
   }
 
   display() {
-    console.log("clicked");
-    console.log(this.formTarget);
+    this.formTarget.classList.toggle("d-none")
+    this.commentsTarget.classList.toggle("d-none")
   }
 }
