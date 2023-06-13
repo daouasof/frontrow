@@ -22,4 +22,8 @@ Rails.application.routes.draw do
   end
 
   resources :attendances, only: :destroy
+
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end
