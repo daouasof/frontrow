@@ -17,4 +17,13 @@ export default class extends Controller {
     this.messagesTarget.insertAdjacentHTML("beforeend", message)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
+
+  resetForm(event) {
+    event.target.reset(event)
+  }
+
+  disconnect() {
+    console.log("Unsuscribed from channel")
+    this.channel.unsuscribe()
+  }
 }
