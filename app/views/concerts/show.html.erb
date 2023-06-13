@@ -1,24 +1,10 @@
 <% if Date.today <= @concert.date %>
   <%= render "upcoming_banner", concert: @concert %>
+  <%= render "countdown", concert: @concert %>
+  <%= render "attending_card", concert: @concert %>
 <% else %>
   <%= render "show_banner", concert: @concert %>
 <% end %>
-
-<div class="countdown-container">
-  <div class="countdown">
-    <% if Date.today <= @concert.date %>
-      <% date = (@concert.date.strftime('%d/%m/%Y').to_date - Date.today).to_i.to_s.chars %>
-        <% date.each do |number| %>
-          <div class="day">
-            <p><%= number %></p>
-          </div>
-        <% end %>
-    <% end %>
-  </div>
-  <div>
-    <h4>days left</h4>
-  </div>
-</div>
 
 <div class="grid-container" >
   <ul class="list-group">
