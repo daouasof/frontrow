@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="review-comment"
 export default class extends Controller {
+  static targets = ["form", "comments"]
 
   connect() {
     console.log("connected");
@@ -9,6 +10,6 @@ export default class extends Controller {
 
   display() {
     console.log("clicked");
-    console.log(this.reviewIdValue);
+    console.log(this.formTarget);
   }
 }
