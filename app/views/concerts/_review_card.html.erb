@@ -1,4 +1,4 @@
-<div class="shadowed-box review-card" data-controller="review-comment">
+<div class="shadowed-box review-card" data-controller="review-comment" id="<%= review.id %>">
   <%= link_to user_path(review.user) do %>
    <div class="review-card-user">
       <%= cl_image_tag review.user.avatar.key, class:"avatar"  %>

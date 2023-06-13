@@ -1,21 +1,28 @@
-<h1>Find you concert</h1>
+<div data-controller="toggle-upcoming">
+  <h1>Find your show</h1>
 
-<%= form_with url: concerts_path, method: :get do %>
-      <%= text_field_tag :query_artist,
-            @artist,
-            placeholder: "Type an artist"
-        %>
-      <%= text_field_tag :query_city,
-            @city,
-            placeholder: "Type a city"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
+  <%= form_with url: concerts_path, method: :get do %>
+        <%= text_field_tag :query_artist,
+              @artist,
+              placeholder: "Type an artist"
+          %>
+        <%= text_field_tag :query_city,
+              @city,
+              placeholder: "Type a city"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
 
-<div class="grid-container">
-  <% @concerts.each do |concert| %>
-    <%= link_to concert_path(concert) do %>
-      <%= render "concert_card", concert: concert %>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" data-action="click->toggle-upcoming#hide">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Upcoming shows</label>
+  </div>
+
+  <div class="grid-container">
+    <% @concerts.each do |concert| %>
+      <%= link_to concert_path(concert) do %>
+        <%= render "concert_card", concert: concert %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
