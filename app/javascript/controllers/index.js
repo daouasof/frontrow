@@ -15,3 +15,6 @@ application.register("review-comment", ReviewCommentController)
 
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
+
+import ToggleUpcomingController from "./toggle_upcoming_controller"
+application.register("toggle-upcoming", ToggleUpcomingController)

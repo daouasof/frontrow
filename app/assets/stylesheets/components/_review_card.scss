@@ -43,3 +43,13 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+.new_review_form {
+  display: flex;
+  grid-column: 2;
+
+  .field{
+    flex-grow: 1;
+    margin-right: 8px;
+  }
+}
