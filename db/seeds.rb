@@ -60,6 +60,9 @@ bands.each do |band|
     concert.city = show["venue"]["location"]
     concert.venue = show["venue"]["name"]
     concert.date = show["starts_at"]
+    show["offers"].each do |offer|
+      concert.tickets_url = offer["url"]
+    end
     concert.artist_id = artist.id
     concert.save!
     puts "Created upcoming concert with id #{concert.id} for #{band[:name]}"

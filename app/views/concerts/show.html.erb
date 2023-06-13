@@ -1,5 +1,11 @@
 <%= render "concert_banner", concert: @concert %>
 
+<% if Date.today <= @concert.date %>
+  <div>
+    <%= link_to "Buy tickets", @concert.tickets_url, class:"btn" %>
+  </div>
+<% end %>
+
 <div class="grid-container" >
   <ul class="list-group">
     <% @reviews.each do |review| %>
@@ -7,7 +13,6 @@
     <% end %>
   </ul>
 </div>
-<br>
 
 <div class= btn-back-concerts>
   <%= link_to "Back to all Concerts", concerts_path %>
