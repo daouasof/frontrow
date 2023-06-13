@@ -36,16 +36,17 @@
 </div>
 
 <div class="grid-container">
-  <% @user.reviews.each do |review| %>
+  <% @reviews.each do |review| %>
     <%= link_to "#{concert_path(review.concert)}" do %>
     <div class="user-review-card shadowed-box" style="height: 100px">
-      <%= cl_image_tag review.concert.artist.photo.key, class:"square-image h-100", style: "width: 125px; object-fit: cover" %>
-      <div class="list-group user-review-card-content">
+      <%= cl_image_tag review.concert.artist.photo.key, class:"square-image mh-100", style: "width: 100px; object-fit: cover" %>
+      <div class="list-group user-review-card-content" >
         <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
         <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
     <% end %>
       </div>
-      <div class="list-group user-review-card-content text-center">
+
+      <div class="list-group user-review-card-content text-center" style="width: 125px">
         <%= render "shared/rating", review: review %>
         <p><strong><%= link_to "Read Review", "#{concert_path(review.concert)}##{review.id}" %></strong></p>
       </div>

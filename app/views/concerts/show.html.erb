@@ -1,4 +1,10 @@
-<%= render "concert_banner", concert: @concert %>
+<% if Date.today <= @concert.date %>
+  <%= render "upcoming_banner", concert: @concert %>
+  <%= render "countdown", concert: @concert %>
+  <%= render "attending_card", concert: @concert %>
+<% else %>
+  <%= render "show_banner", concert: @concert %>
+<% end %>
 
 <div class="grid-container" >
   <ul class="list-group">
@@ -7,7 +13,6 @@
     <% end %>
   </ul>
 </div>
-<br>
 
 <div class= btn-back-concerts>
   <%= link_to "Back to all Concerts", concerts_path %>
