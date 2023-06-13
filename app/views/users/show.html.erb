@@ -4,7 +4,7 @@
     <div class="container-banner">
       <p> <%= @user.city %> </p>
   <%  if @user == current_user %>
-      <p> <%= render "users/user_edit_profile_button", user: @user %> </p>
+      <p> <%= render "users/user_details_form", user: @user %> </p>
   <% else %>
       <div class="d-flex justify-content-around">
         <div>
@@ -50,7 +50,3 @@
     </div>
    <% end %>
 </div>
-
-
-
-<%= render "users/user_details_form", user: @user %>
