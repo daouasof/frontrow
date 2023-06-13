@@ -1,0 +1,11 @@
+<% @concert.attendances.each do |attendance| %>
+  <%= link_to user_path(attendance.user) do %>
+    <div class="attending-card shadowed-box">
+      <%= cl_image_tag attendance.user.avatar.key, class:"avatar"  %>
+      <div class="attending-card-content">
+        <p><%= attendance.user.username %> is attending!</p>
+        <%= link_to "View profile", user_path(attendance.user) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

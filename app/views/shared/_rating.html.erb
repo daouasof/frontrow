@@ -1,0 +1,12 @@
+<div class="rating">
+  <% review.rating.times do %>
+    <div class="star">
+      <%= image_tag "star.svg" %>
+    </div>
+  <% end %>
+  <% (5-review.rating).times do %>
+    <div class="star">
+      <%= image_tag "emptystar.svg" %>
+    </div>
+  <% end %>
+</div>
