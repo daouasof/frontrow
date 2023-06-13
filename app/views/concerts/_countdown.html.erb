@@ -1,0 +1,13 @@
+<div class="countdown-container">
+  <div class="countdown">
+      <% date = (@concert.date.strftime('%d/%m/%Y').to_date - Date.today).to_i.to_s.chars %>
+        <% date.each do |number| %>
+          <div class="day">
+            <p><%= number %></p>
+          </div>
+        <% end %>
+  </div>
+  <div>
+    <h4>days left</h4>
+  </div>
+</div>
