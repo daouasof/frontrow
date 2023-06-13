@@ -4,9 +4,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    raise
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
-
 
   def follow
     @user = User.find(params[:id])
@@ -18,5 +19,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     current_user.stop_following(@user)
     redirect_to user_path(@user)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :age, :city, :bio)
   end
 end
