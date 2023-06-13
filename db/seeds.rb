@@ -3,6 +3,10 @@ require "json"
 require "rest-client"
 require_relative "users"
 
+puts "Cleaning the messages table"
+Message.destroy_all
+puts "Cleaning the chatrooms table"
+Chatroom.destroy_all
 puts "Cleaning the comments table"
 Comment.destroy_all
 puts "Cleaning the reviews table"
@@ -40,8 +44,6 @@ bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
 { name: 'Tool', url: '66fc5bf8-daa4-4241-b378-9bc9077939d2',
   banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
   photo_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg" }]
-
-
 
 bands.each do |band|
 sleep(3)

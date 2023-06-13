@@ -4,14 +4,14 @@
     <div class="container-banner">
       <p> <%= @user.city %> </p>
   <%  if @user == current_user %>
-      <p> <%= render "users/user_edit_profile_button", user: @user %> </p>
+      <p> <%= render "users/user_details_form", user: @user %> </p>
   <% else %>
       <div class="d-flex justify-content-around">
         <div>
           <p> <%= render "users/user_follow_button", user: @user %> </p>
         </div>
         <div>
-          <p> <%= render "users/user_message_button", user: @user %> </p>
+          <p> <%= render "users/user_message_button", user: @user, chatroom: @chatroom %> </p>
         </div>
   <% end %>
       </div>
@@ -37,15 +37,17 @@
 
 <div class="grid-container">
   <% @user.reviews.each do |review| %>
-    <div class="user-review-card shadowed-box">
-      <%= cl_image_tag review.concert.artist.photo.key, class:"avatar"  %>
+    <%= link_to "#{concert_path(review.concert)}" do %>
+    <div class="user-review-card shadowed-box" style="height: 100px">
+      <%= cl_image_tag review.concert.artist.photo.key, class:"square-image h-100", style: "width: 125px; object-fit: cover" %>
       <div class="list-group user-review-card-content">
         <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
         <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
+    <% end %>
       </div>
       <div class="list-group user-review-card-content text-center">
         <p><strong><%= "⭐" * review.rating %></strong></p>
-        <p><strong><%= link_to "Read Review", concerts_path %></strong></p>
+        <p><strong><%= link_to "Read Review", "#{concert_path(review.concert)}##{review.id}" %></strong></p>
       </div>
     </div>
    <% end %>
