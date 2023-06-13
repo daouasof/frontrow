@@ -12,7 +12,7 @@
     </div>
   <% end %>
   <div class="review-card-rating">
-    <p><%= "⭐" * review.rating %></p>
+    <%= render "shared/rating", review: review %>
   </div>
   <div class="review-card-content">
     <p><%= review.content %></p>

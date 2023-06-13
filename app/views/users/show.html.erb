@@ -46,7 +46,7 @@
     <% end %>
       </div>
       <div class="list-group user-review-card-content text-center">
-        <p><strong><%= "⭐" * review.rating %></strong></p>
+        <%= render "shared/rating", review: review %>
         <p><strong><%= link_to "Read Review", "#{concert_path(review.concert)}##{review.id}" %></strong></p>
       </div>
     </div>
