@@ -1,22 +1,26 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(set_comment)
+    @comment = Comment.new(comment_params)
     @comment.user = current_user
     @review = Review.find(params[:review_id])
     @comment.review = @review
-    @comment.save
-    @concert = @comment.review.concert
+    @concert = @review.concert
 
     respond_to do |format|
-      format.html { redirect_to concert_path(@concert) and return }
-      format.text { render partial: "concerts/comment", locals: { comment: @comment, review: @review }, formats: [:html] }
+      if @comment.save
+        format.html { redirect_to concert_path(@concert) }
+        format.json
+      else
+        format.html { render "concerts/show", status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 
   private
 
-  def set_comment
+  def comment_params
     params.require(:comment).permit(:content)
   end
 end

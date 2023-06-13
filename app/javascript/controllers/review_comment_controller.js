@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["form", "comments"];
 
   connect() {
-    console.log("connected");
   }
 
   display() {
@@ -18,13 +17,15 @@ export default class extends Controller {
     const url = this.formTarget.action;
     fetch(url, {
       method: "POST",
-      headers: {"Accept": "text/plain"},
+      headers: {"Accept": "application/json"},
       body: new FormData(this.formTarget)
     })
-    .then(response => response.text())
-
-    .then((data) => {
-      this.commentsTarget.insertAdjacentHTML("afterbegin", data);
-    })
+      .then(response => response.json())
+      .then((data) => {
+        if (data.comment) {
+          this.commentsTarget.insertAdjacentHTML("afterbegin", data.comment);
+        }
+        this.formTarget.outerHTML = data.form
+      })
   }
 }
