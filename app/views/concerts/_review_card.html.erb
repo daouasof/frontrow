@@ -43,10 +43,16 @@
     </div>
   </div>
 
-  <%= simple_form_for ( [review, @comment] ) do |f| %>
-    <%= f.input :content, as: :text, label: false, placeholder:"Type your comment" %>
-    <%= f.button :submit %>
-  <% end %>
+  <%= simple_form_for ( [review, @comment] ), html: {id:"comment_form"} do |f| %>
+    <div class="new_review_form">
+      <div class="field">
+        <%= f.input :content, as: :text, label: false, placeholder:"Type your comment", input_html: {id:"content_field"} %>
+      </div>
+      <div>
+        <%= f.button :submit, ">" %>
+      </div>
+    <% end %>
+  </div>
 
   <% review.comments.order(created_at: :desc).first(3).each do |comment| %>
     <%= render "comment", comment: comment %>
