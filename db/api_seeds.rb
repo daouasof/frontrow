@@ -3,10 +3,6 @@ require "json"
 require "rest-client"
 require_relative "users"
 
-puts "Cleaning the messages table"
-Message.destroy_all
-puts "Cleaning the chatrooms table"
-Chatroom.destroy_all
 puts "Cleaning the comments table"
 Comment.destroy_all
 puts "Cleaning the reviews table"
@@ -20,57 +16,73 @@ Artist.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
-bands = [{ name: 'The Menzingers', url: '3071d829-b9ca-4499-b4f5-74d6d8531aed',
-  banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
-  photo_url: "https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
-{ name: 'The Gaslight Anthem', url: 'f208f09e-b5b3-4b06-87cd-f7230fae17e3',
-  banner_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y",
-  photo_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y" },
-{ name: 'Muse', url: '9c9f1380-2516-4fc9-a3e6-f9f61941d090',
-  banner_url: "https://variety.com/wp-content/uploads/2022/08/Muse_2022_01_1636-F-1-e1661547894920.jpeg",
-  photo_url: "https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
-{ name: 'Burna Boy', url: '78a19169-ac75-4868-b504-7e2e073118e0',
-  banner_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png",
-  photo_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png" },
-{ name: 'Polo & Pan', url: '1d9ec7ea-0fa4-41d9-917b-723c735ebbfe',
-  banner_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg",
-  photo_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg" },
-{ name: 'Louise Attaque', url: '04d25080-32e2-49a2-b638-c9ca4f3e12bd',
-  banner_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg",
-  photo_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg" },
-{ name: 'Gojira', url: '1c5efd53-d6b6-4d63-9d22-a15025cf5f07',
-  banner_url: "https://imageio.forbes.com/specials-images/imageserve/605d3e80fe13e1da9e35fb08/Gojira-band-members-left-to-right--Christian-Andreu--Joe-Duplantier--Mario/0x0.jpg?format=jpg&crop=4717,3146,x0,y920,safe&width=960",
-  photo_url: "https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
-{ name: 'Tool', url: '66fc5bf8-daa4-4241-b378-9bc9077939d2',
-  banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
-  photo_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg" }]
+
+bands = [{ name: 'The Menzingers', id: '181106',
+           banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
+           photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+         { name: 'The Gaslight Anthem', id: '16502',
+           banner_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y",
+           photo_url:"https://townsquare.media/site/838/files/2015/12/gaslightanthem1.jpg" },
+         { name: 'Muse', id: '143',
+           banner_url: "https://variety.com/wp-content/uploads/2022/08/Muse_2022_01_1636-F-1-e1661547894920.jpeg",
+           photo_url:"https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
+         { name: 'Burna Boy', id: '1844148',
+           banner_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png",
+           photo_url:"https://cdn.vanguardngr.com/wp-content/uploads/2023/06/burna-boy-1024x683.jpeg" },
+         { name: 'Polo & Pan', id: '8796810',
+           banner_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg",
+           photo_url:"https://i.ytimg.com/vi/ootQs7sVulY/maxresdefault.jpg" },
+         { name: 'Louise Attaque', id: '45021',
+           banner_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg",
+           photo_url:"https://cdn-s-www.lalsace.fr/images/7B5FD0F7-B22B-4A64-9896-9B8771A6D540/NW_raw/le-groupe-louise-attaque-lors-d-une-emission-televisee-photo-sipa-1673352621.jpg" },
+         { name: 'Gojira', id: '2761',
+           banner_url: "https://imageio.forbes.com/specials-images/imageserve/605d3e80fe13e1da9e35fb08/Gojira-band-members-left-to-right--Christian-Andreu--Joe-Duplantier--Mario/0x0.jpg?format=jpg&crop=4717,3146,x0,y920,safe&width=960",
+           photo_url:"https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
+         { name: 'Tool', id: '26633',
+           banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
+           photo_url:"https://www.xcelenergycenter.com/assets/img/Tool_WEB_588x370-260f0f9f52.jpg" }]
 
 bands.each do |band|
-sleep(3)
-puts "Creating the artist #{band[:name]}"
-artist = Artist.create(name: "#{band[:name]}")
-photo = URI.open(band[:photo_url])
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-puts "Creating concerts for #{band[:name]}"
+  sleep(3)
+  puts "Creating the artist #{band[:name]}"
+  artist = Artist.create(name: "#{band[:name]}")
+  photo = URI.open(band[:photo_url])
+  artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+  puts "Creating upcoming concerts for #{band[:name]}"
 
-url = "https://api.setlist.fm/rest/1.0/artist/#{band[:url]}/setlists"
+  upcoming_url = "https://rest.bandsintown.com/artists/id_#{band[:id]}/events?app_id=#{ENV['BANDS_IN_TOWN_API_KEY']}"
 
-response = RestClient.get(url, { 'Accept': 'application/json', 'x-api-key': ENV['SETLIST_API_KEY'] })
-shows = JSON.parse(response)
+  upcoming_response = RestClient.get(upcoming_url)
+  upcoming_shows = JSON.parse(upcoming_response)
 
-shows["setlist"].each do |show|
-concert = Concert.new
-concert.city = show["venue"]["city"]["name"]
-concert.venue = show["venue"]["name"]
-concert.date = show["eventDate"]
-concert.artist_id = artist.id
-concert.save!
-puts "Created new concert with id #{concert.id} for #{band[:name]}"
+  upcoming_shows.first(12).each do |show|
+    concert = Concert.new
+    concert.city = show["venue"]["location"]
+    concert.venue = show["venue"]["name"]
+    concert.date = show["starts_at"]
+    concert.artist_id = artist.id
+    concert.save!
+    puts "Created upcoming concert with id #{concert.id} for #{band[:name]}"
+  end
+
+  past_url = "https://rest.bandsintown.com/artists/id_#{band[:id]}/events?app_id=#{ENV['BANDS_IN_TOWN_API_KEY']}&date=2023-01-01,2023-12-31"
+  past_response = RestClient.get(past_url)
+  past_shows = JSON.parse(past_response)
+
+  "Creating past concerts..."
+
+  past_shows.first(12).each do |show|
+    concert = Concert.new
+    concert.city = show["venue"]["city"]
+    concert.venue = show["venue"]["name"]
+    concert.date = show["datetime"]
+    concert.artist_id = artist.id
+    concert.save!
+    puts "Created past concert with id #{concert.id} for #{band[:name]}"
+  end
 end
-end
 
-
-puts "creating users seeds Bowie, Paloma and
+puts "creating users seeds Bowie, Paloma and us!"
 
 default_avatar_url = "https://hips.hearstapps.com/hmg-prod/images/sigourney-weaver-avatar-ii-the-way-of-water-1670323174.jpg?crop=0.500xw:0.949xh;0.299xw,0.0514xh&resize=1200:*"
 default_banner_url = "https://townsquare.media/site/62/files/2021/11/attachment-brian-ruiz.jpg?w=980&q=75"
