@@ -6,11 +6,11 @@ class ConcertsController < ApplicationController
   def index
     @city = params[:query_city]
     @artist = params[:query_artist]
+    # @concerts = Concert.where('date < ?', Date.today)
     @concerts = Concert.all.order(date: :desc)
     @concerts = Concert.search_by_city(@city) if @city.present?
     @concerts = Concert.search_by_artist(@artist) if @artist.present?
     @concerts = Concert.search_by_artist(@artist).search_by_city(@city) if @artist.present? && @city.present?
-    @concerts = @concerts.where("date > ?", Date.today) if params[:upcoming]
   end
 
   def show
