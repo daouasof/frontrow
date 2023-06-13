@@ -1,9 +1,7 @@
-<%= render "concert_banner", concert: @concert %>
-
-<% if Date.today <= @concert.date %>
-  <div>
-    <%= link_to "Buy tickets", @concert.tickets_url, class:"btn" %>
-  </div>
+<% if Date.today >= @concert.date %>
+  <%= render "show_banner", concert: @concert %>
+<% else %>
+  <%= render "upcoming_banner", concert: @concert %>
 <% end %>
 
 <div class="grid-container" >
