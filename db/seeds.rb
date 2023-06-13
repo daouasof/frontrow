@@ -23,28 +23,28 @@ User.destroy_all
 
 bands = [{ name: 'The Menzingers', id: '181106',
            banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
-           photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+           photo_url: "https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
          { name: 'The Gaslight Anthem', id: '16502',
            banner_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y",
-           photo_url:"https://townsquare.media/site/838/files/2015/12/gaslightanthem1.jpg" },
+           photo_url: "https://townsquare.media/site/838/files/2015/12/gaslightanthem1.jpg" },
          { name: 'Muse', id: '143',
            banner_url: "https://variety.com/wp-content/uploads/2022/08/Muse_2022_01_1636-F-1-e1661547894920.jpeg",
-           photo_url:"https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
+           photo_url: "https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg" },
          { name: 'Burna Boy', id: '1844148',
            banner_url: "https://guardian.ng/wp-content/uploads/2018/12/Burna-Boy_AllAfrica.png",
-           photo_url:"https://cdn.vanguardngr.com/wp-content/uploads/2023/06/burna-boy-1024x683.jpeg" },
+           photo_url: "https://cdn.vanguardngr.com/wp-content/uploads/2023/06/burna-boy-1024x683.jpeg" },
          { name: 'Polo & Pan', id: '8796810',
            banner_url: "https://www.billboard.com/wp-content/uploads/media/Polo-and-Pan-2019-cr-Olivier-Ortion-billboard-1548.jpg",
-           photo_url:"https://images.ra.co/0c037ab2637adc5d169ce342d6ef5583b9d27c5c.jpg" },
+           photo_url: "https://indiehoy.com/wp-content/uploads/2023/01/polo-pan-sideshow-niceto-1280x720.jpg" },
          { name: 'Louise Attaque', id: '45021',
            banner_url: "https://s3.ca-central-1.amazonaws.com/files.quartierdesspectacles.com/import/vitrine/activity/34805/34805.jpg",
-           photo_url:"https://cdn-s-www.lalsace.fr/images/7B5FD0F7-B22B-4A64-9896-9B8771A6D540/NW_raw/le-groupe-louise-attaque-lors-d-une-emission-televisee-photo-sipa-1673352621.jpg" },
+           photo_url: "https://cdn-s-www.lalsace.fr/images/7B5FD0F7-B22B-4A64-9896-9B8771A6D540/NW_raw/le-groupe-louise-attaque-lors-d-une-emission-televisee-photo-sipa-1673352621.jpg" },
          { name: 'Gojira', id: '2761',
            banner_url: "https://imageio.forbes.com/specials-images/imageserve/605d3e80fe13e1da9e35fb08/Gojira-band-members-left-to-right--Christian-Andreu--Joe-Duplantier--Mario/0x0.jpg?format=jpg&crop=4717,3146,x0,y920,safe&width=960",
-           photo_url:"https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
+           photo_url: "https://media.hardwiredmagazine.com/2017/08/gojira-band-promo-2017-logo.jpg" },
          { name: 'Tool', id: '26633',
            banner_url: "https://media.pitchfork.com/photos/6151d4465f20b295d9d2c2a0/2:1/w_2560%2Cc_limit/Tool.jpg",
-           photo_url:"https://www.xcelenergycenter.com/assets/img/Tool_WEB_588x370-260f0f9f52.jpg" }]
+           photo_url: "https://www.xcelenergycenter.com/assets/img/Tool_WEB_588x370-260f0f9f52.jpg" }]
 
 bands.each do |band|
   sleep(3)
