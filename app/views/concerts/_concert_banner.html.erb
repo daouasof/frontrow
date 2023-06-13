@@ -3,7 +3,9 @@
     <div class="container-banner">
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>
       <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= concert.attendances.count %> users attended</p>
-        <% if Date.today <= concert.date %>
+        <% if Date.today <= concert.date && current_user.attended?(concert) %>
+          <%= link_to "I'm attending", concert_attendances_path(concert), data: { turbo_method: :post }, class:"btn d-none" %>
+        <% elsif Date.today <= concert.date %>
           <%= link_to "I'm attending", concert_attendances_path(concert), data: { turbo_method: :post }, class:"btn" %>
         <% elsif Date.today >= concert.date %>
           <% if current_user.attended?(concert) %>
@@ -15,12 +17,21 @@
   </div>
   <div class="attended">
     <% if current_user.attended?(concert) %>
+      <% if Date.today <= concert.date %>
         <%= link_to attendance_path(@attendance),
           data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
             <div class="attended-icon">
-              <p>I attended <%= image_tag "i attended.svg", alt: "person check" %></p>
+              <p>I'm attending <%= image_tag "i attended.svg", alt: "person check" %></p>
             </div>
-          <% end %>
+        <% end %>
+      <% else %>
+        <%= link_to attendance_path(@attendance),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your attendance?" } do %>
+              <div class="attended-icon">
+                <p>I attended <%= image_tag "i attended.svg", alt: "person check" %></p>
+              </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
