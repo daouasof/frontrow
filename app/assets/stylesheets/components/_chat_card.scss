@@ -1,16 +1,43 @@
 .message-row {
   margin-bottom: 4px;
-  padding: 8px;
+  padding: 4px;
 }
 
 .message_card {
-  align-items: center;
-  margin-bottom: 8px;
-  padding: 8px 8px;
-  border: 1px solid rgb(235,235,235);
-  text-decoration: none;
+  padding: 20px;
+  object-fit: contain;
+}
+
+.message-card-user {
+  display: flex;
+  padding-left: 8px;
+}
+
+.message-gap {
+  gap: 10px;
+}
+
+.message-width {
+  width: 100%;
+}
+
+.message-time {
+  text-align: right;
+  margin-bottom: 0;
+}
+.sender-style, .receiver-style {
   width: 70%;
   max-width: 400px;
+  border-radius: 7px;
   padding: 8px;
   min-height: 80px;
+  box-shadow: 0px 0px 8px lighten($navy, 75%);
+}
+
+.sender-style {
+  background-color: white;
+}
+
+.receiver-style {
+  background-color: $white;
 }
