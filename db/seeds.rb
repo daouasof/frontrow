@@ -3,6 +3,10 @@ require "json"
 require "rest-client"
 require_relative "users"
 
+puts "Cleaning the messages table"
+Message.destroy_all
+puts "Cleaning the chatrooms table"
+Chatroom.destroy_all
 puts "Cleaning the comments table"
 Comment.destroy_all
 puts "Cleaning the reviews table"
