@@ -19,31 +19,30 @@
   </div>
 
   <div class="review-card-interactions" data-controller="review-like" data-review-like-count-value=<%= review.favoritors.count %> data-review-like-liked-value=<%= current_user.favorited?(review) %>>
-    <div>
-      <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
-    </div>
-    <div>
-      <p data-review-like-target="count"><%= review.comments.count %></p>
+    <div class="interation-section">
+      <div class="interaction-item">
+        <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
+      </div>
+      <div class="interaction-item">
+        <p data-review-comment-target="count"><%= review.comments.count %></p>
+      </div>
     </div>
 
-
-    <div>
-      <% if current_user.favorited?(review) %>
-         <%= link_to unlike_review_path(review), data: { review_like_target: "icon", action:"click->review-like#like" }  do %>
-            <%= render "shared/likes"%>
+    <div class="interation-section">
+      <div class="interaction-item">
+        <% if current_user.favorited?(review) %>
+          <%= link_to unlike_review_path(review), data: { review_like_target: "icon", action:"click->review-like#like" }  do %>
+              <%= render "shared/likes"%>
+            <% end %>
+        <% else %>
+          <%= link_to like_review_path(review), data: { turbo_method: :post, review_like_target: "icon", action:"click->review-like#like" }  do %>
+              <%= render "shared/not_liked"%>
           <% end %>
-      <% else %>
-        <%= link_to like_review_path(review), data: { turbo_method: :post, review_like_target: "icon", action:"click->review-like#like" }  do %>
-            <%= render "shared/not_liked"%>
         <% end %>
-      <% end %>
-    </div>
-
-
-
-
-    <div>
-        <p data-review-like-target="likes" ><%= review.favoritors.count %></p>
+      </div>
+      <div class="interaction-item">
+          <p data-review-like-target="likes" ><%= review.favoritors.count %></p>
+     </div>
     </div>
   </div>
 

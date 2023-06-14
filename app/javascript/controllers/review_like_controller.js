@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="review-like"
 export default class extends Controller {
-  static targets = ["likes", "icon","count"];
+  static targets = ["likes", "icon"];
   static values = {count: Number, liked: Boolean};
 
   connect() {
