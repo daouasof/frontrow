@@ -20,7 +20,7 @@
 
   <div class="grid-container">
     <% @concerts.each do |concert| %>
-      <%= link_to concert_path(concert) do %>
+      <%= link_to concert_path(concert), data: { toggle_upcoming_target: "link" } do %>
         <%= render "concert_card", concert: concert %>
       <% end %>
     <% end %>

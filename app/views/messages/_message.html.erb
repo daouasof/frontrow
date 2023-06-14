@@ -1,7 +1,15 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.username %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+<div class="d-flex align-items-center message-gap" >
+  <div>
+    <small>
+      <%= link_to user_path(message.user) do %>
+      <div class="message-card-user">
+        <%= cl_image_tag message.user.avatar.key, class:"avatar"  %>
+      </div>
+      <% end %>
+    </small>
+  </div>
+  <div id="message-<%= message.id %>" class="message-width">
+    <p ><%= message.content %></p>
+    <p class="message-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
+  </div>
 </div>
