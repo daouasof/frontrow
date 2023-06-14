@@ -1,4 +1,4 @@
-<div class="shadowed-box review-card" data-controller="review-comment" id="<%= review.id %>">
+<div class="shadowed-box review-card" data-controller="review-comment" id=<%= review.id %>>
   <%= link_to user_path(review.user) do %>
    <div class="review-card-user">
       <%= cl_image_tag review.user.avatar.key, class:"avatar"  %>
@@ -8,7 +8,19 @@
 
   <% unless review.photos.count == 0 %>
     <div class="review-card-media">
-      <%= cl_image_tag review.photos.first.key, class:"square-image"  %>
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag review.photos.first.key, class:“d-block w-100”  %>
+          </div>
+          <div class="carousel-item">
+            <%= cl_image_tag review.photos.first.key, class:“d-block w-100”  %>
+          </div>
+          <div class="carousel-item">
+            <%= cl_image_tag review.photos.first.key, class:“d-block w-100”  %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
   <div class="review-card-rating">
