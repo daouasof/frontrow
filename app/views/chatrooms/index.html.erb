@@ -2,16 +2,12 @@
 
 <div>
   <div>
-    <% @chatrooms_index.each do |chatroom| %>
+    <% @messages.each do |message| %>
       <ul>
-        <% if current_user.id == chatroom.participant1_id %>
-          <% @other_user = User.find(chatroom.participant2_id) %>
-        <% else %>
-          <% @other_user = User.find(chatroom.participant1_id) %>
-        <% end %>
-        <%= link_to chatroom_path(chatroom) do
-          @other_user.username
-        end %>
+      <%= message.chatroom.id %>
+        <%= message.find_other_user(current_user).username %>
+        <%= message.content %>
+        <%= message.created_at %>
       </ul>
     <% end %>
   </div>
