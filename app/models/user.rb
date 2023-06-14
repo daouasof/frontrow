@@ -1,4 +1,8 @@
+require "open-uri"
+
 class User < ApplicationRecord
+  after_create :set_default_avatar
+
   acts_as_favoritor
 
   has_one_attached :avatar
@@ -20,6 +24,22 @@ class User < ApplicationRecord
 
   def attendance_info(concert)
     find_attendance(concert)
+  end
+
+
+  def set_default_avatar
+    default_avatar_url = "https://hips.hearstapps.com/hmg-prod/images/sigourney-weaver-avatar-ii-the-way-of-water-1670323174.jpg?crop=0.500xw:0.949xh;0.299xw,0.0514xh&resize=1200:*"
+    default_banner_url = "https://townsquare.media/site/62/files/2021/11/attachment-brian-ruiz.jpg?w=980&q=75"
+
+    unless self.avatar.key.present?
+      avatar = URI.open(default_avatar_url)
+      self.avatar.attach(io: avatar, filename: "avatar.png", content_type: "image/png")
+    end
+
+    unless self.banner.key.present?
+      banner = URI.open(default_banner_url)
+      self.banner.attach(io: banner, filename: "banner.png", content_type: "image/png")
+    end
   end
 
   private

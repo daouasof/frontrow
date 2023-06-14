@@ -110,6 +110,8 @@ USERS.each do |user_hash|
   new_user.save!
 end
 
+user = User.create(username: "Clarence", age: 18, bio: "I'm just a cat.", email: "clarence@clarence.org", password: default_password, city: "Dublin")
+
 puts "Done!!!"
 
 puts "creating seed bowie attendance"
