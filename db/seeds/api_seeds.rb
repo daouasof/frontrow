@@ -29,6 +29,7 @@ concert = Concert.new
 concert.city = "Montreal"
 concert.venue = "L'Olympia"
 concert.date = Date.new(2023, 06, 14)
+concert.tickets_url = "https://www.ticketmaster.ca/event/31005E6327A28F7D?lang=en-ca&brand=lolympia&irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0k3%3AP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
 concert.artist_id = artist.id
 concert.save!
 
@@ -43,6 +44,7 @@ concert = Concert.new
 concert.city = "Montreal"
 concert.venue = "Bell Centre"
 concert.date = Date.new(2023, 06, 17)
+concert.tickets_url = "https://verifiedfan.ticketmaster.com/thecure2023?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kROP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
 concert.artist_id = artist.id
 concert.save!
 
@@ -57,6 +59,7 @@ concert = Concert.new
 concert.city = "Montreal"
 concert.venue = "Bell Centre"
 concert.date = Date.new(2023, 11, 20)
+concert.tickets_url = "https://www.ticketmaster.ca/bruce-springsteen-and-the-e-street-montreal-quebec-11-20-2023/event/31005E4CA5A51ACF?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kTuP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
 concert.artist_id = artist.id
 concert.save!
 
@@ -107,6 +110,11 @@ bands.each do |band|
     concert.city = show["venue"]["location"]
     concert.venue = show["venue"]["name"]
     concert.date = show["starts_at"]
+    if show["offers"].count == 0
+      concert.tickets_url = ""
+    else
+      concert.tickets_url = show["offers"][0]["url"]
+    end
     concert.artist_id = artist.id
     concert.save!
     puts "Created upcoming concert with id #{concert.id} for #{band[:name]}"
