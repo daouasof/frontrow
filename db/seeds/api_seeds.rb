@@ -23,6 +23,8 @@ puts "Hard coding concerts..."
 artist = Artist.create(name: "Tegan & Sara")
 photo = URI.open("https://www.rollingstone.com/wp-content/uploads/2022/10/TS_ICGU_Press-Photo_Crop-FINAL.jpg?w=1581&h=1054&crop=1")
 artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://images.squarespace-cdn.com/content/v1/582601b4440243fc471a91d0/1589936427914-K2JGGEEA8BFPW1QJDU85/TeganAndSara-rainbow.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
 concert = Concert.new
 concert.city = "Montreal"
 concert.venue = "L'Olympia"
@@ -35,6 +37,8 @@ puts "Created Tegan and Sara concert"
 artist = Artist.create(name: "The Cure")
 photo = URI.open("https://cdn.maximonline.ru/a6/69/c0/a669c0cfa8761c1adbf992c369c80e22/665x554_0xac120005_6630441991529055584.jpg")
 artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://media.pitchfork.com/photos/62e296a7340482e142b25509/16:9/w_1280,c_limit/The-Cure.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
 concert = Concert.new
 concert.city = "Montreal"
 concert.venue = "Bell Centre"
@@ -47,6 +51,8 @@ puts "Created The Cure concert"
 artist = Artist.create(name: "Bruce Springsteen")
 photo = URI.open("https://pyxis.nymag.com/v1/imgs/285/556/4cb8cb1d7be93a82be21cf454af04e5ab1-12-bruce-springsteen-2.rsquare.w700.jpg")
 artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://pbs.twimg.com/media/Eo522qqXIAIr6QV.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
 concert = Concert.new
 concert.city = "Montreal"
 concert.venue = "Bell Centre"
@@ -87,6 +93,8 @@ bands.each do |band|
   artist = Artist.create(name: "#{band[:name]}")
   photo = URI.open(band[:photo_url])
   artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+  banner = URI.open(band[:banner_url])
+  artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
   puts "Creating upcoming concerts for #{band[:name]}"
 
   upcoming_url = "https://rest.bandsintown.com/artists/id_#{band[:id]}/events?app_id=#{ENV['BANDS_IN_TOWN_API_KEY']}"
