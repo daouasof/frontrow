@@ -6,14 +6,12 @@
   <%= render "show_banner", concert: @concert %>
 <% end %>
 
-<div class="grid-container" >
+<div class="grid-reviews">
   <ul class="list-group">
     <% @reviews.each do |review| %>
-      <%= render "review_card", review: review %>
+      <div>
+        <%= render "review_card", review: review %>
+      </div>
     <% end %>
   </ul>
-</div>
-
-<div class= btn-back-concerts>
-  <%= link_to "Back to all Concerts", concerts_path %>
 </div>
