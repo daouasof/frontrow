@@ -8,19 +8,7 @@
 
   <% unless review.photos.count == 0 %>
     <div class="review-card-media">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= cl_image_tag review.photos.first.key, class:“d-block w-100”  %>
-          </div>
-          <div class="carousel-item">
-            <%= cl_image_tag review.photos.first.key, class:“d-block w-100”  %>
-          </div>
-          <div class="carousel-item">
-            <%= cl_image_tag review.photos.first.key, class:“d-block w-100”  %>
-          </div>
-        </div>
-      </div>
+      <%= cl_image_tag review.photos.first.key, class:"square-image" %>
     </div>
   <% end %>
   <div class="review-card-rating">
