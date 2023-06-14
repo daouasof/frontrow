@@ -2,7 +2,7 @@
 
 <div>
   <div>
-    <% if @messages.empty? %>
+    <% if @messages == nil %>
       <p>You don't have any messages</p>
     <% else %>
       <% @messages.each do |message| %>
