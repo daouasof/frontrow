@@ -6,7 +6,11 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatrooms = Chatroom.get_chatrooms(current_user)
-    @messages = @chatrooms.map { |chat| chat.messages.last }.sort_by(&:created_at).reverse
+    @chatrooms.each do |chatroom|
+      if !chatroom.messages.empty?
+        @messages = @chatrooms.map { |chat| chat.messages.last }.sort_by(&:created_at).reverse
+      end
+    end
   end
 
   # def unread

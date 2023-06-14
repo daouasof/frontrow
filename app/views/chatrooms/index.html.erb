@@ -2,13 +2,19 @@
 
 <div>
   <div>
-    <% @messages.each do |message| %>
-      <ul>
-      <%= message.chatroom.id %>
-        <%= message.find_other_user(current_user).username %>
-        <%= message.content %>
-        <%= message.created_at %>
-      </ul>
+    <% if @messages.empty? %>
+      <p>You don't have any messages</p>
+    <% else %>
+      <% @messages.each do |message| %>
+        <ul>
+          <%= link_to chatroom_path(message.chatroom) do %>
+          <%= message.chatroom.id %>
+          <%= message.find_other_user(current_user).username %>
+          <%= message.content %>
+          <%= message.created_at %>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
   </div>
 </div>
