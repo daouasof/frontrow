@@ -18,7 +18,7 @@
     <p><%= review.content %></p>
   </div>
 
-  <div class="review-card-interactions" data-controller="review-like">
+  <div class="review-card-interactions" data-controller="review-like" data-review-like-count-value=<%= review.comments.count %> data-review-like-liked-value=<%= current_user.favorited?(review) %>>
     <div>
       <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
     </div>
@@ -37,9 +37,7 @@
       <% end %>
     </div>
     <div>
-      <% if review.favoritors.count > 0  %>
-        <p><%= review.favoritors.count %></p>
-      <% end %>
+        <p data-review-like-target="likes"><%= review.favoritors.count %></p>
     </div>
   </div>
 
