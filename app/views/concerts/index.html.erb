@@ -1,17 +1,25 @@
 <div data-controller="toggle-upcoming">
-  <h1>Find your show</h1>
+  <div>
+    <h5>Find your show</h5>
+  </div>
 
   <%= form_with url: concerts_path, method: :get do %>
-        <%= text_field_tag :query_artist,
-              @artist,
-              placeholder: "Type an artist"
-          %>
-        <%= text_field_tag :query_city,
-              @city,
-              placeholder: "Type a city"
-          %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <% end %>
+<div class="search-form grid-container">
+
+          <%= text_field_tag :query_artist,
+                @artist,
+                placeholder: "Type an artist",
+                class: "search-input-style"
+            %>
+            <%= text_field_tag :query_city,
+                  @city,
+                  placeholder: "Type a city",
+                  class: "search-input-style"
+            %>
+
+          <%= submit_tag "Find", name: "", class: "btn" %>
+</div>
+  <% end %>
 
   <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" data-action="click->toggle-upcoming#hide">
