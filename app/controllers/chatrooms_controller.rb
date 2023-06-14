@@ -8,13 +8,13 @@ class ChatroomsController < ApplicationController
     @chatrooms = Chatroom.all
     @chatrooms_index = []
     @chatrooms.each do |chat|
+      # if current_user.id == chat.participant1_id
+      #   @other_user = User.find(chat.participant2_id)
+      # else
+      #   @other_user = User.find(chat.participant1_id)
+      # end
       if current_user.id == chat.participant1_id || current_user.id == chat.participant2_id
         @chatrooms_index << chat
-      end
-      if current_user.id == chat.participant1_id
-        @other_user = User.find(chat.participant2_id)
-      else
-        @other_user = User.find(chat.participant1_id)
       end
     end
   end

@@ -4,7 +4,14 @@
   <div>
     <% @chatrooms_index.each do |chatroom| %>
       <ul>
-        <%= @other_user.username %>
+        <% if current_user.id == chatroom.participant1_id %>
+          <% @other_user = User.find(chatroom.participant2_id) %>
+        <% else %>
+          <% @other_user = User.find(chatroom.participant1_id) %>
+        <% end %>
+        <%= link_to chatroom_path(chatroom) do
+          @other_user.username
+        end %>
       </ul>
     <% end %>
   </div>
