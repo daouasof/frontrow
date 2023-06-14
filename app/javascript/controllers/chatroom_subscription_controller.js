@@ -8,15 +8,15 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
-      { received: message => this.#insertMessageAndScroll(message) }
+      { received: data => this.#insertMessageAndScroll(data) }
     )
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
-  #insertMessageAndScroll(message) {
-    const currentUserIsSender = this.currentUserIdValue === this.data.sender_id
+  #insertMessageAndScroll(data) {
+    const currentUserIsSender = this.currentUserIdValue === data.sender_id
     const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
-    this.messagesTarget.insertAdjacentHTML("beforeend", message)
+    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
@@ -39,7 +39,7 @@ export default class extends Controller {
   }
 
   resetForm(event) {
-    event.target.reset(event)
+    event.target.reset()
   }
 
   disconnect() {
