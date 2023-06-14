@@ -32,7 +32,17 @@
 .review-card-interactions {
   display: flex;
   justify-content: flex-end;
+
+  .interation-section{
+    display: flex;
+    width: 45px;
+  }
+
+  .interaction-item{
+    padding-right: 3px;
+  }
 }
+
 
 .heart-fill {
   fill: $orange;

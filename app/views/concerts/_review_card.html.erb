@@ -1,4 +1,4 @@
-<div class="shadowed-box review-card" data-controller="review-comment" id="<%= review.id %>">
+<div class="shadowed-box review-card" data-controller="review-comment" id=<%= review.id %>>
   <%= link_to user_path(review.user) do %>
    <div class="review-card-user">
       <%= cl_image_tag review.user.avatar.key, class:"avatar"  %>
@@ -8,7 +8,7 @@
 
   <% unless review.photos.count == 0 %>
     <div class="review-card-media">
-      <%= cl_image_tag review.photos.first.key, class:"square-image"  %>
+      <%= cl_image_tag review.photos.first.key, class:"square-image" %>
     </div>
   <% end %>
   <div class="review-card-rating">
@@ -18,28 +18,31 @@
     <p><%= review.content %></p>
   </div>
 
-  <div class="review-card-interactions">
-    <div>
-      <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
+  <div class="review-card-interactions" data-controller="review-like" data-review-like-count-value=<%= review.favoritors.count %> data-review-like-liked-value=<%= current_user.favorited?(review) %>>
+    <div class="interation-section">
+      <div class="interaction-item">
+        <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
+      </div>
+      <div class="interaction-item">
+        <p data-review-comment-target="count"><%= review.comments.count %></p>
+      </div>
     </div>
-    <div>
-      <p><%= review.comments.count %></p>
-    </div>
-    <div>
-      <% if current_user.favorited?(review) %>
-        <%= link_to unlike_review_path(review), data: { turbo_method: :delete }  do %>
-          <%= render "shared/likes", class_icon: "heart-fill" %>
+
+    <div class="interation-section">
+      <div class="interaction-item">
+        <% if current_user.favorited?(review) %>
+          <%= link_to unlike_review_path(review), data: { review_like_target: "icon", action:"click->review-like#like" }  do %>
+              <%= render "shared/likes"%>
+            <% end %>
+        <% else %>
+          <%= link_to like_review_path(review), data: { turbo_method: :post, review_like_target: "icon", action:"click->review-like#like" }  do %>
+              <%= render "shared/not_liked"%>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= link_to like_review_path(review), data: { turbo_method: :post }  do %>
-          <%= render "shared/not_liked", class_icon: "heart-fill" %>
-        <% end %>
-      <% end %>
-    </div>
-    <div>
-      <% if review.favoritors.count > 0  %>
-        <p><%= review.favoritors.count %></p>
-      <% end %>
+      </div>
+      <div class="interaction-item">
+          <p data-review-like-target="likes" ><%= review.favoritors.count %></p>
+     </div>
     </div>
   </div>
 

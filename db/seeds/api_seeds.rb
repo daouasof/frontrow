@@ -18,10 +18,56 @@ Message.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
+puts "Hard coding concerts..."
+
+artist = Artist.create(name: "Tegan & Sara")
+photo = URI.open("https://www.rollingstone.com/wp-content/uploads/2022/10/TS_ICGU_Press-Photo_Crop-FINAL.jpg?w=1581&h=1054&crop=1")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://images.squarespace-cdn.com/content/v1/582601b4440243fc471a91d0/1589936427914-K2JGGEEA8BFPW1QJDU85/TeganAndSara-rainbow.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "L'Olympia"
+concert.date = Date.new(2023, 06, 14)
+concert.tickets_url = "https://www.ticketmaster.ca/event/31005E6327A28F7D?lang=en-ca&brand=lolympia&irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0k3%3AP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Tegan and Sara concert"
+
+artist = Artist.create(name: "The Cure")
+photo = URI.open("https://cdn.maximonline.ru/a6/69/c0/a669c0cfa8761c1adbf992c369c80e22/665x554_0xac120005_6630441991529055584.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://media.pitchfork.com/photos/62e296a7340482e142b25509/16:9/w_1280,c_limit/The-Cure.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "Bell Centre"
+concert.date = Date.new(2023, 06, 17)
+concert.tickets_url = "https://verifiedfan.ticketmaster.com/thecure2023?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kROP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created The Cure concert"
+
+artist = Artist.create(name: "Bruce Springsteen")
+photo = URI.open("https://pyxis.nymag.com/v1/imgs/285/556/4cb8cb1d7be93a82be21cf454af04e5ab1-12-bruce-springsteen-2.rsquare.w700.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://pbs.twimg.com/media/Eo522qqXIAIr6QV.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "Bell Centre"
+concert.date = Date.new(2023, 11, 20)
+concert.tickets_url = "https://www.ticketmaster.ca/bruce-springsteen-and-the-e-street-montreal-quebec-11-20-2023/event/31005E4CA5A51ACF?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kTuP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Springsteen concert"
 
 bands = [{ name: 'The Menzingers', id: '181106',
-           banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
-           photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+  banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
+  photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
          { name: 'The Gaslight Anthem', id: '16502',
            banner_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y",
            photo_url:"https://townsquare.media/site/838/files/2015/12/gaslightanthem1.jpg" },
@@ -50,6 +96,8 @@ bands.each do |band|
   artist = Artist.create(name: "#{band[:name]}")
   photo = URI.open(band[:photo_url])
   artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+  banner = URI.open(band[:banner_url])
+  artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
   puts "Creating upcoming concerts for #{band[:name]}"
 
   upcoming_url = "https://rest.bandsintown.com/artists/id_#{band[:id]}/events?app_id=#{ENV['BANDS_IN_TOWN_API_KEY']}"
@@ -62,6 +110,11 @@ bands.each do |band|
     concert.city = show["venue"]["location"]
     concert.venue = show["venue"]["name"]
     concert.date = show["starts_at"]
+    if show["offers"].count == 0
+      concert.tickets_url = ""
+    else
+      concert.tickets_url = show["offers"][0]["url"]
+    end
     concert.artist_id = artist.id
     concert.save!
     puts "Created upcoming concert with id #{concert.id} for #{band[:name]}"
@@ -83,6 +136,7 @@ bands.each do |band|
     puts "Created past concert with id #{concert.id} for #{band[:name]}"
   end
 end
+
 
 puts "creating users seeds Bowie, Paloma and us!"
 

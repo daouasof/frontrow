@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="review-comment"
 export default class extends Controller {
-  static targets = ["form", "comments"];
+  static targets = ["form", "comments", "count"];
 
   connect() {
   }
@@ -27,6 +27,8 @@ export default class extends Controller {
         }
         this.formTarget.outerHTML = data.form;
         this.formTarget.classList.remove("d-none");
+        this.countTarget.innerHTML = data.count;
+
       })
   }
 }
