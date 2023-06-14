@@ -1,6 +1,21 @@
 <%= render "homepage_banner" %>
+
+<% if @concerts.present? %>
+  <div>
+  <p>Upcoming shows near you</p>
+    <% @concerts.each do |concert| %>
+    <%#= concert.date.class %>
+      <% if (concert.date).after?(Date.today) %>
+        <%= link_to concert_path(concert) do %>
+          <%= render "concerts/concert_card", concert: concert %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
 <div>
-  <p>See your friends' latest updates...</p>
+  <p>Latest reviews</p>
 </div>
 
 <div class="grid-container">
