@@ -23,7 +23,7 @@
       <%= image_tag "comment.svg", alt: "comment", data: {action: "click->review-comment#display"}%>
     </div>
     <div>
-      <p data-review-like-target="count"><%= review.comments.count %></p>
+      <p data-review-comment-target="count"><%= review.comments.count %></p>
     </div>
 
 
@@ -38,9 +38,6 @@
         <% end %>
       <% end %>
     </div>
-
-
-
 
     <div>
         <p data-review-like-target="likes" ><%= review.favoritors.count %></p>
