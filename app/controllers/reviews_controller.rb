@@ -20,12 +20,19 @@ class ReviewsController < ApplicationController
 
   def like
     current_user.favorite(@review)
-    redirect_to concert_path(@review.concert)
+    respond_to do |format|
+      format.html { redirect_to concert_path(@review.concert) }
+      format.json
+    end
+
   end
 
   def unlike
     current_user.unfavorite(@review)
-    redirect_to concert_path(@review.concert)
+    respond_to do |format|
+      format.html { redirect_to concert_path(@review.concert) }
+      format.json
+    end
   end
 
   private

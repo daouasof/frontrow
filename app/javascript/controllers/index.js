@@ -13,6 +13,9 @@ application.register("hello", HelloController)
 import ReviewCommentController from "./review_comment_controller"
 application.register("review-comment", ReviewCommentController)
 
+import ReviewLikeController from "./review_like_controller"
+application.register("review-like", ReviewLikeController)
+
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
