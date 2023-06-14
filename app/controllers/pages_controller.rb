@@ -5,11 +5,11 @@ class PagesController < ApplicationController
     if current_user.present?
       @reviews = Review.all.reject { |review| review.user == current_user }
       if current_user.city.present?
-        @concerts = Concert.where( { city: current_user.city } )
+        @concerts = Concert.where( { city: current_user.city } ).order(date: :asc)
       end
     else
       @reviews = Review.all
-      # @concerts = Concert.where( { city: "Montreal"})
+      # @concerts = Concert.all
     end
   end
 end
