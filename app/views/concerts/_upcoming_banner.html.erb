@@ -12,7 +12,7 @@
 
   <div class="attended">
     <div>
-      <%= link_to concert_attendances_path(concert), data: { turbo_method: :post } do %>
+      <%= link_to concert.tickets_url, data: { turbo_method: :post } do %>
         <p>Buy tickets <i class="fa-solid fa-ticket" style="color: #f9f5eb;"></i></p>
       <% end %>
     </div>
