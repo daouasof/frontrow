@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [] do
     member do
-      post :like
-      delete :unlike
+      get :like
+      get :unlike
     end
     resources :comments, only: [:create]
 
