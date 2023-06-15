@@ -3,11 +3,7 @@
     <div class="container-banner">
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>
 
-      <div>
-        <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
           <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= concert.attendances.count %> users attending</p>
-        </button>
-      </div>
 
 
         <% if current_user.attended?(concert) %>
@@ -32,6 +28,5 @@
       </div>
     <% end %>
   </div>
-  <%= render "display_attenders" %>
 
 </div>
