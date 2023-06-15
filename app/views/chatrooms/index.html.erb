@@ -7,6 +7,22 @@
     <ul>
       <% @messages.each do |message| %>
         <%= link_to chatroom_path(message.chatroom) do %>
+          <div class="d-flex align-items-center message-gap" >
+  <div>
+    <small>
+      <%= link_to user_path(message.user) do %>
+      <div class="message-card-user">
+        <%= cl_image_tag message.user.avatar.key, class:"avatar"  %>
+      </div>
+      <% end %>
+    </small>
+  </div>
+  <div id="message-<%= message.id %>" class="message-width">
+    <p class="message-username"><strong><%= message.user.username %></strong></p>
+    <p ><%= message.content %></p>
+    <p class="message-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
+  </div>
+</div>
           <div class="chat-index-card shadowed-box">
             <%= message.chatroom.id %>
             <%= message.find_other_user(current_user).username %>
