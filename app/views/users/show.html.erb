@@ -53,6 +53,7 @@
         <p><strong><%= Artist.find(review.concert.artist_id).name %></strong></p>
         <p><%= "#{review.concert.city} - #{review.concert.date.strftime('%d/%m/%Y')}" %></p>
     <% end %>
+    </div>
 
       <div class="list-group user-review-card-content text-center" style="width: 125px">
         <%= render "shared/rating", review: review %>
