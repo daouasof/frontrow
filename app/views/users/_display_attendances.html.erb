@@ -1,0 +1,15 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="attendancesButton" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel"> <%= user.username %>'s shows</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <% @user.attendances.each do |attendance| %>
+      <%= link_to concert_path(attendance.concert) do %>
+        <%= render "user_card_attendance", attendance: attendance %>
+     <% end %>
+   <% end %>
+
+  </div>
+</div>
