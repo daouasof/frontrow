@@ -102,5 +102,89 @@ USERS = [
     email: "julia@frontrow.com",
     avatar_url: "https://images.unsplash.com/photo-1612976023590-be5b6a14051d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHNpbmdlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
     banner_url: "https://images.unsplash.com/photo-1563841930606-67e2bce48b78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y29uY2VydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    username: "Roger",
+    age: 30,
+    bio: "Love dat music",
+    email: "roger@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Eric",
+    age: 30,
+    bio: "Love dat music.",
+    email: "eric@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Amilia",
+    age: 30,
+    bio: "Love dat music.",
+    email: "amilia@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Virginia",
+    age: 30,
+    bio: "Love dat music.",
+    email: "virginia@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Alexanne",
+    age: 30,
+    bio: "Love dat music.",
+    email: "alexanne@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Louis",
+    age: 30,
+    bio: "Love dat music.",
+    email: "louis@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Tom Kim",
+    age: 30,
+    bio: "Love dat music.",
+    email: "tomkim@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Andy",
+    age: 30,
+    bio: "Love dat music.",
+    email: "andy@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Flo",
+    age: 30,
+    bio: "Love dat music.",
+    email: "flo@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Jean-Michel",
+    age: 30,
+    bio: "Love dat music.",
+    email: "jm@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Jean-Claude",
+    age: 30,
+    bio: "Love dat music.",
+    email: "jc@frontrow.com",
+    avatar_url:
+  },
+  {
+    username: "Clarence",
+    age: 30,
+    bio: "Love dat music.",
+    email: "clarence@frontrow.com",
+    avatar_url:
   }
 ]
