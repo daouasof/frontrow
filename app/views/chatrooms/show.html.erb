@@ -1,12 +1,16 @@
-<div class="chat-title d-flex align-items-start">
-  <small>
-      <%= link_to user_path(@other_user) do %>
+<div>
+  <div class= "chat-title d-flex align-items-center">
+    <small>
+      <%= link_to user_path(@user) do %>
       <div class="chat-index-card-user">
-        <%= cl_image_tag @other_user.avatar.key, class:"avatar"  %>
+        <%= cl_image_tag @user.avatar.key, class:"avatar"  %>
       </div>
       <% end %>
     </small>
-  <h5>Find your show</h5>
+    <div>
+      <h5><%= @user.username %></h5>
+    </div>
+  </div>
 </div>
 
 
