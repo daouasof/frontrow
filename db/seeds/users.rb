@@ -115,7 +115,7 @@ USERS = [
     age: 30,
     bio: "Love dat music.",
     email: "eric@frontrow.com",
-    avatar_url:
+    avatar_url: "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/79997705_10212887353456959_1321204426412654592_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kKBEq15DkZoAX-GSbfZ&_nc_ht=scontent-lga3-1.xx&oh=00_AfBAz-1ZN7jwiRObDav048JuAG7LGXNRBKZSVVlL58A-dA&oe=64B30784"
   },
   {
     username: "Amilia",
