@@ -108,7 +108,7 @@ USERS = [
     age: 30,
     bio: "Love dat music",
     email: "roger@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Eric",
@@ -122,69 +122,69 @@ USERS = [
     age: 30,
     bio: "Love dat music.",
     email: "amilia@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Virginia",
     age: 30,
     bio: "Love dat music.",
     email: "virginia@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Alexanne",
     age: 30,
     bio: "Love dat music.",
     email: "alexanne@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Louis",
     age: 30,
     bio: "Love dat music.",
     email: "louis@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Tom Kim",
     age: 30,
     bio: "Love dat music.",
     email: "tomkim@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Andy",
     age: 30,
     bio: "Love dat music.",
     email: "andy@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Flo",
     age: 30,
     bio: "Love dat music.",
     email: "flo@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Jean-Michel",
     age: 30,
     bio: "Love dat music.",
     email: "jm@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1661796013555-d2b8f22c4f78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0JTIwZmFjZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Jean-Claude",
     age: 30,
     bio: "Love dat music.",
     email: "jc@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1630305091217-903478c4fc5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0JTIwZmFjZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
   },
   {
     username: "Clarence",
     age: 30,
     bio: "Love dat music.",
     email: "clarence@frontrow.com",
-    avatar_url:
+    avatar_url: "https://images.unsplash.com/photo-1661604800261-423f1400eaad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2F0JTIwZmFjZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
   }
 ]
