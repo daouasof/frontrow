@@ -1,20 +1,20 @@
 <h1>chats</h1>
 
 <div>
-  <div class="chat-index-card shadowed-box>
-    <% if @messages == nil %>
-      <p>You don't have any messages</p>
-    <% else %>
+  <% if @messages.nil? %>
+    <p>You don't have any messages</p>
+  <% else %>
+    <ul>
       <% @messages.each do |message| %>
-        <ul>
-          <%= link_to chatroom_path(message.chatroom) do %>
-          <%= message.chatroom.id %>
-          <%= message.find_other_user(current_user).username %>
-          <%= message.content %>
-          <%= message.created_at %>
-          <% end %>
-        </ul>
+        <%= link_to chatroom_path(message.chatroom) do %>
+          <div class="chat-index-card shadowed-box">
+            <%= message.chatroom.id %>
+            <%= message.find_other_user(current_user).username %>
+            <%= message.content %>
+            <%= message.created_at %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </ul>
+  <% end %>
 </div>
