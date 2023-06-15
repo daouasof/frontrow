@@ -7,7 +7,7 @@
 <% else %>
     <% @messages.each do |message| %>
       <div>
-        <%= link_to chatroom_path(message.chatroom) do %>
+        <%= link_to chatroom_path(message.chatroom, user_id: message.find_other_user(current_user).id) do %>
           <div class="chat-index-card shadowed-box d-flex align-items-start message-gap" >
             <div>
               <small>

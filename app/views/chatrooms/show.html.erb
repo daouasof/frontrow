@@ -1,3 +1,15 @@
+<div class="chat-title d-flex align-items-start">
+  <small>
+      <%= link_to user_path(@other_user) do %>
+      <div class="chat-index-card-user">
+        <%= cl_image_tag @other_user.avatar.key, class:"avatar"  %>
+      </div>
+      <% end %>
+    </small>
+  <h5>Find your show</h5>
+</div>
+
+
 <div class="container chatroom"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
