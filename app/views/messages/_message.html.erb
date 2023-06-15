@@ -9,6 +9,7 @@
     </small>
   </div>
   <div id="message-<%= message.id %>" class="message-width">
+    <p class="message-username"><strong><%= message.user.username %></strong></p>
     <p ><%= message.content %></p>
     <p class="message-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
   </div>
