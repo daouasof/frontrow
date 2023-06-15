@@ -4,7 +4,7 @@
         <%= cl_image_tag comment.user.avatar.key, class:"avatar"  %>
     </div>
   <% end %>
-  <div>
+  <div class="comment-right">
     <p><strong><%= comment.user.username %></strong></p>
     <p><%= comment.content %></p>
   </div>
