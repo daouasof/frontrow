@@ -1,3 +1,19 @@
+<div>
+  <div class= "chat-title d-flex align-items-center">
+    <small>
+      <%= link_to user_path(@user) do %>
+      <div class="chat-index-card-user">
+        <%= cl_image_tag @user.avatar.key, class:"avatar"  %>
+      </div>
+      <% end %>
+    </small>
+    <div>
+      <h5><%= @user.username %></h5>
+    </div>
+  </div>
+</div>
+
+
 <div class="container chatroom"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
@@ -20,9 +36,9 @@
     <%= simple_form_for [@chatroom, @message],
         html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
         class: ""} do |f|%>
-      <div class="chat-form d-flex align-items-center">
+      <div class="chat-form d-flex align-items-start">
         <div class="chat-input flex-grow-1">
-          <%= f.input :content, label: false, input_html: {class: "review-input-style"} %>
+          <%= f.input :content, label: false, input_html: { class: "chat-input-style" } %>
         </div>
         <div>
           <%= f.submit "Send", class: "btn" %>
@@ -31,15 +47,3 @@
     <% end %>
   </div>
 </div>
-
-
- <%# <%= simple_form_for ( [review, @comment] ), html: {id:"comment_form"} do |f| %>
-    <%# <div class="new_review_form">
-      <div class="field">
-        <%= f.input :content, as: :text, label: false, placeholder:"Type your comment", input_html: {id:"content_field"} %>
-      <%# </div>
-      <div>
-        <%= f.button :submit, ">" %>
-      <%# </div> %>
-    <%# <% end %> %> %>
-  <%# </div> %> %> %>
