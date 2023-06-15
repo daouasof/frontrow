@@ -6,6 +6,7 @@
   margin-bottom: 8px;
   padding: 8px;
   padding-right: 8px;
+  padding-left: 15px;
   border: 1px solid rgb(235,235,235);
 }
 
@@ -13,7 +14,8 @@
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
-  padding: 0 0px;
+  // padding: 0 0px;
+
 }
 
 .chat-index-card p {

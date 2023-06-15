@@ -1,32 +1,32 @@
-<h1>chats</h1>
+<div>
+  <h5>Your messages</h5>
+</div>
 
 <% if @messages.nil? %>
   <p>You don't have any messages</p>
 <% else %>
-  <ul>
     <% @messages.each do |message| %>
-      <%= link_to chatroom_path(message.chatroom) do %>
-        <div class="chat-index-card shadowed-box d-flex align-items-center message-gap" >
-          <div>
-            <small>
-              <%= link_to user_path(message.user) do %>
-              <div class="index-card-user">
-                <%= cl_image_tag message.find_other_user(current_user).avatar.key, class:"avatar"  %>
-              </div>
+      <div>
+        <%= link_to chatroom_path(message.chatroom) do %>
+          <div class="chat-index-card shadowed-box d-flex align-items-center message-gap" >
+            <div>
+              <small>
+                <div class="index-card-user">
+                  <%= cl_image_tag message.find_other_user(current_user).avatar.key, class:"avatar"  %>
+                </div>
+              </small>
+            </div>
+            <div id="message-<%= message.id %>" class="message-width">
+              <p class="message-username"><strong><%= message.find_other_user(current_user).username %></strong></p>
+              <% if message.user.id != message.find_other_user(current_user).id %>
+                <p>You: <%= message.content %></p>
+              <% else %>
+                <p ><%= message.content %></p>
               <% end %>
-            </small>
+              <p class="message-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
+            </div>
           </div>
-          <div id="message-<%= message.id %>" class="message-width">
-            <p class="message-username"><strong><%= message.find_other_user(current_user).username %></strong></p>
-            <% if message.user.id != message.find_other_user(current_user).id %>
-              <p>You: <%= message.content %></p>
-            <% else %>
-              <p ><%= message.content %></p>
-            <% end %>
-            <p class="message-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
-  </ul>
 <% end %>
