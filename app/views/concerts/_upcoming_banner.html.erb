@@ -2,7 +2,7 @@
   <h2><%= concert.artist.name %></h2>
     <div class="container-banner">
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>
-      <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= pluralize(concert.attendances.count, "user") %> attended</p>
+          <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= pluralize(concert.attendances.count, "user") %> attending</p>
         <% if current_user.attended?(concert) %>
           <%= link_to "I'm attending", concert_attendances_path(concert), data: { turbo_method: :post }, class:"btn d-none" %>
         <% elsif  %>

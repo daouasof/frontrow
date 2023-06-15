@@ -1,0 +1,7 @@
+<div class="attending-card shadowed-box">
+  <%= cl_image_tag user.avatar.key, class:"avatar"  %>
+  <div class="attending-card-content">
+    <p><%= user.username %> </p>
+    <%= link_to "View profile", user_path(user) %>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<% @concert.attendances.each do |attendance| %>
+<% concert.attendances.each do |attendance| %>
   <%= link_to user_path(attendance.user) do %>
     <div class="attending-card shadowed-box">
       <%= cl_image_tag attendance.user.avatar.key, class:"avatar"  %>
