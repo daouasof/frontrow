@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @attendance = current_user.attendance_info(@concert)
     @review = Review.new(review_params)
     @review.attendance = current_user.attendance_info(@concert)
     if @review.save

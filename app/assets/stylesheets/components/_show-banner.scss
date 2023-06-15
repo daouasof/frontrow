@@ -25,9 +25,18 @@
 
 }
 
-.attended {
+.attending {
   display: flex;
   justify-content: space-between;
   margin-left: 12px;
   margin-right: 12px;
+}
+
+.attended {
+  text-align: end;
+  margin-right: 12px;
+}
+
+.offcanvas-body p {
+  color: $navy;
 }
