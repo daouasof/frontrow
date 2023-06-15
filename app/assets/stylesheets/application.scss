@@ -14,6 +14,10 @@
 @import "components/index";
 @import "pages/index";
 
+html, body {
+  overflow-x: hidden;
+}
+
 // .red-border {
 //   border: 1px solid red;
 // }
