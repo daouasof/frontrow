@@ -1,4 +1,4 @@
-<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @concert.artist.banner.key %>')">
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('<%= cl_image_path @concert.artist.banner.key %>')">
   <h2><%= concert.artist.name %></h2>
     <div class="container-banner">
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>

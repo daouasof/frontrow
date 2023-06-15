@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :users, only: [:update, :show]
+  resources :users, only: [:update, :show] do
+    get '/set_or_create_chatroom', to: 'chatrooms#set_or_create_chatroom'
+  end
 
   post '/follow', to: 'users#follow'
   post '/unfollow', to: 'users#unfollow'
