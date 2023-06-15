@@ -8,10 +8,10 @@
     <% @messages.each do |message| %>
       <div>
         <%= link_to chatroom_path(message.chatroom) do %>
-          <div class="chat-index-card shadowed-box d-flex align-items-center message-gap" >
+          <div class="chat-index-card shadowed-box d-flex align-items-start message-gap" >
             <div>
               <small>
-                <div class="index-card-user">
+                <div class="chat-index-card-user">
                   <%= cl_image_tag message.find_other_user(current_user).avatar.key, class:"avatar"  %>
                 </div>
               </small>

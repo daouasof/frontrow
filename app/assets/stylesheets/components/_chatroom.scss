@@ -27,4 +27,21 @@
       margin-bottom: 0;
     }
   }
+
+  .chat-input-style {
+    border-radius: 10px;
+    padding: 8px;
+    margin-top: 3px;
+    background: white;
+    border: none;
+    width: 100%;
+
+    border-radius: 7px;
+    box-shadow: 0px 0px 8px lighten($navy, 75%);
+    background: white;
+  }
+
+  .chat-form {
+    padding-bottom: 18px;
+  }
 }
