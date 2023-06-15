@@ -2,15 +2,15 @@
   <div>
     <small>
       <%= link_to user_path(message.user) do %>
-      <div class="message-card-user">
+      <div class="chat-index-card-user">
         <%= cl_image_tag message.user.avatar.key, class:"avatar"  %>
       </div>
       <% end %>
     </small>
   </div>
-  <div id="message-<%= message.id %>" class="message-width">
-    <p class="message-username"><strong><%= message.user.username %></strong></p>
+  <div id="message-<%= message.id %>" class="chat-index-width">
+    <p class="chat-index-username"><strong><%= message.user.username %></strong></p>
     <p ><%= message.content %></p>
-    <p class="message-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
+    <p class="chat-index-time"><i><%= message.created_at.strftime("%a at %H:%M") %></i></p>
   </div>
 </div>
