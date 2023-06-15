@@ -1,0 +1,7 @@
+<div class="attending-card shadowed-box">
+  <%= cl_image_tag attendance.concert.artist.photo.key, class: "square-image mh-75", style: "width: 75px; object-fit: cover" %>
+  <div class="attending-card-content">
+    <p><%= attendance.concert.artist.name %> </p>
+    <%= link_to "View concert", concert_path(attendance.concert) %>
+  </div>
+</div>

@@ -22,10 +22,14 @@
 
 <div class="d-flex card-stats-container justify-content-around text-center">
 
+<button data-bs-toggle="offcanvas" data-bs-target="#attendancesButton" aria-controls="offcanvasBottomPast">
   <div class="card-stats p-2">
     <h3><strong><%= @user.attendances.count %></strong></h3>
     <h3>Shows</h3>
     </div>
+    </button>
+  <%= render "display_attendances", user: @user %>
+
 
   <button data-bs-toggle="offcanvas" data-bs-target="#followerButton" aria-controls="offcanvasBottomPast">
     <div class="card-stats p-2">
