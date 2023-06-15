@@ -68,8 +68,11 @@ concert.save!
 puts "Created Springsteen concert"
 
 bands = [{ name: 'The Menzingers', id: '181106',
-  banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
-  photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+           banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
+           photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
+         { name: 'Bruce Springsteen', id: '26654',
+           banner_url: "https://pbs.twimg.com/media/Eo522qqXIAIr6QV.jpg",
+           photo_url:"https://pyxis.nymag.com/v1/imgs/285/556/4cb8cb1d7be93a82be21cf454af04e5ab1-12-bruce-springsteen-2.rsquare.w700.jpg" },
          { name: 'The Gaslight Anthem', id: '16502',
            banner_url: "https://www.punkrocktheory.com/sites/default/files/styles/image_style_huge_horizontal_rectangle/public/thegaslightanthem_0.jpg?itok=LwA_CX8y",
            photo_url:"https://townsquare.media/site/838/files/2015/12/gaslightanthem1.jpg" },
@@ -170,44 +173,85 @@ user = User.create(username: "Clarence", age: 18, bio: "I'm just a cat.", email:
 
 puts "Done!!!"
 
-puts "creating seed bowie attendance"
-bowies_concert = Concert.find_by(venue: "Le Studio TD")
+puts "creating attendances to Tegan and Sara"
+t_and_s_concert = Concert.find_by(venue: "L'Olympia")
+
+puts "creating bowies attendance"
 bowie = User.find_by(username: "Bowie")
-Attendance.create!(user: bowie, concert: bowies_concert)
+Attendance.create!(user: bowie, concert: t_and_s_concert)
 puts "done!"
 
 puts "creating seed cat attendance"
-cats_concert = Concert.find_by(venue: "Le Studio TD")
 cat = User.find_by(username: "Cat")
-Attendance.create!(user: cat, concert: cats_concert)
+Attendance.create!(user: cat, concert: t_and_s_concert)
 puts "done!"
 
 puts "creating seed antoine attendance"
-antoines_concert = Concert.find_by(venue: "Le Studio TD")
 antoine = User.find_by(username: "Antoine")
-Attendance.create!(user: antoine, concert: antoines_concert)
+Attendance.create!(user: antoine, concert: t_and_s_concert)
 puts "done!"
 
 puts "creating seed sofia attendance"
-sofias_concert = Concert.find_by(venue: "Le Studio TD")
 sofia = User.find_by(username: "Sofia")
-Attendance.create!(user: sofia, concert: sofias_concert)
+Attendance.create!(user: sofia, concert: t_and_s_concert)
 puts "done!"
 
 puts "creating seed doga attendance"
-dogas_concert = Concert.find_by(venue: "Le Studio TD")
 doga = User.find_by(username: "Doga")
-Attendance.create!(user: doga, concert: dogas_concert)
+Attendance.create!(user: doga, concert: t_and_s_concert)
 puts "done!"
 
+
+
+puts "seed writing doga review"
+doga_review = Review.new(
+  rating: 5,
+  content: "You just had to be there",
+  attendance: Attendance.find_by(user: doga, concert: t_and_s_concert)
+)
+doga_review.photos.attach(io: URI.open("https://pbs.twimg.com/media/CZb6EDiWkAAW-w2?format=jpg&name=large"),
+filename: "conert_photo_1", content_type: "image/png")
+doga_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
+filename: "conert_photo_2", content_type: "image/png")
+doga_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
+filename: "conert_photo_3", content_type: "image/png")
+
+doga_review.save!
+puts "done!"
+
+puts "seed writing sofias review"
+sofias_review = Review.new(
+  rating: 3,
+  content: "I think I like Nickelback better",
+  attendance: Attendance.find_by(user: sofia, concert: t_and_s_concert)
+)
+sofias_review.photos.attach(io: URI.open("https://i0.wp.com/www.photoshelter.com/img-get/I0000niEPHJNXXGY/s/1000/tegan-and-sara-7549.jpg?w=1170"),
+filename: "conert_photo_1", content_type: "image/png")
+sofias_review.photos.attach(io: URI.open("https://media.istockphoto.com/id/1247853982/photo/cheering-crowd-with-hands-in-air-at-music-festival.jpg?s=170667a&w=0&k=20&c=3jiqrNPSnaHiVGevyMIK0m_3V3VnZXYefKbjxyl1anM="),
+filename: "conert_photo_2", content_type: "image/png")
+sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
+filename: "conert_photo_3", content_type: "image/png")
+sofias_review.save!
+puts "done!"
+
+puts "seed writing bowies review"
+bowies_review = Review.new(
+  rating: 5,
+  content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
+  attendance: Attendance.find_by(user: bowie, concert: t_and_s_concert)
+)
+
+bowies_review.save!
+puts "done!"
 
 puts "seed writing cats review"
 cats_review = Review.new(
   rating: 4,
   content: "Honestly, I had an awesome time but I feel like the sound was lacking just a little bit of vocals. Otherwise
   , incredible performance and experience!",
-  attendance: Attendance.find_by(user: cat)
+  attendance: Attendance.find_by(user: cat, concert: t_and_s_concert)
 )
+
 cats_review.photos.attach(io: URI.open("https://destination-ontario-prod.s3.ca-central-1.amazonaws.com/files/s3fs-public/styles/article_masthead/public/2021-10/great-outdoo-venues-live-music-lovers.jpg?VersionId=Zr8J.0RRlDKcNYF6Vz1hOVy.YsH7J1aT&h=7da987e6&itok=2bB9Km5t"),
 filename: "conert_photo_1", content_type: "image/png")
 cats_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
@@ -218,67 +262,20 @@ filename: "conert_photo_3", content_type: "image/png")
 cats_review.save!
 puts "done!"
 
-puts "seed writing bowies review"
-bowies_review = Review.new(
-  rating: 5,
-  content: "What an incredible show! I'm blown away. If you get the chance, this is a MUST SEE",
-  attendance: Attendance.find_by(user: bowie)
-)
-# bowies_review.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muse_in_Sydney.jpg/800px-Muse_in_Sydney.jpg"),
-#                             filename: "conert_photo_1", content_type: "image/png")
-# bowies_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
-#                             filename: "conert_photo_2", content_type: "image/png")
-# bowies_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
-#                             filename: "conert_photo_3", content_type: "image/png")
-
-bowies_review.save!
-puts "done!"
-
 puts "seed writing antoines review"
 antoines_review = Review.new(
   rating: 5,
   content: "Amazeballs!!!!!!",
-  attendance: Attendance.find_by(user: antoine)
+  attendance: Attendance.find_by(user: antoine, concert: t_and_s_concert)
 )
 antoines_review.photos.attach(io: URI.open("https://images.dailyhive.com/20161006093650/Tegan-Sara-Brandon-Artis-Photography-12.jpg"),
-                          filename: "conert_photo_1", content_type: "image/png")
+filename: "conert_photo_1", content_type: "image/png")
 antoines_review.photos.attach(io: URI.open("https://www.livingstonmusic.co.uk/wp-content/uploads/2020/11/wp2097452.jpg"),
-                          filename: "conert_photo_2", content_type: "image/png")
+filename: "conert_photo_2", content_type: "image/png")
 antoines_review.photos.attach(io: URI.open("https://the-peak.ca/wp-content/uploads/2018/05/Cell-phones-at-concerts.jpg"),
-                          filename: "conert_photo_3", content_type: "image/png")
+filename: "conert_photo_3", content_type: "image/png")
 
 antoines_review.save!
-puts "done!"
-
-puts "seed writing sofias review"
-sofias_review = Review.new(
-  rating: 3,
-  content: "I think I like Nickelback better",
-  attendance: Attendance.find_by(user: sofia)
-)
-sofias_review.photos.attach(io: URI.open("https://i0.wp.com/www.photoshelter.com/img-get/I0000niEPHJNXXGY/s/1000/tegan-and-sara-7549.jpg?w=1170"),
-                          filename: "conert_photo_1", content_type: "image/png")
-sofias_review.photos.attach(io: URI.open("https://media.istockphoto.com/id/1247853982/photo/cheering-crowd-with-hands-in-air-at-music-festival.jpg?s=170667a&w=0&k=20&c=3jiqrNPSnaHiVGevyMIK0m_3V3VnZXYefKbjxyl1anM="),
-                          filename: "conert_photo_2", content_type: "image/png")
-sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
-                          filename: "conert_photo_3", content_type: "image/png")
-sofias_review.save!
-puts "done!"
-
-puts "seed writing doga review"
-doga_review = Review.new(
-  rating: 5,
-  content: "You just had to be there",
-  attendance: Attendance.find_by(user: doga)
-)
-doga_review.photos.attach(io: URI.open("https://pbs.twimg.com/media/CZb6EDiWkAAW-w2?format=jpg&name=large"),
-                          filename: "conert_photo_1", content_type: "image/png")
-doga_review.photos.attach(io: URI.open("https://en.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77888/yoyo-palais-de-tokyo-concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-cedric-canezza/11967098-1-fre-FR/Yoyo-Palais-de-Tokyo-Concert-et-lasers-bleus-%7C-630x405-%7C-%C2%A9-Cedric-Canezza.jpg"),
-                          filename: "conert_photo_2", content_type: "image/png")
-doga_review.photos.attach(io: URI.open("https://turntable.kagiso.io/images/iStock-1181169462.width-800.jpg"),
-                          filename: "conert_photo_3", content_type: "image/png")
-
-doga_review.save!
 puts "done!"
 
 puts "seed commenting on review"
