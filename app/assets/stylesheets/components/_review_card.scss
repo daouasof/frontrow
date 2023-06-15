@@ -56,6 +56,7 @@
 }
 
 .new_review_form {
+  margin-top: 10px;
   display: flex;
   grid-column: 2;
 
@@ -63,4 +64,9 @@
     flex-grow: 1;
     margin-right: 8px;
   }
+}
+
+.comment-right {
+  padding-left: 7px;
+  padding-top: 7px;
 }
