@@ -2,7 +2,15 @@
   <h2><%= concert.artist.name %></h2>
     <div class="container-banner">
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>
-      <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= concert.attendances.count %> users attending</p>
+
+<div>
+      <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+        <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= concert.attendances.count %> users attending</p>
+      </button>
+
+</div>
+
+
         <% if current_user.attended?(concert) %>
           <%= link_to "I'm attending", concert_attendances_path(concert), data: { turbo_method: :post }, class:"btn d-none" %>
         <% elsif  %>
@@ -25,5 +33,6 @@
       </div>
     <% end %>
   </div>
+  <%= render "display_attenders" %>
 
 </div>
