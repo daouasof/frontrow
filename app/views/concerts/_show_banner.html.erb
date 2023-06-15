@@ -4,7 +4,7 @@
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>
       <div>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottomPast">
-          <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= pluralize(concert.attendances.count, "user") %> attended</p>
+          <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= pluralize(concert.attendances.count, "fan") %> attended</p>
         </button>
         <%= render "display_attenders_past" %>
       </div>
