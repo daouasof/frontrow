@@ -2,14 +2,12 @@
   <h2><%= concert.artist.name %></h2>
     <div class="container-banner">
       <p> <%= concert.venue %> -  <%= concert.city %> - <%= concert.date.strftime('%d/%m/%Y') %> </p>
-
       <div>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottomPast">
-          <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= concert.attendances.count %> users attended</p>
+          <p><%= image_tag "pplattended.svg", alt: "people check" %> <%= pluralize(concert.attendances.count, "user") %> attended</p>
         </button>
         <%= render "display_attenders_past" %>
       </div>
-
         <% if current_user.attended?(concert) %>
           <%= link_to "Post a review", new_concert_review_path(concert, @review), class:"btn"%>
         <% else %>

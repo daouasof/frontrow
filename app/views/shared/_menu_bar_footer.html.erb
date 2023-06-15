@@ -20,7 +20,9 @@
       <%= image_tag "Profile.svg", alt: "profile" %>
     <% end %>
   <% else %>
-    <%= image_tag "Profile.svg", alt: "profile" %>
+    <%= link_to user_session_path do %>
+      <%= image_tag "Profile.svg", alt: "profile" %>
+    <% end %>
   <% end %>
   </div>
 </div>
