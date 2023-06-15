@@ -31,7 +31,7 @@
       <h3>Followers</h3>
     </div>
   </button>
-  <%= render "display_followers" %>
+  <%= render "display_followers", user: @user %>
 
   <button data-bs-toggle="offcanvas" data-bs-target="#followingButton" aria-controls="offcanvasBottomPast">
     <div class="card-stats p-2">
@@ -39,7 +39,7 @@
       <h3>Following</h3>
     </div>
   </button>
-  <%= render "display_following" %>
+  <%= render "display_following", user: @user %>
 </div>
 
 <div class="grid-container">
