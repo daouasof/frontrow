@@ -35,9 +35,10 @@ USERS = [
     username: "Kirstin",
     age: 29,
     bio: "Hey, I'm Kirstin! I love going to shows, but I love talking about them even more.",
+    city: "Vancouver",
     email: "kirstin@frontrow.com",
     avatar_url: "https://cdn.dribbble.com/users/473764/screenshots/16521351/media/546fd6236584ca8fb2600cf40ea77518.png?compress=1&resize=400x300&vertical=center",
-    banner_url: "https://images.unsplash.com/photo-1546707012-c46675f12716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80"
+    banner_url: "https://images.unsplash.com/photo-1546707012-c46675f12716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80",
   },
   {
     username: "Sofia",
