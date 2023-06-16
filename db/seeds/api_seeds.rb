@@ -301,12 +301,14 @@ cat = User.find_by(username: "Cat")
 Attendance.create!(user: cat, concert: bruce_concert)
 puts "done!"
 
-15.times do
-  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
+puts "creating attendances for Bruce"
+users = User.where.not(username: "Cat").where.not(username: "Kirstin").all
+users.first(15).each do |user|
   puts "creating seed #{user.username} attendance"
   Attendance.create!(user: user, concert: bruce_concert)
-  puts "done!"
 end
+puts "done!"
+
 
 puts "creatting attendances for Gojira"
 gojira = Artist.find_by(name: "Gojira")
