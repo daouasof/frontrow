@@ -373,4 +373,12 @@ ines = User.find_by(username: "Ines")
 Attendance.create!(user: ines, concert: gojira_concert)
 puts "done!"
 
+puts "creating sofia's attendances"
+artists = Artist.all
+sofia = User.find_by(username: "Sofia")
+artists.each do |artista|
+  sofia_concert = Concert.find_by(artist_id: artista.id, city: Montreal)
+  Attendance.create!(user: sofia, concert: sofia_concert)
+end
+
 puts "ALL DONE!!!!!!!!"
