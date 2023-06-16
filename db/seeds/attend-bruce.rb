@@ -30,3 +30,18 @@ puts "creating seed Ines attendance"
 ines = User.find_by(username: "Ines")
 Attendance.create!(user: ines, concert: bruce_concert)
 puts "done!"
+
+puts "creating seed Jean-Claude attendance"
+jean-Claude = User.find_by(username: "Jean-Claude")
+Attendance.create!(user: jean-Claude, concert: bruce_concert)
+puts "done!"
+
+puts "creating seed Clarence attendance"
+clarence = User.find_by(username: "Clarence")
+Attendance.create!(user: clarence, concert: bruce_concert)
+puts "done!"
+
+puts "creating seed Flo attendance"
+flo = User.find_by(username: "Flo")
+Attendance.create!(user: flo, concert: bruce_concert)
+puts "done!"
