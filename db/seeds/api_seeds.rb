@@ -348,7 +348,7 @@ Attendance.create!(user: cat, concert: bruce_concert)
 puts "done!"
 
 15.times do
-  user = User.where.not(username: "Cat").sample
+  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
   puts "creating seed #{user.username} attendance"
   Attendance.create!(user: user, concert: bruce_concert)
   puts "done!"
