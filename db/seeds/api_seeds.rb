@@ -169,8 +169,6 @@ USERS.each do |user_hash|
   new_user.save!
 end
 
-user = User.create(username: "Clarence", age: 18, bio: "I'm just a cat.", email: "clarence@clarence.org", password: default_password, city: "Dublin")
-
 puts "Done!!!"
 
 puts "creating attendances to Tegan and Sara"
@@ -279,5 +277,7 @@ antoines_review.save!
 puts "done!"
 
 puts "seed commenting on review"
-Comment.create!(content: "I agree!!!! We are lucky we got to see that!", user: User.last, review: Review.first)
+Comment.create!(content: "Your music tastes are questionable... At best.", user: antoine, review: sofias_review)
+Comment.create!(content: "You're just jealous that Chad Kroeger has better hair than you.", user: sofia, review: sofias_review)
+Comment.create!(content: "Gosh, I love social media.", user: cat, review: sofias_review)
 puts "all done!"
