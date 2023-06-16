@@ -60,8 +60,22 @@ concert.tickets_url = ""
 concert.artist_id = artist.id
 concert.save!
 
-puts "Created Tegan and Sara concert"
 puts "Hard coding Montreal concerts..."
+
+artist = Artist.create(name: "Gojira")
+photo = URI.open("https://media.pitchfork.com/photos/5f29c09e8fd5732600c348a2/2:1/w_2560%2Cc_limit/Gojira%2520-%25202020%2520-%2520Jimmy%2520Fontaine%2520-%2520LO.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://evenko.ca/_uploads/event/51493/splash.jpg?v=1674744593")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "Place Bell"
+concert.date = Date.new(2023, 8, 18)
+concert.tickets_url = "https://www.ticketmaster.ca/the-megamonsters-tour-gojira-and-mastodon-laval-quebec-08-18-2023/event/31005E2D8ABA2215"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Gojira oncert"
 
 artist = Artist.create(name: "Tegan & Sara")
 photo = URI.open("https://www.rollingstone.com/wp-content/uploads/2022/10/TS_ICGU_Press-Photo_Crop-FINAL.jpg?w=1581&h=1054&crop=1")
