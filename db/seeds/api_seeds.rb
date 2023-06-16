@@ -20,108 +20,6 @@ Chatroom.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
-puts "Hard coding Vancouver shows..."
-artist = Artist.create(name: "boygenius")
-photo = URI.open("https://assets-global.website-files.com/60444c8a09ebdbe635864d58/64223261393986b271bae894_boygenius---press-photo-new.jpg")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://m.media-amazon.com/images/I/81+oTyZWkiL._UF1000,1000_QL80_.jpg")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Vancouver"
-concert.venue = "PNE Amphitheatre"
-concert.date = Date.new(2023, 07, 27)
-concert.tickets_url = ""
-concert.artist_id = artist.id
-concert.save!
-
-artist = Artist.create(name: "Muse")
-photo = URI.open("https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Vancouver"
-concert.venue = "Rogers Arena"
-concert.date = Date.new(2023, 11, 05)
-concert.tickets_url = ""
-concert.artist_id = artist.id
-concert.save!
-
-artist = Artist.create(name: "The National")
-photo = URI.open("https://i.guim.co.uk/img/media/6e9324e8e0fc7ee95ab6d9ad3f4855973a140adb/0_13_6720_4032/master/6720.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=3b527331203d3cbff6bdc23d21b7090c")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://static01.nyt.com/images/2019/05/22/arts/22national-promo/merlin_155143842_e41b6019-8eac-4f44-b127-df25ef92a539-superJumbo.jpg")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Vancouver"
-concert.venue = "Commodore Ballroom"
-concert.date = Date.new(2023, 10, 11)
-concert.tickets_url = ""
-concert.artist_id = artist.id
-concert.save!
-
-puts "Hard coding Montreal concerts..."
-
-artist = Artist.create(name: "Gojira")
-photo = URI.open("https://media.pitchfork.com/photos/5f29c09e8fd5732600c348a2/2:1/w_2560%2Cc_limit/Gojira%2520-%25202020%2520-%2520Jimmy%2520Fontaine%2520-%2520LO.jpg")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://evenko.ca/_uploads/event/51493/splash.jpg?v=1674744593")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Montreal"
-concert.venue = "Place Bell"
-concert.date = Date.new(2023, 8, 18)
-concert.tickets_url = "https://www.ticketmaster.ca/the-megamonsters-tour-gojira-and-mastodon-laval-quebec-08-18-2023/event/31005E2D8ABA2215"
-concert.artist_id = artist.id
-concert.save!
-
-puts "Created Gojira oncert"
-
-artist = Artist.create(name: "Tegan & Sara")
-photo = URI.open("https://www.rollingstone.com/wp-content/uploads/2022/10/TS_ICGU_Press-Photo_Crop-FINAL.jpg?w=1581&h=1054&crop=1")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://images.squarespace-cdn.com/content/v1/582601b4440243fc471a91d0/1589936427914-K2JGGEEA8BFPW1QJDU85/TeganAndSara-rainbow.jpg")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Montreal"
-concert.venue = "L'Olympia"
-concert.date = Date.new(2023, 06, 14)
-concert.tickets_url = "https://www.ticketmaster.ca/event/31005E6327A28F7D?lang=en-ca&brand=lolympia&irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0k3%3AP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
-concert.artist_id = artist.id
-concert.save!
-
-puts "Created Tegan and Sara concert"
-
-artist = Artist.create(name: "The Cure")
-photo = URI.open("https://cdn.maximonline.ru/a6/69/c0/a669c0cfa8761c1adbf992c369c80e22/665x554_0xac120005_6630441991529055584.jpg")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://media.pitchfork.com/photos/62e296a7340482e142b25509/16:9/w_1280,c_limit/The-Cure.jpg")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Montreal"
-concert.venue = "Bell Centre"
-concert.date = Date.new(2023, 06, 17)
-concert.tickets_url = "https://verifiedfan.ticketmaster.com/thecure2023?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kROP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
-concert.artist_id = artist.id
-concert.save!
-
-puts "Created The Cure concert"
-
-artist = Artist.create(name: "Bruce Springsteen")
-photo = URI.open("https://pyxis.nymag.com/v1/imgs/285/556/4cb8cb1d7be93a82be21cf454af04e5ab1-12-bruce-springsteen-2.rsquare.w700.jpg")
-artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
-banner = URI.open("https://pbs.twimg.com/media/Eo522qqXIAIr6QV.jpg")
-artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
-concert = Concert.new
-concert.city = "Montreal"
-concert.venue = "Bell Centre"
-concert.date = Date.new(2023, 11, 20)
-concert.tickets_url = "https://www.ticketmaster.ca/bruce-springsteen-and-the-e-street-montreal-quebec-11-20-2023/event/31005E4CA5A51ACF?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kTuP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
-concert.artist_id = artist.id
-concert.save!
-
-puts "Created Springsteen concert"
-
 bands = [{ name: 'The Menzingers', id: '181106',
            banner_url: "https://thefader-res.cloudinary.com/private_images/c_limit,w_1024/c_crop,h_418,w_803,x_83,y_171,f_auto,q_auto:eco/TheMenzingers_JessFlynn_-065_Web_xvx0zq/TheMenzingers_JessFlynn_-065_Web_xvx0zq.jpg",
            photo_url:"https://riotfest.org/wp-content/uploads/2019/10/2019-MENZOS-QA_WEB.jpg" },
@@ -197,6 +95,109 @@ bands.each do |band|
   end
 end
 
+puts "Hard coding Vancouver shows..."
+artist = Artist.create(name: "boygenius")
+photo = URI.open("https://assets-global.website-files.com/60444c8a09ebdbe635864d58/64223261393986b271bae894_boygenius---press-photo-new.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://m.media-amazon.com/images/I/81+oTyZWkiL._UF1000,1000_QL80_.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Vancouver"
+concert.venue = "PNE Amphitheatre"
+concert.date = Date.new(2023, 07, 27)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+artist = Artist.find_by(name: "Muse")
+concert = Concert.new
+concert.city = "Vancouver"
+concert.venue = "Rogers Arena"
+concert.date = Date.new(2023, 11, 05)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+artist = Artist.create(name: "The National")
+photo = URI.open("https://i.guim.co.uk/img/media/6e9324e8e0fc7ee95ab6d9ad3f4855973a140adb/0_13_6720_4032/master/6720.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=3b527331203d3cbff6bdc23d21b7090c")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://static01.nyt.com/images/2019/05/22/arts/22national-promo/merlin_155143842_e41b6019-8eac-4f44-b127-df25ef92a539-superJumbo.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Vancouver"
+concert.venue = "Commodore Ballroom"
+concert.date = Date.new(2023, 10, 11)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+puts "Hard coding Montreal concerts..."
+
+artist = Artist.find_by(name: "Gojira")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "Place Bell"
+concert.date = Date.new(2023, 8, 18)
+concert.tickets_url = "https://www.ticketmaster.ca/the-megamonsters-tour-gojira-and-mastodon-laval-quebec-08-18-2023/event/31005E2D8ABA2215"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Gojira concert"
+
+artist = Artist.create(name: "Tegan & Sara")
+photo = URI.open("https://www.rollingstone.com/wp-content/uploads/2022/10/TS_ICGU_Press-Photo_Crop-FINAL.jpg?w=1581&h=1054&crop=1")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://images.squarespace-cdn.com/content/v1/582601b4440243fc471a91d0/1589936427914-K2JGGEEA8BFPW1QJDU85/TeganAndSara-rainbow.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "L'Olympia"
+concert.date = Date.new(2023, 06, 14)
+concert.tickets_url = "https://www.ticketmaster.ca/event/31005E6327A28F7D?lang=en-ca&brand=lolympia&irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0k3%3AP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Tegan and Sara concert"
+
+artist = Artist.create(name: "The Cure")
+photo = URI.open("https://cdn.maximonline.ru/a6/69/c0/a669c0cfa8761c1adbf992c369c80e22/665x554_0xac120005_6630441991529055584.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://media.pitchfork.com/photos/62e296a7340482e142b25509/16:9/w_1280,c_limit/The-Cure.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "Bell Centre"
+concert.date = Date.new(2023, 06, 17)
+concert.tickets_url = "https://verifiedfan.ticketmaster.com/thecure2023?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kROP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created The Cure concert"
+
+puts "hard coding Springsteen concert"
+
+artist = Artist.find_by(name: "Bruce Springsteen")
+concert = Concert.new
+concert.city = "Montreal"
+concert.venue = "Bell Centre"
+concert.date = Date.new(2023, 11, 20)
+concert.tickets_url = "https://www.ticketmaster.ca/bruce-springsteen-and-the-e-street-montreal-quebec-11-20-2023/event/31005E4CA5A51ACF?irgwc=1&clickid=w0iQP30LCxyPR5lTCnwEzVSsUkFx0kTuP1tax40&camefrom=CFC_BUYAT_219208&impradid=219208&REFERRAL_ID=tmfeedbuyat219208&wt.mc_id=aff_BUYAT_219208&utm_source=219208-Bandsintown&impradname=Bandsintown&utm_medium=affiliate&ircid=4272"
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Springsteen concert"
+
+artist = Artist.find_by(name: "Tool")
+concert = Concert.new
+concert.city = "Chicago"
+concert.venue = "Stadium"
+concert.date = Date.new(2023, 05, 20)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Tool Chicago concert"
+
 
 puts "creating users seeds Bowie, Paloma and us!"
 
@@ -244,17 +245,85 @@ antoine = User.find_by(username: "Antoine")
 Attendance.create!(user: antoine, concert: t_and_s_concert)
 puts "done!"
 
-puts "creating seed sofia attendance"
-sofia = User.find_by(username: "Sofia")
-Attendance.create!(user: sofia, concert: t_and_s_concert)
-puts "done!"
-
 puts "creating seed doga attendance"
 doga = User.find_by(username: "Doga")
 Attendance.create!(user: doga, concert: t_and_s_concert)
 puts "done!"
 
+puts "creating sofia's attendances"
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: t_and_s_concert)
+puts "done!"
 
+the_cure = Artist.find_by(name: "The Cure")
+the_cure_concert = Concert.find_by(artist_id: the_cure.id, venue: "Bell Centre")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: the_cure_concert)
+puts "done!"
+
+louise = Artist.find_by(name: "Louise Attaque")
+louise_concert = Concert.find_by(artist_id: louise.id, city: "Paris")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: louise_concert)
+puts "done!"
+
+tool = Artist.find_by(name: "Tool")
+tool_concert = Concert.find_by(artist_id: tool.id, city: "Chicago")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: tool_concert)
+puts "done!"
+
+puts "creating cat's attendance to Tool"
+tool = Artist.find_by(name: "Tool")
+tool_concert = Concert.find_by(artist_id: tool.id, city: "Chicago")
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: tool_concert)
+puts "done!"
+
+# artists = Artist.all
+# sofia_artist = artists.where.not(name: "Tool")
+# sofia = User.find_by(username: "Sofia")
+# sofia_artist.each do |artista|
+#   sofia_concert = Concert.find_by(artist_id: artista.id)
+#   if sofia_concert.city == "Montreal"
+#     Attendance.create!(user: sofia, concert: sofia_concert)
+#   end
+# end
+
+puts "creatting attendances for Bruce Springsteen"
+bruce = Artist.find_by(name: "Bruce Springsteen")
+bruce_concert = Concert.find_by(artist_id: bruce.id, venue: "Bell Centre")
+
+puts "creating seed cat attendance"
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: bruce_concert)
+puts "done!"
+
+15.times do
+  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
+  puts "creating seed #{user.username} attendance"
+  Attendance.create!(user: user, concert: bruce_concert)
+  puts "done!"
+end
+
+puts "creatting attendances for Gojira"
+gojira = Artist.find_by(name: "Gojira")
+gojira_concert = Concert.find_by(artist_id: gojira.id, venue: "Place Bell")
+
+puts "creating seed Cat attendance"
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: gojira_concert)
+puts "done!"
+
+puts "creating seed Stephane attendance"
+stephane = User.find_by(username: "Stephane")
+Attendance.create!(user: stephane, concert: gojira_concert)
+puts "done!"
+
+puts "creating seed Ines attendance"
+ines = User.find_by(username: "Ines")
+Attendance.create!(user: ines, concert: gojira_concert)
+puts "done!"
 
 puts "seed writing doga review"
 doga_review = Review.new(
@@ -285,6 +354,26 @@ filename: "conert_photo_2", content_type: "image/png")
 sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
 filename: "conert_photo_3", content_type: "image/png")
 sofias_review.save!
+puts "done!"
+
+sofias_review_2 = Review.new(
+  rating: 5,
+  content: "Incroyable!!!!!!!!!!",
+  attendance: Attendance.find_by(user: sofia, concert: louise_concert)
+)
+sofias_review_2.photos.attach(io: URI.open("https://i0.wp.com/www.indiemusic.fr/wp-content/uploads/2016/03/Louise-Attaque-par-Fred-Lombard-57.jpg?w=1300&ssl=1"),
+filename: "conert_photo_1", content_type: "image/png")
+sofias_review_2.save!
+puts "done!"
+
+cats_review_2 = Review.new(
+  rating: 5,
+  content: "BEST CONCERT EVEEEEEERRRRRRRR!!!!!!!",
+  attendance: Attendance.find_by(user: cat, concert: tool_concert)
+)
+cats_review_2.photos.attach(io: URI.open("https://www.mtlblog.com/media-library/image.png?id=26902713&width=1245&height=700&coordinates=1%2C0%2C1%2C0"),
+filename: "conert_photo_1", content_type: "image/png")
+cats_review_2.save!
 puts "done!"
 
 puts "seed writing bowies review"
@@ -337,40 +426,5 @@ Comment.create!(content: "Gosh, I love social media.", user: cat, review: sofias
 Comment.create!(content: "You're just jealous that Chad Kroeger has better hair than you.", user: sofia, review: sofias_review)
 Comment.create!(content: "Your music tastes are questionable... At best.", user: antoine, review: sofias_review)
 puts "all done!"
-
-puts "creatting attendances for Bruce Springsteen"
-bruce = Artist.find_by(name: "Bruce Springsteen")
-bruce_concert = Concert.find_by(artist_id: bruce.id, venue: "Bell Centre")
-
-puts "creating seed cat attendance"
-cat = User.find_by(username: "Cat")
-Attendance.create!(user: cat, concert: bruce_concert)
-puts "done!"
-
-15.times do
-  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
-  puts "creating seed #{user.username} attendance"
-  Attendance.create!(user: user, concert: bruce_concert)
-  puts "done!"
-end
-
-puts "creatting attendances for Gojira"
-gojira = Artist.find_by(name: "Gojira")
-gojira_concert = Concert.find_by(artist_id: gojira.id, venue: "Place Bell")
-
-puts "creating seed Cat attendance"
-cat = User.find_by(username: "Cat")
-Attendance.create!(user: cat, concert: gojira_concert)
-puts "done!"
-
-puts "creating seed Stephane attendance"
-stephane = User.find_by(username: "Stephane")
-Attendance.create!(user: stephane, concert: gojira_concert)
-puts "done!"
-
-puts "creating seed Ines attendance"
-ines = User.find_by(username: "Ines")
-Attendance.create!(user: ines, concert: gojira_concert)
-puts "done!"
 
 puts "ALL DONE!!!!!!!!"
