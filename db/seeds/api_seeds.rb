@@ -337,3 +337,19 @@ Comment.create!(content: "Your music tastes are questionable... At best.", user:
 Comment.create!(content: "You're just jealous that Chad Kroeger has better hair than you.", user: sofia, review: sofias_review)
 Comment.create!(content: "Gosh, I love social media.", user: cat, review: sofias_review)
 puts "all done!"
+
+puts "creatting attendances for Bruce Springsteen"
+bruce = Artist.find_by(name: "Bruce Springsteen")
+bruce_concert = Concert.find_by(artist_id: bruce.id, venue: "Bell Centre")
+
+puts "creating seed cat attendance"
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: bruce_concert)
+puts "done!"
+
+15.times do
+  user = User.where.not(username: "Cat").sample
+  puts "creating seed #{user.username} attendance"
+  Attendance.create!(user: user, concert: bruce_concert)
+  puts "done!"
+end
