@@ -20,7 +20,48 @@ Chatroom.destroy_all
 puts "Cleaning the users table."
 User.destroy_all
 
-puts "Hard coding concerts..."
+puts "Hard coding Vancouver shows..."
+artist = Artist.create(name: "boygenius")
+photo = URI.open("https://assets-global.website-files.com/60444c8a09ebdbe635864d58/64223261393986b271bae894_boygenius---press-photo-new.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://m.media-amazon.com/images/I/81+oTyZWkiL._UF1000,1000_QL80_.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Vancouver"
+concert.venue = "PNE Amphitheatre"
+concert.date = Date.new(2023, 07, 27)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+artist = Artist.create(name: "Muse")
+photo = URI.open("https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://pechangaarenasd.com/wp-content/uploads/PA-Muse-750x400-3.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Vancouver"
+concert.venue = "Rogers Arena"
+concert.date = Date.new(2023, 11, 05)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+artist = Artist.create(name: "The National")
+photo = URI.open("https://i.guim.co.uk/img/media/6e9324e8e0fc7ee95ab6d9ad3f4855973a140adb/0_13_6720_4032/master/6720.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=3b527331203d3cbff6bdc23d21b7090c")
+artist.photo.attach(io: photo, filename: "band_photo.png", content_type: "image/png")
+banner = URI.open("https://static01.nyt.com/images/2019/05/22/arts/22national-promo/merlin_155143842_e41b6019-8eac-4f44-b127-df25ef92a539-superJumbo.jpg")
+artist.banner.attach(io: banner, filename: "band_banner.png", content_type: "image/png")
+concert = Concert.new
+concert.city = "Vancouver"
+concert.venue = "Commodore Ballroom"
+concert.date = Date.new(2023, 10, 11)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Tegan and Sara concert"
+puts "Hard coding Montreal concerts..."
 
 artist = Artist.create(name: "Tegan & Sara")
 photo = URI.open("https://www.rollingstone.com/wp-content/uploads/2022/10/TS_ICGU_Press-Photo_Crop-FINAL.jpg?w=1581&h=1054&crop=1")
