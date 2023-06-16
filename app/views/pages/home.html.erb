@@ -17,7 +17,7 @@
 
 <div>
   <h4>See what others are saying</h4>
-    <% @reviews.each do |review| %>
+    <% @reviews.sample(5).each do |review| %>
       <%= link_to concert_path(review.concert) do %>
         <%= render "user_review_card", review: review %>
       <% end %>
