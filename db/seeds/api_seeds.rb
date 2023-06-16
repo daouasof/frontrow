@@ -325,7 +325,8 @@ Comment.create!(content: "Gosh, I love social media.", user: cat, review: sofias
 puts "all done!"
 
 puts "creatting attendances for Bruce Springsteen"
-bruce_concert = Concert.find_by(artist: "Bruce Springsteen", venue: "Bell Center")
+bruce = Artist.find_by(name: "Bruce Springsteen")
+bruce_concert = Concert.find_by(artist_id: bruce.id, venue: "Bell Centre")
 
 puts "creating seed cat attendance"
 cat = User.find_by(username: "Cat")
