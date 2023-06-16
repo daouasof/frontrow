@@ -187,6 +187,17 @@ concert.save!
 
 puts "Created Springsteen concert"
 
+artist = Artist.find_by(name: "Tool")
+concert = Concert.new
+concert.city = "Chicago"
+concert.venue = "Stadium"
+concert.date = Date.new(2023, 05, 20)
+concert.tickets_url = ""
+concert.artist_id = artist.id
+concert.save!
+
+puts "Created Tool Chicago concert"
+
 
 puts "creating users seeds Bowie, Paloma and us!"
 
@@ -234,17 +245,85 @@ antoine = User.find_by(username: "Antoine")
 Attendance.create!(user: antoine, concert: t_and_s_concert)
 puts "done!"
 
-puts "creating seed sofia attendance"
-sofia = User.find_by(username: "Sofia")
-Attendance.create!(user: sofia, concert: t_and_s_concert)
-puts "done!"
-
 puts "creating seed doga attendance"
 doga = User.find_by(username: "Doga")
 Attendance.create!(user: doga, concert: t_and_s_concert)
 puts "done!"
 
+puts "creating sofia's attendances"
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: t_and_s_concert)
+puts "done!"
 
+the_cure = Artist.find_by(name: "The Cure")
+the_cure_concert = Concert.find_by(artist_id: the_cure.id, venue: "Bell Centre")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: the_cure_concert)
+puts "done!"
+
+louise = Artist.find_by(name: "Louise Attaque")
+louise_concert = Concert.find_by(artist_id: louise.id, city: "Paris")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: louise_concert)
+puts "done!"
+
+tool = Artist.find_by(name: "Tool")
+tool_concert = Concert.find_by(artist_id: tool.id, city: "Chicago")
+sofia = User.find_by(username: "Sofia")
+Attendance.create!(user: sofia, concert: tool_concert)
+puts "done!"
+
+puts "creating cat's attendance to Tool"
+tool = Artist.find_by(name: "Tool")
+tool_concert = Concert.find_by(artist_id: tool.id, city: "Chicago")
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: tool_concert)
+puts "done!"
+
+# artists = Artist.all
+# sofia_artist = artists.where.not(name: "Tool")
+# sofia = User.find_by(username: "Sofia")
+# sofia_artist.each do |artista|
+#   sofia_concert = Concert.find_by(artist_id: artista.id)
+#   if sofia_concert.city == "Montreal"
+#     Attendance.create!(user: sofia, concert: sofia_concert)
+#   end
+# end
+
+puts "creatting attendances for Bruce Springsteen"
+bruce = Artist.find_by(name: "Bruce Springsteen")
+bruce_concert = Concert.find_by(artist_id: bruce.id, venue: "Bell Centre")
+
+puts "creating seed cat attendance"
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: bruce_concert)
+puts "done!"
+
+15.times do
+  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
+  puts "creating seed #{user.username} attendance"
+  Attendance.create!(user: user, concert: bruce_concert)
+  puts "done!"
+end
+
+puts "creatting attendances for Gojira"
+gojira = Artist.find_by(name: "Gojira")
+gojira_concert = Concert.find_by(artist_id: gojira.id, venue: "Place Bell")
+
+puts "creating seed Cat attendance"
+cat = User.find_by(username: "Cat")
+Attendance.create!(user: cat, concert: gojira_concert)
+puts "done!"
+
+puts "creating seed Stephane attendance"
+stephane = User.find_by(username: "Stephane")
+Attendance.create!(user: stephane, concert: gojira_concert)
+puts "done!"
+
+puts "creating seed Ines attendance"
+ines = User.find_by(username: "Ines")
+Attendance.create!(user: ines, concert: gojira_concert)
+puts "done!"
 
 puts "seed writing doga review"
 doga_review = Review.new(
@@ -275,6 +354,26 @@ filename: "conert_photo_2", content_type: "image/png")
 sofias_review.photos.attach(io: URI.open("https://live.staticflickr.com/4686/25288641378_1af95c1243_b.jpg"),
 filename: "conert_photo_3", content_type: "image/png")
 sofias_review.save!
+puts "done!"
+
+sofias_review_2 = Review.new(
+  rating: 5,
+  content: "Incroyable!!!!!!!!!!",
+  attendance: Attendance.find_by(user: sofia, concert: louise_concert)
+)
+sofias_review_2.photos.attach(io: URI.open("https://i0.wp.com/www.indiemusic.fr/wp-content/uploads/2016/03/Louise-Attaque-par-Fred-Lombard-57.jpg?w=1300&ssl=1"),
+filename: "conert_photo_1", content_type: "image/png")
+sofias_review_2.save!
+puts "done!"
+
+cats_review_2 = Review.new(
+  rating: 5,
+  content: "BEST CONCERT EVEEEEEERRRRRRRR!!!!!!!",
+  attendance: Attendance.find_by(user: cat, concert: tool_concert)
+)
+cats_review_2.photos.attach(io: URI.open("https://www.mtlblog.com/media-library/image.png?id=26902713&width=1245&height=700&coordinates=1%2C0%2C1%2C0"),
+filename: "conert_photo_1", content_type: "image/png")
+cats_review_2.save!
 puts "done!"
 
 puts "seed writing bowies review"
@@ -327,51 +426,5 @@ Comment.create!(content: "Gosh, I love social media.", user: cat, review: sofias
 Comment.create!(content: "You're just jealous that Chad Kroeger has better hair than you.", user: sofia, review: sofias_review)
 Comment.create!(content: "Your music tastes are questionable... At best.", user: antoine, review: sofias_review)
 puts "all done!"
-
-puts "creatting attendances for Bruce Springsteen"
-bruce = Artist.find_by(name: "Bruce Springsteen")
-bruce_concert = Concert.find_by(artist_id: bruce.id, venue: "Bell Centre")
-
-puts "creating seed cat attendance"
-cat = User.find_by(username: "Cat")
-Attendance.create!(user: cat, concert: bruce_concert)
-puts "done!"
-
-15.times do
-  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
-  puts "creating seed #{user.username} attendance"
-  Attendance.create!(user: user, concert: bruce_concert)
-  puts "done!"
-end
-
-puts "creatting attendances for Gojira"
-gojira = Artist.find_by(name: "Gojira")
-gojira_concert = Concert.find_by(artist_id: gojira.id, venue: "Place Bell")
-
-puts "creating seed Cat attendance"
-cat = User.find_by(username: "Cat")
-Attendance.create!(user: cat, concert: gojira_concert)
-puts "done!"
-
-puts "creating seed Stephane attendance"
-stephane = User.find_by(username: "Stephane")
-Attendance.create!(user: stephane, concert: gojira_concert)
-puts "done!"
-
-puts "creating seed Ines attendance"
-ines = User.find_by(username: "Ines")
-Attendance.create!(user: ines, concert: gojira_concert)
-puts "done!"
-
-puts "creating sofia's attendances"
-
-artists = Artist.where.not("Tegan & Sara").all
-sofia = User.find_by(username: "Sofia")
-artists.each do |artista|
-  sofia_concert = Concert.find_by(artist_id: artista.id)
-  if sofia_concert.city == "Montreal"
-    Attendance.create!(user: sofia, concert: sofia_concert)
-  end
-end
 
 puts "ALL DONE!!!!!!!!"
