@@ -219,7 +219,7 @@ USERS.each do |user_hash|
   banner = URI.open(user_hash[:banner_url] || default_banner_url)
   new_user.banner.attach(io: banner, filename: "banner.png", content_type: "image/png")
 
-  new_user.city = default_city unless user_hash[:city]
+  new_user.city = user_hash[:city] || default_city
   new_user.password = default_password unless user_hash[:password]
   new_user.save!
 end
@@ -348,7 +348,7 @@ Attendance.create!(user: cat, concert: bruce_concert)
 puts "done!"
 
 15.times do
-  user = User.where.not(username: "Cat").sample
+  user = User.where.not(username: "Cat").where.not(username: "Kirstin").sample
   puts "creating seed #{user.username} attendance"
   Attendance.create!(user: user, concert: bruce_concert)
   puts "done!"
