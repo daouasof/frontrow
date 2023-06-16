@@ -3,6 +3,8 @@ require "json"
 require "rest-client"
 require_relative "users"
 
+puts "Cleaning the follows table"
+Follow.destroy_all
 puts "Cleaning the comments table"
 Comment.destroy_all
 puts "Cleaning the reviews table"
@@ -426,5 +428,31 @@ Comment.create!(content: "Gosh, I love social media.", user: cat, review: sofias
 Comment.create!(content: "You're just jealous that Chad Kroeger has better hair than you.", user: sofia, review: sofias_review)
 Comment.create!(content: "Your music tastes are questionable... At best.", user: antoine, review: sofias_review)
 puts "all done!"
+
+puts "ALL DONE!!!!!!!!"
+
+puts "Creating Sofia's & Cat's followers"
+
+kirstin = User.find_by(username: "Kirstin")
+
+all_users_but_sofia_kirstin = User.where.not(username: sofia.username).where.not(username: kirstin.username)
+all_users_but_sofia_kirstin.each do |user|
+  user.follow(sofia)
+end
+
+all_users_but_cat_kirstin = User.where.not(username: cat.username).where.not(username: kirstin.username).first(5)
+all_users_but_cat_kirstin.each do |user|
+  user.follow(cat)
+end
+
+first_10_without_sophia_kirstin = all_users_but_sofia_kirstin.first(10)
+first_10_without_sophia_kirstin.each do |user|
+  sofia.follow(user)
+end
+
+first_5_without_cat_kirstin = all_users_but_cat_kirstin.first(5)
+first_5_without_cat_kirstin.each do |user|
+  cat.follow(user)
+end
 
 puts "ALL DONE!!!!!!!!"
