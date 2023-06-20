@@ -7,6 +7,16 @@
   text-decoration: none;
 }
 
+  .concert-card {
+    height: 125px;
+  }
+
+@media(max-width: 800px) {
+  .concert-card {
+    height: 100px;
+  }
+}
+
 .concert-card img {
   width: 40%;
   height: 100%;

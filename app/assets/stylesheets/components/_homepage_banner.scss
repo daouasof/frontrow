@@ -20,7 +20,15 @@ button {
 }
 
 .container-form {
-  width: 60%;
+  width: 480px;
   margin: auto;
   text-align: end;
+}
+
+@media(max-width: 800px) {
+  .container-form {
+    width: 60%;
+    margin: auto;
+    text-align: end;
+  }
 }

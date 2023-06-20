@@ -1,6 +1,12 @@
 .grid-reviews {
   display: grid;
-  row-gap: 50px;
-  margin: 32px;
-  margin-top: 0px;
+  width: 600px;
+  margin: 0px auto;
+  margin-bottom: 4px;
+}
+
+@media(max-width: 600px) {
+  .grid-reviews {
+     width: 95%;
+  }
 }

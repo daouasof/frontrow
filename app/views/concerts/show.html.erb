@@ -7,11 +7,9 @@
 <% end %>
 
 <div class="grid-reviews">
-  <ul class="list-group">
     <% @reviews.each do |review| %>
       <div>
         <%= render "review_card", review: review %>
       </div>
     <% end %>
-  </ul>
 </div>
