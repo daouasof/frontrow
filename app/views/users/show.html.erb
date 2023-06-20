@@ -48,7 +48,7 @@
   <%= render "display_following", user: @user %>
 </div>
 
-<div class="grid-container">
+<div class="grid-container-single">
   <% @reviews.each do |review| %>
     <%= link_to "#{concert_path(review.concert)}" do %>
     <div class="user-review-card shadowed-box" style="height: 100px">
