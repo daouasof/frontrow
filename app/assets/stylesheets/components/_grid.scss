@@ -19,3 +19,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.grid-container-single {
+  width: 500px;
+  display: grid;
+  row-gap: 4px;
+  column-gap: 10px;
+  margin: auto;
+}
+
+@media(max-width: 800px) {
+  .grid-container-single {
+    width: 400px;
+    display: grid;
+    row-gap: 4px;
+    margin: auto;
+    grid-template-columns: 1fr;
+  }
+}
