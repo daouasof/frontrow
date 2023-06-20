@@ -1,10 +1,10 @@
 <%= render "homepage_banner" %>
 
-<div class="grid-container">
 
   <div>
     <% if @concerts.present? %>
       <h4>Upcoming shows near you</h4>
+<div class="grid-container">
         <% @concerts.each do |concert| %>
           <% if (concert.date).after?(Date.today) %>
             <%= link_to concert_path(concert) do %>
@@ -12,16 +12,18 @@
             <% end %>
           <% end %>
         <% end %>
-    <% end %>
   </div>
+    <% end %>
 
 <div>
   <h4>See what others are saying</h4>
-    <% @reviews.sample(5).each do |review| %>
+<div class="grid-container">
+    <% @reviews.sample(6).each do |review| %>
       <%= link_to concert_path(review.concert) do %>
         <%= render "user_review_card", review: review %>
       <% end %>
     <% end %>
+</div>
 </div>
 
 </div>
