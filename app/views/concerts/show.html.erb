@@ -1,7 +1,9 @@
 <% if Date.today <= @concert.date %>
   <%= render "upcoming_banner", concert: @concert %>
   <%= render "countdown", concert: @concert %>
-  <%= render "attending_card", concert: @concert %>
+  <div class="grid-container-single">
+    <%= render "attending_card", concert: @concert %>
+  </div>
 <% else %>
   <%= render "show_banner", concert: @concert %>
 <% end %>
