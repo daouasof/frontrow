@@ -6,7 +6,7 @@ Frontrow is a social platform where fans can log concerts they've seen by rating
 
 [www.front-row.site](https://www.front-row.site)
 
-![Frontrow landing page](/app/assets/images/Frontrow_landing.png?raw=true "Optional Title")
+![Frontrow landing page](/app/assets/images/Frontrow_landing.png?raw=true)
 
 ## Usage
 
