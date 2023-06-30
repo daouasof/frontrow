@@ -33,8 +33,4 @@ class ChatroomsController < ApplicationController
     @message = Message.new
     render :show
   end
-
-  def delete
-    @chatroom.destroy
-  end
 end
