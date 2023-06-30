@@ -6,7 +6,19 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatrooms = Chatroom.get_chatrooms(current_user)
-    @messages = @chatrooms.map { |chat| chat.messages.last }.sort_by(&:created_at).reverse
+    @chatrooms.each do |chatroom|
+    @messages = []
+    if chatroom.messages == []
+      chatroom.destroy
+    # elsif chatroom.empty?
+    #   render :index
+    else
+      last_message = chatroom.messages.last
+      @messages << last_message
+    end
+    raise
+    @messages.sort_by(&:created_at).reverse
+    end
   end
 
   def set_or_create_chatroom
@@ -19,5 +31,9 @@ class ChatroomsController < ApplicationController
     end
     @message = Message.new
     render :show
+  end
+
+  def delete
+    @chatroom.destroy
   end
 end
