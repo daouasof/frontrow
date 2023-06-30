@@ -6,18 +6,27 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatrooms = Chatroom.get_chatrooms(current_user)
-    @chatrooms.each do |chatroom|
+    # raise
     @messages = []
-    if chatroom.messages == []
-      chatroom.destroy
-    # elsif chatroom.empty?
-    #   render :index
-    else
-      last_message = chatroom.messages.last
-      @messages << last_message
+    @chatrooms.each do |chatroom|
+      # raise
+      if chatroom.messages.empty?
+        chatroom.destroy
+      # elsif chatroom.empty?
+      #   render :index
+      else
+        last_message = chatroom.messages.last
+        @messages << last_message
+        # raise
+      end
+      # raise
     end
-    raise
-    @messages.sort_by(&:created_at).reverse
+    # raise
+    if @chatrooms.empty?
+      render :index
+    else
+      # raise
+      @messages.sort_by(&:created_at).reverse
     end
   end
 
